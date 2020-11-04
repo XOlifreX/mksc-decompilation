@@ -7,7 +7,7 @@ This is only at its disassembly phase and very much a WIP. The project setup is 
 
 ## Building
 
-Running build.bat will generate the JPN version. The JPN version is chosen to u-include all the Mobile Adapter GB functionalities.
+Running build.bat will generate the JPN version. The JPN version is chosen to include all the Mobile Adapter GB functionalities.
 An original JPN rom is required to build the rom. The build tools are from DevKitARM.
 
 
