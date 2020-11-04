@@ -1,7 +1,7 @@
     b Init
 
 CartridgeHeaderNintendoLogo:
-	.incbin "base_mka.gba", 0x4, 0xA0 - 0x4
+	.incbin "base.gba", 0x4, 0xA0 - 0x4
 
 CartridgeHeaderGameTitle:
 	.ascii "MARIO KART"
