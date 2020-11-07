@@ -1307,4 +1307,3 @@ _0805FA98:  .4byte RunGameLogic_CallBack
 
     thumb_func_end _LoadMGBRegistrationMenu
 
-.incbin "base.gba ", 0x5FA9C

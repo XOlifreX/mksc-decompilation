@@ -20,3 +20,4 @@ RomBase:
 	.include "game.s"
 	.incbin "base.gba", 0x27148, 0x5A3FC - 0x27148
 	.include "mobile_adapter_gb.s"
+	.incbin "base.gba ", 0x5FA9C
