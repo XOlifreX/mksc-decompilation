@@ -5,3 +5,5 @@
 *.gba.bak
 *.txt
 graphics/*.exe
+*.pal
+*.spr
