@@ -4,3 +4,4 @@
 *.o
 *.gba.bak
 *.txt
+graphics/*.exe

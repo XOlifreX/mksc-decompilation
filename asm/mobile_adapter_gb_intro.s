@@ -39,7 +39,7 @@ _ShowMGBIntro: @ 8001900
     ldr	    r1, _08001A2C @ [pc, #220]	@ (0x1a2c)
     bl	    0x807df78
     bl	    _DrawFrameRunAudio
-    ldr	    r0, _08001A30 @[pc, #212]	@ (0x1a30)
+    ldr	    r0, _08001A30 @ [pc, #212]	@ (0x1a30)
     ldr	    r4, _08001A34 @ [pc, #216]	@ (0x1a34)
     adds	r1, r4, #0
     bl	    0x8071b80
