@@ -42,7 +42,7 @@ _ShowMGBIntro: @ 8001900
     ldr	    r0, _08001A30 @ [pc, #212]	@ (0x1a30)
     ldr	    r4, _08001A34 @ [pc, #216]	@ (0x1a34)
     adds	r1, r4, #0
-    bl	    0x8071b80
+    bl	    _CallHardwareLZ77DecompressToMemory8Bit
     bl	    0x8029f34
     ldr	    r2, _08001A38 @ [pc, #208]	@ (0x1a38)
     ldr	    r3, _08001A3C @ [pc, #208]	@ (0x1a3c)
@@ -60,7 +60,7 @@ _ShowMGBIntro: @ 8001900
     bl	    0x80281b0
     adds	r1, r0, #0
     adds	r0, r4, #0
-    bl	    0x8071b80
+    bl	    _CallHardwareLZ77DecompressToMemory8Bit
     movs	r0, #1
     bl	    0x80281fc
     bl	    _DrawFrameRunAudio
@@ -70,7 +70,7 @@ _ShowMGBIntro: @ 8001900
     adds	r1, r0, #0
     adds	r0, r4, #0
     movs	r2, #8
-    bl	    0x8071b68
+    bl	    _CallHardwareSetCpuFast
     movs	r0, #1
     bl	    0x8028168
     bl	    _DrawFrameRunAudio
