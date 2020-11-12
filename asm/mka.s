@@ -19,9 +19,9 @@ RomBase:
 	.include "main.s"
 	.incbin "base.gba", 0x26DBA, 0x2711c - 0x26DBA
 	.include "game.s"
-	.incbin "base.gba", 0x27148, 0x5A3FC - 0x27148
+	.incbin "base.gba", 0x27148, 0x57950 - 0x27148
 	.include "mobile_adapter_gb.s"
-	.incbin "base.gba ", 0x5FA9C, 0x71B68 - 0x5FA9C
+	.incbin "base.gba ", 0x60C92, 0x71B68 - 0x60C92
 	.include "swi.s"
 	.incbin "base.gba ", 0x71B84, 0xF3938 - 0x71B84
 

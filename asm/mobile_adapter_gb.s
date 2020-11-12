@@ -1,3 +1,70 @@
+	thumb_func_start _LoadUsername
+_LoadUsername: @ 0x8057950
+    push	{r4, lr}
+    adds	r1, r0, #0
+    ldr	    r0, _0805797C @ [pc, #36]	; (0x5797c)
+    adds	r3, r0, #0
+    adds	r3, #28
+    movs	r4, #0
+    movs	r2, #4
+_805975E:
+    ldrb	r0, [r3, #0]
+    strb	r0, [r1, #0]
+    lsls	r0, r0, #24
+    adds	r3, #1
+    adds	r1, #1
+    cmp	    r0, #0
+    beq 	_0805796E
+    movs	r4, #1
+_0805796E:
+    subs	r2, #1
+    cmp	    r2, #0
+    bge 	_805975E
+    adds	r0, r4, #0
+    pop	    {r4}
+    pop	    {r1}
+    bx	    r1
+
+   _0805797C: 	.4byte 0x2032B80
+
+	thumb_func_end _LoadUsername
+
+    .incbin "base.gba", 0x57980, 0x579A0 - 0x57980
+
+	thumb_func_start _LoadPassword
+_LoadPassword: @ 0x80579A0
+    adds	r2, r0, #0
+    ldr	    r0, _080579B4 @ [pc, #16]	; (0x579b4)
+    ldr	    r3, _080579B8 @ [pc, #16]	; (0x579b8)
+    adds	r1, r0, r3
+    ldrb	r0, [r1, #0]
+    cmp	    r0, #0
+    bne 	_080579BC
+    movs	r0, #0
+    b	    _080579CE
+
+    		.2byte 0x0
+_080579B4: 	.4byte 0x2032B80
+_080579B8: 	.4byte 0xAD4
+
+_080579BC:
+    movs	r3, #16
+_080579BE:
+    ldrb	r0, [r1, #0]
+    strb	r0, [r2, #0]
+    adds	r1, #1
+    adds	r2, #1
+    subs	r3, #1
+    cmp	    r3, #0
+    bge 	_080579BE
+    movs	r0, #1
+_080579CE:
+    bx	    lr
+
+    thumb_func_end _LoadPassword
+
+    .incbin "base.gba", 0x579D0, 0x5A3FC - 0x579D0
+
 	thumb_func_start _OnSelectMGBMenu
 _OnSelectMGBMenu: @ 0x805A3FC
    	push	{r4, r5, r6, r7, lr}
@@ -520,7 +587,7 @@ _0805A92C:  .4byte 0x805A89D
     thumb_func_end _LoadMGBBackGround
 
 	thumb_func_start _TryLoadMGBMainMenu
-_TryLoadMGBMainMenu: @ 0805a92c
+_TryLoadMGBMainMenu: @ 0805a930
     push	{r4-r7, lr}
     mov	    r7, sl
     mov	    r6, r9
@@ -567,13 +634,13 @@ _TryLoadMGBMainMenu: @ 0805a92c
     bl	    0x8060f60
 _805A9A0:
     mov	    r0, r8
-    bl	    0x8057950
+    bl	    _LoadUsername
     cmp	    r0, #0
     bne 	_805A9B4
     movs	r0, #1
     orrs	r6, r0
     adds	r0, r5, #0
-    bl	    0x8060c80
+    bl	    _ClearUsername
 _805A9B4:
     ldr	    r1, _0805A9D8 @ [pc, #32]	@ (0x5a9d8)
     adds	r0, r7, r1
@@ -1307,3 +1374,19 @@ _0805FA98:  .4byte RunGameLogic_CallBack
 
     thumb_func_end _LoadMGBRegistrationMenu
 
+    .incbin "base.gba", 0x5FA9C, 0x60C80 - 0x5FA9C
+
+	thumb_func_start _ClearUsername
+_ClearUsername: @ 0x8060C80
+   adds	    r0, #16
+   movs	    r2, #0
+   movs	    r1, #4
+_08060C86:
+   strb	    r2, [r0, #0]
+   adds	    r0, #1
+   subs	    r1, #1
+   cmp	    r1, #0
+   bge  	_08060C86
+   bx	    lr
+
+    thumb_func_end _ClearUsername
