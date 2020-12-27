@@ -1000,9 +1000,9 @@ _0800099c:	.4byte 0x080f4428
 .incbin "base.gba", 0xA2E, 0x2
 
 _08000a30:	.4byte 0x03000000
-_08000a34:	.4byte 0x04000010
-_08000a38:	.4byte 0x0400004A
-_08000a3c:	.4byte 0x04000008
+_08000a34:	.4byte BG0X_Offset
+_08000a38:	.4byte InsideofOBJWindow_OutsideofWindows
+_08000a3c:	.4byte BG0Control
 	thumb_func_end sub_080008b0
 
 	thumb_func_start sub_08000a40
@@ -1804,7 +1804,7 @@ _080018c8:
 .incbin "base.gba", 0x18C8, 0x30
 
 _080018f8:	.4byte 0x03000000
-_080018fc:	.4byte 0x0400004A
+_080018fc:	.4byte InsideofOBJWindow_OutsideofWindows
 
 	thumb_func_start _ShowMGBIntro
 _ShowMGBIntro:
@@ -1965,7 +1965,7 @@ _08001a4c:
 	bx		lr
 
 _08001a70:	.4byte 0x03000004
-_08001a74:	.4byte 0x04000050
+_08001a74:	.4byte ColorSpecialEffectsSElection
 	thumb_func_end _ShowMGBIntro
 
 	thumb_func_start sub_08001a78
@@ -2587,7 +2587,7 @@ _08001f9c:	.4byte 0x000011F4
 _08001fa0:	.4byte 0x00001214
 _08001fa4:	.4byte 0x000011FC
 _08001fa8:	.4byte 0x00009FFF
-_08001fac:	.4byte 0x04000008
+_08001fac:	.4byte BG0Control
 _08001fb0:	.4byte 0x000011FE
 	thumb_func_end sub_08001dd0
 
@@ -3126,7 +3126,7 @@ _080023c4:	.4byte 0x0000109C
 _080023c8:	.4byte 0x00000D84
 _080023cc:	.4byte 0x000011E4
 _080023d0:	.4byte 0x00009FFF
-_080023d4:	.4byte 0x04000040
+_080023d4:	.4byte Window0HorizontalDimensions
 _080023d8:	.4byte 0x00003F3F
 _080023dc:	.4byte 0x02020400
 _080023e0:	.4byte 0x01000800
@@ -13591,9 +13591,9 @@ _0800c63c:
 
 .incbin "base.gba", 0xC662, 0x2
 
-_0800c664:	.4byte 0x04000008
+_0800c664:	.4byte BG0Control
 _0800c668:	.4byte 0x0000FF7F
-_0800c66c:	.4byte 0x0400004C
+_0800c66c:	.4byte MosaicSize
 _0800c670:	.4byte 0x0000FFBF
 	thumb_func_end sub_0800c3c6
 
@@ -19088,7 +19088,7 @@ _0800fe42:
 .align 2, 0
 _0800fe48:	.4byte 0x03002D50
 _0800fe4c:	.4byte 0x03002FD0
-_0800fe50:	.4byte 0x04000128
+_0800fe50:	.4byte SIOControlRegister
 _0800fe54:	.4byte 0x020378FC
 _0800fe58:	.4byte 0x080c558c
 _0800fe5c:	.4byte 0x080c5bc0
@@ -19381,7 +19381,7 @@ _08010e40:
 
 .incbin "base.gba", 0x10E62, 0x2
 
-_08010e64:	.4byte 0x04000200
+_08010e64:	.4byte InterruptEnableRegister
 _08010e68:	.4byte 0x06001000
 _08010e6c:	.4byte 0x030000F8
 _08010e70:	.4byte 0x000004E3
@@ -19540,7 +19540,7 @@ _08010fd4:
 	pop		{ r0 }
 	bx		r0
 
-_08010fe0:	.4byte 0x040000BA
+_08010fe0:	.4byte DMA0Control
 _08010fe4:	.4byte RunGameLogic_CallBack
 	push	{ lr }
 	bl		sub_0807006c
@@ -19580,7 +19580,7 @@ sub_08011010:
 	pop		{ r0 }
 	bx		r0
 
-_08011030:	.4byte 0x04000130
+_08011030:	.4byte KeyStatus
 _08011034:	.4byte 0x000003FF
 _08011038:	.4byte 0x03002E70
 _0801103c:	.4byte 0x03002D38
@@ -19763,10 +19763,10 @@ _0801116c:
 
 .incbin "base.gba", 0x111AE, 0x2
 
-_080111b0:	.4byte 0x04000128
-_080111b4:	.4byte 0x04000134
+_080111b0:	.4byte SIOControlRegister
+_080111b4:	.4byte SIOModeSelect_GeneralPurposeData
 _080111b8:	.4byte 0x00002003
-_080111bc:	.4byte 0x0400012A
+_080111bc:	.4byte SIOData_Normal_8bitandUARTMode
 
 _080111c0:
 	ldrb	r0, [r7, #0x18]
@@ -19825,10 +19825,10 @@ _080111fc:
 
 .incbin "base.gba", 0x1122A, 0x2
 
-_0801122c:	.4byte 0x04000134
-_08011230:	.4byte 0x04000128
+_0801122c:	.4byte SIOModeSelect_GeneralPurposeData
+_08011230:	.4byte SIOControlRegister
 _08011234:	.4byte 0x00002003
-_08011238:	.4byte 0x0400012A
+_08011238:	.4byte SIOData_Normal_8bitandUARTMode
 
 _0801123c:
 	sub		r0, #0x1
@@ -19897,9 +19897,9 @@ _0801128e:
 
 .incbin "base.gba", 0x112AA, 0x2
 
-_080112ac:	.4byte 0x04000120
+_080112ac:	.4byte SIOData0_Parent__Multi_PlayerMode_
 _080112b0:	.4byte 0x0000FFFF
-_080112b4:	.4byte 0x04000126
+_080112b4:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 _080112b8:	.4byte 0x00007208
 
 _080112bc:
@@ -19948,7 +19948,7 @@ _080112f8:
 	bl		sub_080116d4
 	b		_08011324
 
-_08011310:	.4byte 0x04000120
+_08011310:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _08011314:
 	sub		r0, #0x1
@@ -20010,7 +20010,7 @@ _0801135c:
 .incbin "base.gba", 0x1137A, 0x2
 
 _0801137c:	.4byte 0x03000150
-_08011380:	.4byte 0x04000120
+_08011380:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _08011384:
 	mov		r5, #0x3
@@ -20052,7 +20052,7 @@ _080113be:
 .incbin "base.gba", 0x113C6, 0x2
 
 _080113c8:	.4byte 0x03000150
-_080113cc:	.4byte 0x04000120
+_080113cc:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _080113d0:
 	mov		r3, #0x1
@@ -20113,7 +20113,7 @@ _0801142e:
 	b		_0801164a
 
 _08011438:	.4byte 0x03000150
-_0801143c:	.4byte 0x04000120
+_0801143c:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _08011440:
 	mov		r0, #0xd1
@@ -20176,7 +20176,7 @@ _08011490:
 
 .incbin "base.gba", 0x114AE, 0x2
 
-_080114b0:	.4byte 0x04000126
+_080114b0:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 
 _080114b4:
 	mov		r1, #0x0
@@ -20205,10 +20205,10 @@ _080114b4:
 
 .incbin "base.gba", 0x114E2, 0x2
 
-_080114e4:	.4byte 0x04000134
-_080114e8:	.4byte 0x04000128
+_080114e4:	.4byte SIOModeSelect_GeneralPurposeData
+_080114e8:	.4byte SIOControlRegister
 _080114ec:	.4byte 0x00002003
-_080114f0:	.4byte 0x0400012A
+_080114f0:	.4byte SIOData_Normal_8bitandUARTMode
 
 _080114f4:
 	mov		r5, #0x3
@@ -20266,7 +20266,7 @@ _0801153c:
 
 .incbin "base.gba", 0x11556, 0x2
 
-_08011558:	.4byte 0x04000120
+_08011558:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0801155c:
 	mov		r1, r12
@@ -20295,10 +20295,10 @@ _0801155c:
 
 .incbin "base.gba", 0x1158A, 0x2
 
-_0801158c:	.4byte 0x04000134
-_08011590:	.4byte 0x04000128
+_0801158c:	.4byte SIOModeSelect_GeneralPurposeData
+_08011590:	.4byte SIOControlRegister
 _08011594:	.4byte 0x00002003
-_08011598:	.4byte 0x0400012A
+_08011598:	.4byte SIOData_Normal_8bitandUARTMode
 
 _0801159c:
 	ldrb	r0, [r7, #0x18]
@@ -20353,10 +20353,10 @@ _080115da:
 	mov		r0, #0x60
 	b		_0801164a
 
-_08011600:	.4byte 0x04000134
-_08011604:	.4byte 0x04000128
+_08011600:	.4byte SIOModeSelect_GeneralPurposeData
+_08011604:	.4byte SIOControlRegister
 _08011608:	.4byte 0x00002003
-_0801160c:	.4byte 0x0400012A
+_0801160c:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08011610:
 	mov		r1, #0x0
@@ -20380,10 +20380,10 @@ _08011610:
 	mov		r0, #0x60
 	b		_0801164a
 
-_08011638:	.4byte 0x04000134
-_0801163c:	.4byte 0x04000128
+_08011638:	.4byte SIOModeSelect_GeneralPurposeData
+_0801163c:	.4byte SIOControlRegister
 _08011640:	.4byte 0x00002003
-_08011644:	.4byte 0x0400012A
+_08011644:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08011648:
 	mov		r0, #0x0
@@ -20426,8 +20426,8 @@ sub_0801165c:
 
 .incbin "base.gba", 0x11686, 0x2
 
-_08011688:	.4byte 0x04000128
-_0801168c:	.4byte 0x0400012A
+_08011688:	.4byte SIOControlRegister
+_0801168c:	.4byte SIOData_Normal_8bitandUARTMode
 _08011690:	.4byte 0x00002083
 
 _08011694:
@@ -20460,9 +20460,9 @@ _080116c0:
 
 .incbin "base.gba", 0x116C6, 0x2
 
-_080116c8:	.4byte 0x04000134
+_080116c8:	.4byte SIOModeSelect_GeneralPurposeData
 _080116cc:	.4byte 0x00002003
-_080116d0:	.4byte 0x0400012A
+_080116d0:	.4byte SIOData_Normal_8bitandUARTMode
 	thumb_func_end sub_0801165c
 
 	thumb_func_start sub_080116d4
@@ -20495,10 +20495,10 @@ sub_080116d4:
 
 .incbin "base.gba", 0x11706, 0x2
 
-_08011708:	.4byte 0x04000134
-_0801170c:	.4byte 0x04000128
+_08011708:	.4byte SIOModeSelect_GeneralPurposeData
+_0801170c:	.4byte SIOControlRegister
 _08011710:	.4byte 0x00002003
-_08011714:	.4byte 0x0400012A
+_08011714:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08011718:
 	add		r1, r2, #0x0
@@ -20561,10 +20561,10 @@ _08011754:
 	strh	r1, [r0, #0x0]
 	b		_08011856
 
-_08011780:	.4byte 0x04000134
-_08011784:	.4byte 0x04000128
+_08011780:	.4byte SIOModeSelect_GeneralPurposeData
+_08011784:	.4byte SIOControlRegister
 _08011788:	.4byte 0x00002003
-_0801178c:	.4byte 0x0400012A
+_0801178c:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08011790:
 	mov		r0, r12
@@ -20599,10 +20599,10 @@ _08011790:
 	b		_08011856
 
 _080117cc:	.4byte 0x0003FF00
-_080117d0:	.4byte 0x04000134
-_080117d4:	.4byte 0x04000128
+_080117d0:	.4byte SIOModeSelect_GeneralPurposeData
+_080117d4:	.4byte SIOControlRegister
 _080117d8:	.4byte 0x00002003
-_080117dc:	.4byte 0x0400012A
+_080117dc:	.4byte SIOData_Normal_8bitandUARTMode
 
 _080117e0:
 	add		r0, r6, r4
@@ -20715,7 +20715,7 @@ _080118da:
 
 .incbin "base.gba", 0x118E2, 0x2
 
-_080118e4:	.4byte 0x04000126
+_080118e4:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 
 _080118e8:
 	lsl		r0, r4, #0x1
@@ -20757,7 +20757,7 @@ _08011904:
 
 .incbin "base.gba", 0x1192E, 0x2
 
-_08011930:	.4byte 0x04000120
+_08011930:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _08011934:
 	mov		r1, #0x0
@@ -20783,10 +20783,10 @@ _08011934:
 	mov		r0, #0x71
 	b		_08011972
 
-_08011960:	.4byte 0x04000134
-_08011964:	.4byte 0x04000128
+_08011960:	.4byte SIOModeSelect_GeneralPurposeData
+_08011964:	.4byte SIOControlRegister
 _08011968:	.4byte 0x00002003
-_0801196c:	.4byte 0x0400012A
+_0801196c:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08011970:
 	mov		r0, #0x0
@@ -20821,10 +20821,10 @@ sub_08011978:
 	strh	r1, [r0, #0x0]
 	bx		lr
 
-_080119a4:	.4byte 0x04000134
-_080119a8:	.4byte 0x04000128
+_080119a4:	.4byte SIOModeSelect_GeneralPurposeData
+_080119a8:	.4byte SIOControlRegister
 _080119ac:	.4byte 0x00002003
-_080119b0:	.4byte 0x0400012A
+_080119b0:	.4byte SIOData_Normal_8bitandUARTMode
 	thumb_func_end sub_08011978
 
 	thumb_func_start sub_080119b4
@@ -20880,7 +20880,7 @@ _080119fa:
 	pop		{ r0 }
 	bx		r0
 
-_08011a04:	.4byte 0x04000128
+_08011a04:	.4byte SIOControlRegister
 _08011a08:	.4byte 0x0000795C
 	thumb_func_end sub_080119c4
 
@@ -20988,10 +20988,10 @@ _08011a82:
 
 .incbin "base.gba", 0x11AD2, 0x2
 
-_08011ad4:	.4byte 0x04000208
-_08011ad8:	.4byte 0x04000200
+_08011ad4:	.4byte InterruptMasterEnableRegister
+_08011ad8:	.4byte InterruptEnableRegister
 _08011adc:	.4byte 0x0000FF3F
-_08011ae0:	.4byte 0x04000134
+_08011ae0:	.4byte SIOModeSelect_GeneralPurposeData
 _08011ae4:	.4byte 0x00004003
 _08011ae8:	.4byte 0x03002E80
 _08011aec:	.4byte 0x05000050
@@ -21016,7 +21016,7 @@ sub_08011af0:
 	beq		_08011b84
 	b		_08011b92
 
-_08011b10:	.4byte 0x04000128
+_08011b10:	.4byte SIOControlRegister
 _08011b14:	.4byte 0x03002E80
 
 _08011b18:
@@ -21109,10 +21109,10 @@ _08011b92:
 
 .incbin "base.gba", 0x11BC2, 0x2
 
-_08011bc4:	.4byte 0x04000208
-_08011bc8:	.4byte 0x04000200
+_08011bc4:	.4byte InterruptMasterEnableRegister
+_08011bc8:	.4byte InterruptEnableRegister
 _08011bcc:	.4byte 0x0000FF7F
-_08011bd0:	.4byte 0x04000202
+_08011bd0:	.4byte InterruptRequestFlags_IRQAcknowledge
 _08011bd4:	.4byte 0x000092C6
 _08011bd8:	.4byte 0x03002E80
 
@@ -21250,8 +21250,8 @@ _08011cc4:
 
 _08011ccc:	.4byte 0x03002E80
 _08011cd0:	.4byte 0x03002D20
-_08011cd4:	.4byte 0x04000002
-_08011cd8:	.4byte 0x0400010E
+_08011cd4:	.4byte Undocumented_Greenswap
+_08011cd8:	.4byte Timer3Control
 	thumb_func_end sub_08011c0c
 
 	thumb_func_start sub_08011cdc
@@ -21408,9 +21408,9 @@ _08011dea:
 	orr		r0, r4
 	b		_08011e32
 
-_08011e04:	.4byte 0x04000208
+_08011e04:	.4byte InterruptMasterEnableRegister
 _08011e08:	.4byte 0x03002E80
-_08011e0c:	.4byte 0x04000002
+_08011e0c:	.4byte Undocumented_Greenswap
 _08011e10:	.4byte 0x05000002
 
 _08011e14:
@@ -22835,7 +22835,7 @@ _08013f4a:
 
 _080140e0:	.4byte 0x03000174
 _080140e4:	.4byte 0x00009FFF
-_080140e8:	.4byte 0x04000008
+_080140e8:	.4byte BG0Control
 	thumb_func_end sub_08013ec0
 
 	thumb_func_start sub_080140ec
@@ -23226,8 +23226,8 @@ _08014498:	.4byte RunGameLogic_CallBack
 _0801449c:	.4byte 0x00000704
 _080144a0:	.4byte 0x0202A400
 _080144a4:	.4byte 0x03000174
-_080144a8:	.4byte 0x04000040
-_080144ac:	.4byte 0x04000048
+_080144a8:	.4byte Window0HorizontalDimensions
+_080144ac:	.4byte InsideofWindow0and1
 _080144b0:	.4byte 0x00010001
 _080144b4:	.4byte 0x0203EED4
 _080144b8:	.4byte 0x03000170
@@ -23587,7 +23587,7 @@ _08015db0:	.4byte 0x08015dc4
 .incbin "base.gba", 0x15DB4, 0x524
 _080162d8:	.4byte 0x03000178
 _080162dc:	.4byte 0x00009FFF
-_080162e0:	.4byte 0x04000008
+_080162e0:	.4byte BG0Control
 	thumb_func_start sub_080162e4
 sub_080162e4:
 	push	{ r4, r5, r6, r7, lr }
@@ -23974,7 +23974,7 @@ _080166c0:	.4byte sub_0802a18c
 _080166c4:	.4byte 0x0802a1d9
 _080166c8:	.4byte 0x0801625d
 _080166cc:	.4byte 0x00010001
-_080166d0:	.4byte 0x04000130
+_080166d0:	.4byte KeyStatus
 _080166d4:	.4byte 0x000003FF
 
 _080166d8:
@@ -24480,7 +24480,7 @@ _08016aba:
 	bx		r0
 
 _08016ac0:	.4byte 0x030052F0
-_08016ac4:	.4byte 0x04000040
+_08016ac4:	.4byte Window0HorizontalDimensions
 _08016ac8:	.4byte 0x08016b9d
 	thumb_func_end sub_08016a88
 
@@ -29893,7 +29893,7 @@ _08025c5a:
 	b		_08025d0c
 
 _08025cb4:	.4byte 0x03000192
-_08025cb8:	.4byte 0x04000008
+_08025cb8:	.4byte BG0Control
 _08025cbc:	.4byte 0x000007DA
 _08025cc0:	.4byte 0x080c6b0c
 _08025cc4:	.4byte 0x80000400
@@ -31429,7 +31429,7 @@ _08026dfe:
 .incbin "base.gba", 0x26E12, 0x2
 
 _08026e14:	.4byte RunGameLogic_CallBack
-_08026e18:	.4byte 0x040000B0
+_08026e18:	.4byte DMA0SourceAddress
 _08026e1c:	.4byte 0x0000C5FF
 _08026e20:	.4byte 0x00007FFF
 
@@ -31681,7 +31681,7 @@ _08027066:
 
 .incbin "base.gba", 0x27072, 0x2
 
-_08027074:	.4byte 0x04000004
+_08027074:	.4byte GeneralLCDStatus_STAT_LYC_
 
 _08027078:
 	bx		lr
@@ -31985,9 +31985,9 @@ _080272cc:
 
 _080272d8:	.4byte 0x030001F0
 _080272dc:	.4byte 0x03003000
-_080272e0:	.4byte 0x04000128
-_080272e4:	.4byte 0x04000134
-_080272e8:	.4byte 0x04000202
+_080272e0:	.4byte SIOControlRegister
+_080272e4:	.4byte SIOModeSelect_GeneralPurposeData
+_080272e8:	.4byte InterruptRequestFlags_IRQAcknowledge
 _080272ec:	.4byte 0x080270F1
 _080272f0:	.4byte 0x00003FFF
 
@@ -32017,7 +32017,7 @@ _08027314:
 .incbin "base.gba", 0x2731A, 0x2
 
 _0802731c:	.4byte 0x03003000
-_08027320:	.4byte 0x04000130
+_08027320:	.4byte KeyStatus
 _08027324:	.4byte 0x030052D8
 _08027328:	.4byte 0x000003FF
 	thumb_func_end sub_08027264
@@ -32112,8 +32112,8 @@ _080273d4:
 
 _080273d8:	.4byte 0x03003000
 _080273dc:	.4byte 0x030052B8
-_080273e0:	.4byte 0x04000134
-_080273e4:	.4byte 0x04000202
+_080273e0:	.4byte SIOModeSelect_GeneralPurposeData
+_080273e4:	.4byte InterruptRequestFlags_IRQAcknowledge
 _080273e8:	.4byte 0x080270f1
 
 _080273ec:
@@ -32424,7 +32424,7 @@ _08027618:
 
 .incbin "base.gba", 0x2762E, 0x2
 
-_08027630:	.4byte 0x04000130
+_08027630:	.4byte KeyStatus
 _08027634:	.4byte 0x000003FF
 _08027638:	.4byte 0x030052D0
 
@@ -32484,9 +32484,9 @@ sub_0802765c:
 	bl		sub_08027208
 	b		_08027710
 
-_080276a4:	.4byte 0x04000128
+_080276a4:	.4byte SIOControlRegister
 _080276a8:	.4byte 0x03003000
-_080276ac:	.4byte 0x04000202
+_080276ac:	.4byte InterruptRequestFlags_IRQAcknowledge
 _080276b0:	.4byte 0x080270F1
 
 _080276b4:
@@ -32541,8 +32541,8 @@ _08027710:
 .incbin "base.gba", 0x27716, 0x2
 
 _08027718:	.4byte 0x03003000
-_0802771c:	.4byte 0x04000134
-_08027720:	.4byte 0x04000202
+_0802771c:	.4byte SIOModeSelect_GeneralPurposeData
+_08027720:	.4byte InterruptRequestFlags_IRQAcknowledge
 _08027724:	.4byte 0x080270F1
 _08027728:	.4byte 0x030001F0
 _0802772c:	.4byte 0x00003FFF
@@ -32587,8 +32587,8 @@ sub_08027744:
 	pop		{ r0 }
 	bx		r0
 
-_0802777c:	.4byte 0x04000134
-_08027780:	.4byte 0x04000202
+_0802777c:	.4byte SIOModeSelect_GeneralPurposeData
+_08027780:	.4byte InterruptRequestFlags_IRQAcknowledge
 _08027784:	.4byte 0x080270F1
 	thumb_func_end sub_08027744
 
@@ -32778,14 +32778,14 @@ _080278ee:
 	b		_0802799c
 
 _08027904:	.4byte 0x030052E0
-_08027908:	.4byte 0x0400010E
+_08027908:	.4byte Timer3Control
 _0802790c:	.4byte 0x03005358
-_08027910:	.4byte 0x04000128
+_08027910:	.4byte SIOControlRegister
 _08027914:	.4byte 0x03000258
-_08027918:	.4byte 0x04000120
-_0802791c:	.4byte 0x04000122
-_08027920:	.4byte 0x04000124
-_08027924:	.4byte 0x04000126
+_08027918:	.4byte SIOData0_Parent__Multi_PlayerMode_
+_0802791c:	.4byte SIOData1_1stChild__Multi_PlayerMode_
+_08027920:	.4byte SIOData2_2ndChild__Multi_PlayerMode_
+_08027924:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 _08027928:	.4byte 0x03000250
 _0802792c:	.4byte 0x03000294
 _08027930:	.4byte 0x030001F8
@@ -32795,7 +32795,7 @@ _0802793c:	.4byte 0x03000238
 _08027940:	.4byte 0x00003FFF
 _08027944:	.4byte 0x03004C18
 _08027948:	.4byte 0x080f8dd4
-_0802794c:	.4byte 0x0400012A
+_0802794c:	.4byte SIOData_Normal_8bitandUARTMode
 _08027950:	.4byte 0x00007FFF
 _08027954:	.4byte 0x03000248
 
@@ -32867,7 +32867,7 @@ _0802799c:
 
 _080279d0:	.4byte 0x03000258
 _080279d4:	.4byte 0x0300024C
-_080279d8:	.4byte 0x0400010C
+_080279d8:	.4byte Timer3Counter_Reload
 
 _080279dc:
 	ldr		r2, _08027a04
@@ -33083,7 +33083,7 @@ _08027b28:
 .incbin "base.gba", 0x27B4E, 0x2
 
 _08027b50:	.4byte 0x03000294
-_08027b54:	.4byte 0x0400012A
+_08027b54:	.4byte SIOData_Normal_8bitandUARTMode
 _08027b58:	.4byte 0x03000284
 _08027b5c:	.4byte 0x030002A0
 
@@ -33127,7 +33127,7 @@ _08027b92:
 	strh	r0, [r1, #0x0]
 	b		_08027bb8
 
-_08027ba4:	.4byte 0x0400010C
+_08027ba4:	.4byte Timer3Counter_Reload
 
 _08027ba8:
 	ldr		r2, _08027bc0
@@ -33144,7 +33144,7 @@ _08027bb8:
 	mov		r0, #0x5
 	b		_08027bcc
 
-_08027bc0:	.4byte 0x04000128
+_08027bc0:	.4byte SIOControlRegister
 _08027bc4:	.4byte 0x03000250
 
 _08027bc8:
@@ -33255,9 +33255,9 @@ _08027c9c:	.4byte 0x030002A8
 _08027ca0:	.4byte 0x030002B4
 _08027ca4:	.4byte 0x030002B8
 _08027ca8:	.4byte 0x0802810d
-_08027cac:	.4byte 0x04000134
-_08027cb0:	.4byte 0x04000128
-_08027cb4:	.4byte 0x0400010E
+_08027cac:	.4byte SIOModeSelect_GeneralPurposeData
+_08027cb0:	.4byte SIOControlRegister
+_08027cb4:	.4byte Timer3Control
 _08027cb8:	.4byte 0x080280e9
 _08027cbc:	.4byte 0x000100C0
 _08027cc0:	.4byte 0x0300024C
@@ -33429,10 +33429,10 @@ _08027e08:
 
 .incbin "base.gba", 0x27E12, 0x2
 
-_08027e14:	.4byte 0x04000134
-_08027e18:	.4byte 0x0400012A
+_08027e14:	.4byte SIOModeSelect_GeneralPurposeData
+_08027e18:	.4byte SIOData_Normal_8bitandUARTMode
 _08027e1c:	.4byte 0x030002A0
-_08027e20:	.4byte 0x04000128
+_08027e20:	.4byte SIOControlRegister
 _08027e24:	.4byte 0x03000250
 _08027e28:	.4byte 0x0300024C
 _08027e2c:	.4byte 0x030052E0
@@ -33478,7 +33478,7 @@ _08027e30:
 
 .incbin "base.gba", 0x27E7A, 0x2
 
-_08027e7c:	.4byte 0x04000128
+_08027e7c:	.4byte SIOControlRegister
 _08027e80:	.4byte 0x030052E0
 _08027e84:	.4byte 0x03000248
 _08027e88:	.4byte 0x0300024C
@@ -33519,9 +33519,9 @@ _08027ec8:
 
 .incbin "base.gba", 0x27ECE, 0x2
 
-_08027ed0:	.4byte 0x0400012A
+_08027ed0:	.4byte SIOData_Normal_8bitandUARTMode
 _08027ed4:	.4byte 0x030002A0
-_08027ed8:	.4byte 0x04000128
+_08027ed8:	.4byte SIOControlRegister
 _08027edc:	.4byte 0x03000250
 _08027ee0:	.4byte 0x0300024C
 	thumb_func_end sub_08027da8
@@ -33691,8 +33691,8 @@ sub_080280c4:
 	strh	r0, [r2, #0x0]
 	bx		lr
 
-_08028100:	.4byte 0x0400010E
-_08028104:	.4byte 0x04000128
+_08028100:	.4byte Timer3Control
+_08028104:	.4byte SIOControlRegister
 _08028108:	.4byte 0x03000250
 	push	{ lr }
 	bl		sub_080277f0
@@ -33777,7 +33777,7 @@ _08028192:
 	bx		lr
 
 _08028194:	.4byte 0x030006C0
-_08028198:	.4byte 0x040000B0
+_08028198:	.4byte DMA0SourceAddress
 _0802819c:	.4byte 0x030002C0
 _080281a0:	.4byte 0x80000200
 	thumb_func_end sub_08028174
@@ -33899,7 +33899,7 @@ _08028256:
 	bx		lr
 
 _08028258:	.4byte 0x030016C8
-_0802825c:	.4byte 0x040000B0
+_0802825c:	.4byte DMA0SourceAddress
 _08028260:	.4byte 0x030006C8
 _08028264:	.4byte 0x030016D0
 _08028268:	.4byte 0x84000200
@@ -36657,7 +36657,7 @@ _08029912:
 	bx		lr
 
 _08029914:	.4byte 0x0300216C
-_08029918:	.4byte 0x040000B0
+_08029918:	.4byte DMA0SourceAddress
 _0802991c:	.4byte 0x030016E0
 _08029920:	.4byte 0x84000100
 	thumb_func_end sub_080298f8
@@ -36682,7 +36682,7 @@ _0802993a:
 
 _08029940:	.4byte 0x0300216C
 _08029944:	.4byte 0x030016E0
-_08029948:	.4byte 0x04000100
+_08029948:	.4byte Timer0Counter_Reload
 	thumb_func_end sub_08029924
 
 	thumb_func_start sub_0802994c
@@ -37355,7 +37355,7 @@ _08029e18:
 	beq		_08029e54
 	b		_08029e56
 
-_08029e44:	.4byte 0x040000D4
+_08029e44:	.4byte DMA3SourceAddress
 _08029e48:	.4byte 0x0000FFFF
 _08029e4c:	.4byte 0xffff0000
 
@@ -37534,7 +37534,7 @@ sub_08029f58:
 
 .incbin "base.gba", 0x29F8A, 0x2
 
-_08029f8c:	.4byte 0x04000004
+_08029f8c:	.4byte GeneralLCDStatus_STAT_LYC_
 _08029f90:	.4byte 0x03005340
 _08029f94:	.4byte 0x030030A0
 	thumb_func_end sub_08029f58
@@ -37562,7 +37562,7 @@ sub_08029f98:
 	pop		{ r0 }
 	bx		r0
 
-_08029fc4:	.4byte 0x04000004
+_08029fc4:	.4byte GeneralLCDStatus_STAT_LYC_
 _08029fc8:	.4byte 0x03005340
 	thumb_func_end sub_08029f98
 
@@ -37633,7 +37633,7 @@ _0802a03a:
 .incbin "base.gba", 0x2A042, 0x2
 
 _0802a044:	.4byte 0x03005340
-_0802a048:	.4byte 0x04000004
+_0802a048:	.4byte GeneralLCDStatus_STAT_LYC_
 	thumb_func_end sub_08029fcc
 
 	thumb_func_start sub_0802a04c
@@ -37683,7 +37683,7 @@ _0802a082:
 .incbin "base.gba", 0x2A09A, 0x2
 
 _0802a09c:	.4byte 0x03005340
-_0802a0a0:	.4byte 0x04000004
+_0802a0a0:	.4byte GeneralLCDStatus_STAT_LYC_
 	thumb_func_end sub_0802a060
 
 	thumb_func_start sub_0802a0a4
@@ -37802,7 +37802,7 @@ _0802a15c:	.4byte 0x030052F0
 	strh	r0, [r2, #0x0]
 	bx		lr
 
-_0802a184:	.4byte 0x04000048
+_0802a184:	.4byte InsideofWindow0and1
 _0802a188:	.4byte 0x00009FFF
 	thumb_func_end sub_0802a130
 
@@ -37844,8 +37844,8 @@ _0802a1c4:
 .incbin "base.gba", 0x2A1CA, 0x2
 
 _0802a1cc:	.4byte 0x030052F0
-_0802a1d0:	.4byte 0x04000040
-_0802a1d4:	.4byte 0x04000048
+_0802a1d0:	.4byte Window0HorizontalDimensions
+_0802a1d4:	.4byte InsideofWindow0and1
 	mov		r2, #0x80
 	lsl		r2, r2, #0x13
 	ldrh	r1, [r2, #0x0]
@@ -37863,7 +37863,7 @@ _0802a1d4:	.4byte 0x04000048
 .incbin "base.gba", 0x2A1F2, 0x2
 
 _0802a1f4:	.4byte 0x00009FFF
-_0802a1f8:	.4byte 0x04000040
+_0802a1f8:	.4byte Window0HorizontalDimensions
 	ldr		r1, _0802a230
 	mov		r0, #0xf0
 	strh	r0, [r1, #0x0]
@@ -37892,7 +37892,7 @@ _0802a1f8:	.4byte 0x04000040
 
 .incbin "base.gba", 0x2A22E, 0x2
 
-_0802a230:	.4byte 0x04000040
+_0802a230:	.4byte Window0HorizontalDimensions
 _0802a234:	.4byte 0x00009FFF
 	thumb_func_end sub_0802a18c
 
@@ -37927,7 +37927,7 @@ _0802a266:
 	bx		r0
 
 _0802a26c:	.4byte 0x030052F0
-_0802a270:	.4byte 0x04000040
+_0802a270:	.4byte Window0HorizontalDimensions
 	thumb_func_end sub_0802a238
 
 	thumb_func_start sub_0802a274
@@ -39592,7 +39592,7 @@ _0802ae30:
 
 _0802ae40:	.4byte 0x03002190
 _0802ae44:	.4byte 0x03005340
-_0802ae48:	.4byte 0x04000004
+_0802ae48:	.4byte GeneralLCDStatus_STAT_LYC_
 
 .incbin "base.gba", 0x2AE4C, 0x28
 	thumb_func_end sub_0802ade8
@@ -40204,7 +40204,7 @@ _0802b5a6:
 _0802b5b0:	.4byte 0x08102bf8
 _0802b5b4:	.4byte 0x08258000
 _0802b5b8:	.4byte 0x00000554
-_0802b5bc:	.4byte 0x0400000C
+_0802b5bc:	.4byte BG2Control
 _0802b5c0:	.4byte 0x00003889
 _0802b5c4:	.4byte 0x0809270c
 _0802b5c8:	.4byte 0x0802b5cc
@@ -40328,9 +40328,9 @@ _0802b9bc:	.4byte 0x00000514
 _0802b9c0:	.4byte 0x03002198
 _0802b9c4:	.4byte 0x0000057C
 _0802b9c8:	.4byte 0x00007040
-_0802b9cc:	.4byte 0x04000050
-_0802b9d0:	.4byte 0x04000018
-_0802b9d4:	.4byte 0x0400001C
+_0802b9cc:	.4byte ColorSpecialEffectsSElection
+_0802b9d0:	.4byte BG2X_Offset
+_0802b9d4:	.4byte BG3X_Offset
 	thumb_func_end sub_0802b914
 
 	thumb_func_start sub_0802b9d8
@@ -43829,7 +43829,7 @@ sub_0802d47c:
 
 .incbin "base.gba", 0x2D4A6, 0x2
 
-_0802d4a8:	.4byte 0x0400000C
+_0802d4a8:	.4byte BG2Control
 
 _0802d4ac:
 	mov		r0, #0x80
@@ -44778,7 +44778,7 @@ _0802dae4:
 
 .incbin "base.gba", 0x2DB22, 0x2
 
-_0802db24:	.4byte 0x0400000A
+_0802db24:	.4byte BG1Control
 	thumb_func_end sub_0802d9f8
 
 	thumb_func_start sub_0802db28
@@ -45404,7 +45404,7 @@ _0802e0aa:
 .incbin "base.gba", 0x2E0BA, 0x2
 
 _0802e0bc:	.4byte RunGameLogic_CallBack
-_0802e0c0:	.4byte 0x0400001C
+_0802e0c0:	.4byte BG3X_Offset
 	thumb_func_end sub_0802e050
 
 	thumb_func_start sub_0802e0c4
@@ -81654,13 +81654,13 @@ _0804496c:
 
 _08044980:	.4byte RunGameLogic_CallBack
 _08044984:	.4byte 0x00000848
-_08044988:	.4byte 0x04000020
-_0804498c:	.4byte 0x040000B0
+_08044988:	.4byte BG2Rotation_ScalingParameterA_dx_
+_0804498c:	.4byte DMA0SourceAddress
 _08044990:	.4byte 0xA6600004
-_08044994:	.4byte 0x04000202
+_08044994:	.4byte InterruptRequestFlags_IRQAcknowledge
 _08044998:	.4byte 0x000007F4
 _0804499c:	.4byte 0x080270F1
-_080449a0:	.4byte 0x04000200
+_080449a0:	.4byte InterruptEnableRegister
 	thumb_func_end sub_08044934
 
 	thumb_func_start sub_080449a4
@@ -81746,12 +81746,12 @@ _08044a34:	.4byte RunGameLogic_CallBack
 _08044a38:	.4byte 0x0000080D
 _08044a3c:	.4byte 0x0000FFF8
 _08044a40:	.4byte 0x00000401
-_08044a44:	.4byte 0x0400000A
+_08044a44:	.4byte BG1Control
 _08044a48:	.4byte 0x00002F05
 _08044a4c:	.4byte 0x0000F889
 _08044a50:	.4byte 0x10082C42
 _08044a54:	.4byte 0x080270F1
-_08044a58:	.4byte 0x04000200
+_08044a58:	.4byte InterruptEnableRegister
 _08044a5c:	.4byte 0x0000FFFD
 	push	{ lr }
 	mov		r2, #0x80
@@ -81778,10 +81778,10 @@ _08044a5c:	.4byte 0x0000FFFD
 	bx		r0
 
 _08044a90:	.4byte 0x0000FFF8
-_08044a94:	.4byte 0x0400000C
+_08044a94:	.4byte BG2Control
 _08044a98:	.4byte 0x0000F889
 _08044a9c:	.4byte 0x080270F1
-_08044aa0:	.4byte 0x04000200
+_08044aa0:	.4byte InterruptEnableRegister
 _08044aa4:	.4byte 0x0000FFFD
 	push	{ lr }
 	mov		r2, #0x80
@@ -81813,11 +81813,11 @@ _08044aa4:	.4byte 0x0000FFFD
 .incbin "base.gba", 0x44ADE, 0x2
 
 _08044ae0:	.4byte 0x0000FFF8
-_08044ae4:	.4byte 0x0400000C
+_08044ae4:	.4byte BG2Control
 _08044ae8:	.4byte 0x0000F889
 _08044aec:	.4byte 0x060D3B44
 _08044af0:	.4byte 0x080270F1
-_08044af4:	.4byte 0x04000200
+_08044af4:	.4byte InterruptEnableRegister
 _08044af8:	.4byte 0x0000FFFD
 	thumb_func_end sub_080449d8
 
@@ -81865,10 +81865,10 @@ _08044b18:
 _08044b48:	.4byte RunGameLogic_CallBack
 _08044b4c:	.4byte 0x0000080D
 _08044b50:	.4byte 0x0000FFF8
-_08044b54:	.4byte 0x0400000C
+_08044b54:	.4byte BG2Control
 _08044b58:	.4byte 0x0000F88B
 _08044b5c:	.4byte 0x080270F1
-_08044b60:	.4byte 0x04000200
+_08044b60:	.4byte InterruptEnableRegister
 _08044b64:	.4byte 0x0000FFFD
 	add		r2, r0, #0x0
 	ldr		r0, [r2, #0xc]
@@ -91321,8 +91321,8 @@ _0804aeec:	.4byte 0x06002E00
 _0804aef0:	.4byte 0x01000008
 _0804aef4:	.4byte 0x91709170
 _0804aef8:	.4byte 0x01000200
-_0804aefc:	.4byte 0x04000040
-_0804af00:	.4byte 0x0400004A
+_0804aefc:	.4byte Window0HorizontalDimensions
+_0804af00:	.4byte InsideofOBJWindow_OutsideofWindows
 _0804af04:	.4byte 0x00009FFF
 _0804af08:	.4byte 0x030052F0
 	thumb_func_end sub_0804ae68
@@ -91374,9 +91374,9 @@ _0804af5a:
 	bx		r0
 
 _0804af60:	.4byte 0x030052F0
-_0804af64:	.4byte 0x04000008
-_0804af68:	.4byte 0x04000040
-_0804af6c:	.4byte 0x04000048
+_0804af64:	.4byte BG0Control
+_0804af68:	.4byte Window0HorizontalDimensions
+_0804af6c:	.4byte InsideofWindow0and1
 _0804af70:	.4byte 0x0804b991
 	thumb_func_end sub_0804af0c
 
@@ -91470,7 +91470,7 @@ sub_0804af74:
 
 _0804b024:	.4byte 0x01006000
 _0804b028:	.4byte 0x0810a890
-_0804b02c:	.4byte 0x04000008
+_0804b02c:	.4byte BG0Control
 _0804b030:	.4byte 0x00000141
 	thumb_func_end sub_0804af74
 
@@ -92496,7 +92496,7 @@ _0804b9a0:	.4byte 0x030052F0
 
 _0804b9e8:	.4byte RunGameLogic_CallBack
 _0804b9ec:	.4byte 0x00010001
-_0804b9f0:	.4byte 0x04000050
+_0804b9f0:	.4byte ColorSpecialEffectsSElection
 	thumb_func_end sub_0804b958
 
 	thumb_func_start sub_0804b9f4
@@ -92537,7 +92537,7 @@ sub_0804b9f4:
 	pop		{ r0 }
 	bx		r0
 
-_0804ba40:	.4byte 0x04000008
+_0804ba40:	.4byte BG0Control
 _0804ba44:	.4byte 0x06002E00
 _0804ba48:	.4byte 0x01000008
 _0804ba4c:	.4byte 0x00009FFF
@@ -92595,7 +92595,7 @@ sub_0804ba88:
 
 .incbin "base.gba", 0x4BAA2, 0x2
 
-_0804baa4:	.4byte 0x04000008
+_0804baa4:	.4byte BG0Control
 	thumb_func_end sub_0804ba88
 
 	thumb_func_start sub_0804baa8
@@ -92657,8 +92657,8 @@ _0804bb1c:	.4byte 0x06002E00
 _0804bb20:	.4byte 0x01000008
 _0804bb24:	.4byte 0x91709170
 _0804bb28:	.4byte 0x01000200
-_0804bb2c:	.4byte 0x04000040
-_0804bb30:	.4byte 0x04000048
+_0804bb2c:	.4byte Window0HorizontalDimensions
+_0804bb30:	.4byte InsideofWindow0and1
 _0804bb34:	.4byte 0x00009FFF
 _0804bb38:	.4byte 0x030052F0
 	thumb_func_end sub_0804baa8
@@ -92697,7 +92697,7 @@ _0804bb5a:
 .incbin "base.gba", 0x4BB72, 0x2
 
 _0804bb74:	.4byte 0x030052F0
-_0804bb78:	.4byte 0x04000008
+_0804bb78:	.4byte BG0Control
 _0804bb7c:	.4byte 0x06002E00
 
 _0804bb80:
@@ -92787,7 +92787,7 @@ sub_0804bbe8:
 
 .incbin "base.gba", 0x4BC2E, 0x2
 
-_0804bc30:	.4byte 0x04000008
+_0804bc30:	.4byte BG0Control
 _0804bc34:	.4byte 0x0810a880
 _0804bc38:	.4byte 0x06002B80
 _0804bc3c:	.4byte 0x06000E00
@@ -93188,7 +93188,7 @@ _0804c004:	.4byte 0x08102bf8
 _0804c008:	.4byte 0x060000E0
 _0804c00c:	.4byte 0x080927d8
 _0804c010:	.4byte 0x08092898
-_0804c014:	.4byte 0x04000008
+_0804c014:	.4byte BG0Control
 _0804c018:	.4byte 0x0804c885
 _0804c01c:	.4byte 0x030023BC
 _0804c020:	.4byte 0x0804c8b1
@@ -93679,8 +93679,8 @@ _0804c3fc:
 	pop		{ r0 }
 	bx		r0
 
-_0804c404:	.4byte 0x04000040
-_0804c408:	.4byte 0x04000044
+_0804c404:	.4byte Window0HorizontalDimensions
+_0804c408:	.4byte Window0VerticalDimensions
 _0804c40c:	.4byte 0x01000030
 _0804c410:	.4byte 0x01000020
 _0804c414:	.4byte 0x00001890
@@ -93821,7 +93821,7 @@ _0804c89e:
 
 .incbin "base.gba", 0x4C89E, 0xA
 _0804c8a8:	.4byte 0x0203EF30
-_0804c8ac:	.4byte 0x04000010
+_0804c8ac:	.4byte BG0X_Offset
 
 .incbin "base.gba", 0x4C8B0, 0xE
 
@@ -93832,7 +93832,7 @@ _0804c8ca:
 
 .incbin "base.gba", 0x4C8CA, 0x12
 _0804c8dc:	.4byte 0x0203EF30
-_0804c8e0:	.4byte 0x04000010
+_0804c8e0:	.4byte BG0X_Offset
 	thumb_func_start sub_0804c8e4
 sub_0804c8e4:
 	push	{ r4, r5, lr }
@@ -93907,7 +93907,7 @@ _0804c93c:	.4byte 0x00000838
 	pop		{ r0 }
 	bx		r0
 
-_0804ca7c:	.4byte 0x04000008
+_0804ca7c:	.4byte BG0Control
 _0804ca80:	.4byte 0x0810a9d0
 _0804ca84:	.4byte 0x06002E00
 _0804ca88:	.4byte 0x00009FFF
@@ -93937,7 +93937,7 @@ _0804ca88:	.4byte 0x00009FFF
 	bx		r0
 
 _0804cac0:	.4byte 0x00009FFF
-_0804cac4:	.4byte 0x04000040
+_0804cac4:	.4byte Window0HorizontalDimensions
 _0804cac8:	.4byte RunGameLogic_CallBack
 	thumb_func_end sub_0804c8e4
 
@@ -106717,14 +106717,14 @@ _0805642e:
 .incbin "base.gba", 0x56446, 0x2
 
 _08056448:	.4byte 0x02032B80
-_0805644c:	.4byte 0x04000200
-_08056450:	.4byte 0x040000B0
+_0805644c:	.4byte InterruptEnableRegister
+_08056450:	.4byte DMA0SourceAddress
 _08056454:	.4byte 0x0000C5FF
 _08056458:	.4byte 0x00007FFF
-_0805645c:	.4byte 0x040000BC
+_0805645c:	.4byte DMA1SourceAddress
 _08056460:	.4byte 0x02029400
-_08056464:	.4byte 0x040000C8
-_08056468:	.4byte 0x040000D4
+_08056464:	.4byte DMA2SourceAddress
+_08056468:	.4byte DMA3SourceAddress
 _0805646c:	.4byte 0x000005FA
 	thumb_func_end sub_08056354
 
@@ -106921,13 +106921,13 @@ _080565d4:	.4byte 0x02020400
 _080565d8:	.4byte 0x0000FFFF
 _080565dc:	.4byte 0x00002CB4
 _080565e0:	.4byte 0x00000FFE
-_080565e4:	.4byte 0x04000200
-_080565e8:	.4byte 0x040000B0
+_080565e4:	.4byte InterruptEnableRegister
+_080565e8:	.4byte DMA0SourceAddress
 _080565ec:	.4byte 0x0000C5FF
 _080565f0:	.4byte 0x00007FFF
-_080565f4:	.4byte 0x040000BC
-_080565f8:	.4byte 0x040000C8
-_080565fc:	.4byte 0x040000D4
+_080565f4:	.4byte DMA1SourceAddress
+_080565f8:	.4byte DMA2SourceAddress
+_080565fc:	.4byte DMA3SourceAddress
 	thumb_func_end sub_08056470
 
 	thumb_func_start sub_08056600
@@ -109286,7 +109286,7 @@ _MGBLoadUsername: @ 08057950
 	mov		r2, #0x4
 _0805795e:
 	ldrb	r0, [r3, #0x0]
-	strb	r0, [r1, #0x0]
+	strb	r0, [r1, #0x0] 
 	lsl		r0, r0, #0x18
 	add		r3, #0x1
 	add		r1, #0x1
@@ -109299,7 +109299,7 @@ _0805796e:
 	bge		_0805795e
 	add		r0, r4, #0x0
 	pop		{ r4 }
-	pop		{ r1 }
+	pop		{ r1 } 
 	bx		r1
 
 _0805797c:	.4byte 0x02032B80
@@ -110213,14 +110213,14 @@ _0805817e:
 	mov		r8, r4
 	b		_080581ba
 
-_08058188:	.4byte 0x04000200
-_0805818c:	.4byte 0x040000B0
+_08058188:	.4byte InterruptEnableRegister
+_0805818c:	.4byte DMA0SourceAddress
 _08058190:	.4byte 0x0000C5FF
 _08058194:	.4byte 0x00007FFF
-_08058198:	.4byte 0x040000BC
-_0805819c:	.4byte 0x040000C8
-_080581a0:	.4byte 0x040000D4
-_080581a4:	.4byte 0x04000204
+_08058198:	.4byte DMA1SourceAddress
+_0805819c:	.4byte DMA2SourceAddress
+_080581a0:	.4byte DMA3SourceAddress
+_080581a4:	.4byte GamePakWaitstateControl
 _080581a8:	.4byte 0x09FE2FFE
 
 _080581ac:
@@ -115210,7 +115210,7 @@ _0805a41c:
 .incbin "base.gba", 0x5A55A, 0x2
 
 _0805a55c:	.4byte 0x03003000
-_0805a560:	.4byte 0x040000D4
+_0805a560:	.4byte DMA3SourceAddress
 _0805a564:	.4byte 0x8100C000
 _0805a568:	.4byte 0x06001000
 _0805a56c:	.4byte 0x06002000
@@ -146685,8 +146685,8 @@ _0806be58:	.4byte 0x00010001
 _0806be5c:	.4byte 0x080270F1
 _0806be60:	.4byte 0x08124544
 _0806be64:	.4byte 0x081245c8
-_0806be68:	.4byte 0x04000050
-_0806be6c:	.4byte 0x04000054
+_0806be68:	.4byte ColorSpecialEffectsSElection
+_0806be6c:	.4byte Brightness_Fade_In_Out_Coefficient
 
 _0806be70:
 	strh	r6, [r7, #0x0]
@@ -153655,7 +153655,7 @@ _0806faee:
 _0806faf8:	.4byte 0x03007FF0
 _0806fafc:	.4byte 0x68736D53
 _0806fb00:	.4byte 0x03002991
-_0806fb04:	.4byte 0x04000006
+_0806fb04:	.4byte VerticalCounter_LY_
 _0806fb08:	.4byte 0x00000350
 _0806fb0c:	.4byte 0x00000630
 
@@ -153727,7 +153727,7 @@ _0806fb98:
 
 .incbin "base.gba", 0x6FB9E, 0x2
 
-_0806fba0:	.4byte 0x04000006
+_0806fba0:	.4byte VerticalCounter_LY_
 
 _0806fba4:
 	ldrb	r6, [r4, #0x0]
@@ -154308,7 +154308,7 @@ _0807003e:
 	strb	r3, [r0, #0x0]
 	bx		r12
 
-_08070068:	.4byte 0x04000060
+_08070068:	.4byte Channel1Sweepregister_NR10_
 	thumb_func_end sub_0806ff38
 
 	thumb_func_start sub_0807006c
@@ -154342,7 +154342,7 @@ _08070092:
 _0807009e:
 	bx		lr
 
-_080700a0:	.4byte 0x040000BC
+_080700a0:	.4byte DMA1SourceAddress
 _080700a4:	.4byte 0x84400004
 	ldr		r2, _0807030c
 	ldr		r3, [r0, #0x34]
@@ -155248,7 +155248,7 @@ _08070706:
 
 _0807070c:	.4byte 0x0806fb11
 _08070710:	.4byte 0x03002990
-_08070714:	.4byte 0x040000E0
+_08070714:	.4byte DMA_Unused
 _08070718:	.4byte 0x03006020
 _0807071c:	.4byte 0x03006B30
 _08070720:	.4byte 0x0093C600
@@ -155554,9 +155554,9 @@ _08070a34:
 	pop		{ r0 }
 	bx		r0
 
-_08070a3c:	.4byte 0x04000084
-_08070a40:	.4byte 0x04000080
-_08070a44:	.4byte 0x04000063
+_08070a3c:	.4byte ControlSoundon_off_NR52_
+_08070a40:	.4byte ControlStereo_Volume_Enable_NR50_NR51_
+_08070a44:	.4byte Channel1Duty_Length_Envelope_NR11_NR12_ + 0x1
 _08070a48:	.4byte 0x03007FF0
 _08070a4c:	.4byte 0x68736D53
 _08070a50:	.4byte 0x03006AA0
@@ -155684,13 +155684,13 @@ _08070ad4:
 
 .incbin "base.gba", 0x70B4E, 0x2
 
-_08070b50:	.4byte 0x040000C4
+_08070b50:	.4byte DMA1WordCount
 _08070b54:	.4byte 0x84400004
-_08070b58:	.4byte 0x040000C6
+_08070b58:	.4byte DMA1Control
 _08070b5c:	.4byte 0x00000B0E
-_08070b60:	.4byte 0x04000089
-_08070b64:	.4byte 0x040000BC
-_08070b68:	.4byte 0x040000A0
+_08070b60:	.4byte SoundPWMControl + 0x1
+_08070b64:	.4byte DMA1SourceAddress
+_08070b68:	.4byte ChannelAFIFO_Data0_3
 _08070b6c:	.4byte 0x03007FF0
 _08070b70:	.4byte 0x05000260
 _08070b74:	.4byte 0x08070385
@@ -155769,10 +155769,10 @@ _08070c08:	.4byte 0x08115474
 _08070c0c:	.4byte 0x00091D1B
 _08070c10:	.4byte 0x00001388
 _08070c14:	.4byte 0x00002710
-_08070c18:	.4byte 0x04000102
-_08070c1c:	.4byte 0x04000100
+_08070c18:	.4byte Timer0Control
+_08070c1c:	.4byte Timer0Counter_Reload
 _08070c20:	.4byte 0x00044940
-_08070c24:	.4byte 0x04000006
+_08070c24:	.4byte VerticalCounter_LY_
 	thumb_func_end sub_08070b84
 
 	thumb_func_start sub_08070c28
@@ -155855,7 +155855,7 @@ _08070cae:
 
 _08070cb4:	.4byte 0x03007FF0
 _08070cb8:	.4byte 0x68736D53
-_08070cbc:	.4byte 0x04000089
+_08070cbc:	.4byte SoundPWMControl + 0x1
 	thumb_func_end sub_08070c28
 
 	thumb_func_start sub_08070cc0
@@ -155950,9 +155950,9 @@ _08070d5a:
 
 _08070d60:	.4byte 0x03007FF0
 _08070d64:	.4byte 0x978C92AD
-_08070d68:	.4byte 0x040000C4
+_08070d68:	.4byte DMA1WordCount
 _08070d6c:	.4byte 0x84400004
-_08070d70:	.4byte 0x040000C6
+_08070d70:	.4byte DMA1Control
 _08070d74:	.4byte 0x0500018C
 	thumb_func_end sub_08070d14
 
@@ -155985,7 +155985,7 @@ _08070d9c:
 
 _08070da4:	.4byte 0x03007FF0
 _08070da8:	.4byte 0x68736D53
-_08070dac:	.4byte 0x040000C6
+_08070dac:	.4byte DMA1Control
 	thumb_func_end sub_08070d78
 
 	thumb_func_start sub_08070db0
@@ -156547,13 +156547,13 @@ _0807118a:
 	add		r1, #0x2
 	b		_080711b4
 
-_08071194:	.4byte 0x04000063
+_08071194:	.4byte Channel1Duty_Length_Envelope_NR11_NR12_ + 0x1
 
 _08071198:
 	ldr		r1, _0807119c
 	b		_080711ae
 
-_0807119c:	.4byte 0x04000069
+_0807119c:	.4byte Channel2Duty_Length_Envelope_NR21_NR22_ + 0x1
 
 _080711a0:
 	ldr		r1, _080711a8
@@ -156562,7 +156562,7 @@ _080711a0:
 
 .incbin "base.gba", 0x711A6, 0x2
 
-_080711a8:	.4byte 0x04000070
+_080711a8:	.4byte Channel3Stop_WaveRAMselect_NR30_
 
 _080711ac:
 	ldr		r1, _080711bc
@@ -156578,7 +156578,7 @@ _080711b6:
 
 .incbin "base.gba", 0x711BA, 0x2
 
-_080711bc:	.4byte 0x04000079
+_080711bc:	.4byte Channel4Length_Envelope_NR41_NR42_ + 0x1
 	thumb_func_end sub_08071170
 
 	thumb_func_start sub_080711c0
@@ -156706,9 +156706,9 @@ _08071282:
 	add		r2, #0x2
 	b		_080712e8
 
-_08071294:	.4byte 0x04000060
-_08071298:	.4byte 0x04000062
-_0807129c:	.4byte 0x04000063
+_08071294:	.4byte Channel1Sweepregister_NR10_
+_08071298:	.4byte Channel1Duty_Length_Envelope_NR11_NR12_
+_0807129c:	.4byte Channel1Duty_Length_Envelope_NR11_NR12_ + 0x1
 
 _080712a0:
 	ldr		r0, _080712ac
@@ -156719,9 +156719,9 @@ _080712a0:
 
 .incbin "base.gba", 0x712AA, 0x2
 
-_080712ac:	.4byte 0x04000061
-_080712b0:	.4byte 0x04000068
-_080712b4:	.4byte 0x04000069
+_080712ac:	.4byte Channel1Sweepregister_NR10_ + 0x1
+_080712b0:	.4byte Channel2Duty_Length_Envelope_NR21_NR22_
+_080712b4:	.4byte Channel2Duty_Length_Envelope_NR21_NR22_ + 0x1
 
 _080712b8:
 	ldr		r0, _080712cc
@@ -156736,9 +156736,9 @@ _080712b8:
 
 .incbin "base.gba", 0x712CA, 0x2
 
-_080712cc:	.4byte 0x04000070
-_080712d0:	.4byte 0x04000072
-_080712d4:	.4byte 0x04000073
+_080712cc:	.4byte Channel3Stop_WaveRAMselect_NR30_
+_080712d0:	.4byte Channel3Length_Volume_NR31_NR32_
+_080712d4:	.4byte Channel3Length_Volume_NR31_NR32_ + 0x1
 
 _080712d8:
 	ldr		r0, _08071338
@@ -156792,9 +156792,9 @@ _080712e8:
 
 .incbin "base.gba", 0x71336, 0x2
 
-_08071338:	.4byte 0x04000071
-_0807133c:	.4byte 0x04000078
-_08071340:	.4byte 0x04000079
+_08071338:	.4byte Channel3Stop_WaveRAMselect_NR30_ + 0x1
+_0807133c:	.4byte Channel4Length_Envelope_NR41_NR42_
+_08071340:	.4byte Channel4Length_Envelope_NR41_NR42_ + 0x1
 
 _08071344:
 	cmp		r6, #0x3
@@ -156845,7 +156845,7 @@ _08071384:
 
 .incbin "base.gba", 0x71396, 0x2
 
-_08071398:	.4byte 0x04000090
+_08071398:	.4byte Channel3WavePatternRAM_2banks___
 
 _0807139c:
 	mov		r1, #0x80
@@ -157114,7 +157114,7 @@ _08071556:
 
 .incbin "base.gba", 0x7157E, 0x2
 
-_08071580:	.4byte 0x04000089
+_08071580:	.4byte SoundPWMControl + 0x1
 _08071584:	.4byte 0x000007FC
 
 _08071588:
@@ -157199,7 +157199,7 @@ _080715ce:
 
 .incbin "base.gba", 0x71616, 0x2
 
-_08071618:	.4byte 0x04000081
+_08071618:	.4byte ControlStereo_Volume_Enable_NR50_NR51_ + 0x1
 _0807161c:	.4byte 0x08115564
 
 _08071620:
@@ -158005,7 +158005,7 @@ sub_08071c44:
 
 .incbin "base.gba", 0x71C62, 0x2
 
-_08071c64:	.4byte 0x04000204
+_08071c64:	.4byte GamePakWaitstateControl
 _08071c68:	.4byte 0x0000FFFC
 _08071c6c:	.4byte 0x0820b720
 
@@ -158104,7 +158104,7 @@ sub_08071cfc:
 
 _08071d20:	.4byte 0x030023D0
 _08071d24:	.4byte 0x030023D8
-_08071d28:	.4byte 0x04000100
+_08071d28:	.4byte Timer0Counter_Reload
 _08071d2c:	.4byte 0x08071cd9
 
 _08071d30:
@@ -158162,8 +158162,8 @@ sub_08071d34:
 
 _08071d8c:	.4byte 0x030023C8
 _08071d90:	.4byte 0x030023DC
-_08071d94:	.4byte 0x04000208
-_08071d98:	.4byte 0x04000200
+_08071d94:	.4byte InterruptMasterEnableRegister
+_08071d98:	.4byte InterruptEnableRegister
 _08071d9c:	.4byte 0x030023D0
 _08071da0:	.4byte 0x030023D4
 _08071da4:	.4byte 0x030023D2
@@ -158199,8 +158199,8 @@ sub_08071dac:
 .incbin "base.gba", 0x71DDA, 0x2
 
 _08071ddc:	.4byte 0x030023D8
-_08071de0:	.4byte 0x04000208
-_08071de4:	.4byte 0x04000200
+_08071de0:	.4byte InterruptMasterEnableRegister
+_08071de4:	.4byte InterruptEnableRegister
 _08071de8:	.4byte 0x030023D0
 _08071dec:	.4byte 0x030023DC
 
@@ -158348,7 +158348,7 @@ sub_08071edc:
 
 .incbin "base.gba", 0x71F0A, 0x2
 
-_08071f0c:	.4byte 0x04000204
+_08071f0c:	.4byte GamePakWaitstateControl
 _08071f10:	.4byte 0x0000FFFC
 _08071f14:	.4byte 0x08071EB9
 _08071f18:	.4byte 0x08071EDD
@@ -158417,7 +158417,7 @@ sub_08071f9c:
 
 .incbin "base.gba", 0x71FC6, 0x2
 
-_08071fc8:	.4byte 0x04000204
+_08071fc8:	.4byte GamePakWaitstateControl
 _08071fcc:	.4byte 0x0000FFFC
 _08071fd0:	.4byte 0x08071F59
 _08071fd4:	.4byte 0x08071F9D
@@ -158540,7 +158540,7 @@ sub_08072054:
 
 .incbin "base.gba", 0x720AE, 0x2
 
-_080720b0:	.4byte 0x04000204
+_080720b0:	.4byte GamePakWaitstateControl
 _080720b4:	.4byte 0x0000FFFC
 _080720b8:	.4byte 0x03006E08
 _080720bc:	.4byte 0x0E005555
@@ -158606,7 +158606,7 @@ sub_080720c8:
 
 .incbin "base.gba", 0x72136, 0x2
 
-_08072138:	.4byte 0x04000204
+_08072138:	.4byte GamePakWaitstateControl
 _0807213c:	.4byte 0x0000FFFC
 _08072140:	.4byte 0x03006E08
 _08072144:	.4byte 0x0E005555
@@ -158767,7 +158767,7 @@ _08072246:
 	add		r4, r1, #0x0
 	b		_08072284
 
-_08072268:	.4byte 0x04000204
+_08072268:	.4byte GamePakWaitstateControl
 _0807226c:	.4byte 0x0000FFFC
 _08072270:	.4byte 0x03006E08
 _08072274:	.4byte 0x03006E0C
@@ -158809,7 +158809,7 @@ _080722aa:
 	pop		{ r1 }
 	bx		r1
 
-_080722b8:	.4byte 0x04000204
+_080722b8:	.4byte GamePakWaitstateControl
 _080722bc:	.4byte 0x0000FFFC
 
 .incbin "base.gba", 0x722C0, 0x2
@@ -158881,7 +158881,7 @@ _08072314:
 
 .incbin "base.gba", 0x7234E, 0x2
 
-_08072350:	.4byte 0x04000204
+_08072350:	.4byte GamePakWaitstateControl
 _08072354:	.4byte 0x0000FFFC
 _08072358:	.4byte 0x03006E08
 _0807235c:	.4byte 0x03006E0C
@@ -158919,7 +158919,7 @@ _08072390:
 	pop		{ r1 }
 	bx		r1
 
-_08072398:	.4byte 0x04000204
+_08072398:	.4byte GamePakWaitstateControl
 _0807239c:	.4byte 0x0000FFFC
 	thumb_func_end sub_080722fc
 
@@ -158968,7 +158968,7 @@ sub_080723a0:
 	pop		{ r1 }
 	bx		r1
 
-_080723f8:	.4byte 0x04000204
+_080723f8:	.4byte GamePakWaitstateControl
 _080723fc:	.4byte 0x0000FFFC
 _08072400:	.4byte 0x0820b928
 _08072404:	.4byte 0x0E005555
@@ -159039,7 +159039,7 @@ _08072476:
 .incbin "base.gba", 0x7247E, 0x2
 
 _08072480:	.4byte 0x0820b928
-_08072484:	.4byte 0x04000208
+_08072484:	.4byte InterruptMasterEnableRegister
 _08072488:	.4byte 0x0E005555
 _0807248c:	.4byte 0x0E002AAA
 _08072490:	.4byte 0x03006E00
@@ -159076,7 +159076,7 @@ _080724c4:
 	mov		r4, #0x2
 	b		_080724de
 
-_080724c8:	.4byte 0x04000204
+_080724c8:	.4byte GamePakWaitstateControl
 _080724cc:	.4byte 0x0000FFFC
 _080724d0:	.4byte 0x0820b928
 
@@ -159119,7 +159119,7 @@ _08072510:
 	pop		{ r1 }
 	bx		r1
 
-_08072518:	.4byte 0x04000204
+_08072518:	.4byte GamePakWaitstateControl
 _0807251c:	.4byte 0x0000FFFC
 	thumb_func_end sub_08072494
 
@@ -159178,7 +159178,7 @@ _08072564:
 	bx		r1
 
 _08072584:	.4byte 0x0820b928
-_08072588:	.4byte 0x04000208
+_08072588:	.4byte InterruptMasterEnableRegister
 _0807258c:	.4byte 0x0E005555
 _08072590:	.4byte 0x0E002AAA
 _08072594:	.4byte 0x03006E00
@@ -159223,7 +159223,7 @@ _080725b4:
 	mov		r8, r0
 	b		_08072606
 
-_080725dc:	.4byte 0x04000204
+_080725dc:	.4byte GamePakWaitstateControl
 _080725e0:	.4byte 0x0000FFFC
 _080725e4:	.4byte 0x0820b928
 _080725e8:	.4byte 0x03006E0C
@@ -159289,7 +159289,7 @@ _08072646:
 
 .incbin "base.gba", 0x72652, 0x2
 
-_08072654:	.4byte 0x04000204
+_08072654:	.4byte GamePakWaitstateControl
 _08072658:	.4byte 0x0000FFFC
 	thumb_func_end sub_08072598
 
@@ -159398,13 +159398,13 @@ sub_0807265c:
 	pop		{ r0 }
 	bx		r0
 
-_0807272c:	.4byte 0x04000208
-_08072730:	.4byte 0x0400010C
-_08072734:	.4byte 0x04000134
-_08072738:	.4byte 0x04000128
+_0807272c:	.4byte InterruptMasterEnableRegister
+_08072730:	.4byte Timer3Counter_Reload
+_08072734:	.4byte SIOModeSelect_GeneralPurposeData
+_08072738:	.4byte SIOControlRegister
 _0807273c:	.4byte 0x00004001
-_08072740:	.4byte 0x04000202
-_08072744:	.4byte 0x04000200
+_08072740:	.4byte InterruptRequestFlags_IRQAcknowledge
+_08072744:	.4byte InterruptEnableRegister
 _08072748:	.4byte 0x03006E20
 	thumb_func_end sub_0807265c
 
@@ -159881,9 +159881,9 @@ _08072aae:
 	b		_08072b14
 
 _08072ae8:	.4byte 0x03006E20
-_08072aec:	.4byte 0x04000128
+_08072aec:	.4byte SIOControlRegister
 _08072af0:	.4byte 0x030023E0
-_08072af4:	.4byte 0x04000120
+_08072af4:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _08072af8:
 	ldr		r2, _08072b40
@@ -159926,8 +159926,8 @@ _08072b38:
 
 .incbin "base.gba", 0x72B3E, 0x2
 
-_08072b40:	.4byte 0x0400012A
-_08072b44:	.4byte 0x04000128
+_08072b40:	.4byte SIOData_Normal_8bitandUARTMode
+_08072b44:	.4byte SIOControlRegister
 	thumb_func_end sub_08072a84
 
 	thumb_func_start sub_08072b48
@@ -159958,7 +159958,7 @@ sub_08072b58:
 	b		_08072b90
 
 _08072b70:	.4byte 0x03006E20
-_08072b74:	.4byte 0x04000128
+_08072b74:	.4byte SIOControlRegister
 _08072b78:	.4byte 0x0000CFFF
 
 _08072b7c:
@@ -159976,7 +159976,7 @@ _08072b90:
 	strh	r0, [r2, #0x0]
 	bx		lr
 
-_08072b94:	.4byte 0x04000128
+_08072b94:	.4byte SIOControlRegister
 _08072b98:	.4byte 0x0000CFFF
 
 .incbin "base.gba", 0x72B9C, 0x18
@@ -160089,7 +160089,7 @@ _08072cf0:
 
 .incbin "base.gba", 0x72CF6, 0x2
 
-_08072cf8:	.4byte 0x0400010C
+_08072cf8:	.4byte Timer3Counter_Reload
 _08072cfc:	.4byte 0x03006E20
 _08072d00:	.4byte 0x0820bc74
 	thumb_func_end sub_08072c88
@@ -160134,7 +160134,7 @@ sub_08072d04:
 	bl		sub_08072a5c
 	b		_08072d74
 
-_08072d54:	.4byte 0x0400010C
+_08072d54:	.4byte Timer3Counter_Reload
 _08072d58:	.4byte 0x03006E20
 _08072d5c:	.4byte 0x0000FFDF
 _08072d60:	.4byte 0x0820bc78
@@ -163220,8 +163220,8 @@ _08074a08:
 
 _08074a20:	.4byte 0x03006E20
 _08074a24:	.4byte 0x03002414
-_08074a28:	.4byte 0x0400010C
-_08074a2c:	.4byte 0x04000128
+_08074a28:	.4byte Timer3Counter_Reload
+_08074a2c:	.4byte SIOControlRegister
 
 _08074a30:
 	bl		sub_0807be3c
@@ -163295,7 +163295,7 @@ _08074ab2:
 	pop		{ r0 }
 	bx		r0
 
-_08074ab8:	.4byte 0x0400010C
+_08074ab8:	.4byte Timer3Counter_Reload
 _08074abc:	.4byte 0x03006E20
 	thumb_func_end sub_080749c4
 
@@ -163343,7 +163343,7 @@ sub_08074ac0:
 
 _08074b10:	.4byte 0x03006E20
 _08074b14:	.4byte 0x0000FFDF
-_08074b18:	.4byte 0x0400010C
+_08074b18:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_08074ac0
 
 	thumb_func_start sub_08074b1c
@@ -163427,7 +163427,7 @@ _08074b7a:
 	b		_08074be4
 
 _08074bac:	.4byte 0x03002418
-_08074bb0:	.4byte 0x0400012A
+_08074bb0:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08074bb4:
 	cmp		r1, #0x0
@@ -163482,10 +163482,10 @@ _08074bfa:
 
 .incbin "base.gba", 0x74C12, 0x2
 
-_08074c14:	.4byte 0x04000123
-_08074c18:	.4byte 0x04000122
-_08074c1c:	.4byte 0x04000121
-_08074c20:	.4byte 0x04000120
+_08074c14:	.4byte SIOData1_1stChild__Multi_PlayerMode_+ 0x1
+_08074c18:	.4byte SIOData1_1stChild__Multi_PlayerMode_
+_08074c1c:	.4byte SIOData0_Parent__Multi_PlayerMode_ + 0x1
+_08074c20:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _08074c24:
 	add		r0, r5, #0x0
@@ -163550,7 +163550,7 @@ _08074c24:
 	b		_08074f12
 
 _08074ca0:	.4byte 0x0000FFDF
-_08074ca4:	.4byte 0x0400010C
+_08074ca4:	.4byte Timer3Counter_Reload
 
 _08074ca8:
 	ldrh	r0, [r5, #0xe]
@@ -163585,7 +163585,7 @@ _08074cae:
 
 _08074ce0:	.4byte 0x03006E20
 _08074ce4:	.4byte 0x0000F851
-_08074ce8:	.4byte 0x0400010C
+_08074ce8:	.4byte Timer3Counter_Reload
 
 _08074cec:
 	ldr		r1, _08074d4c
@@ -163808,7 +163808,7 @@ _08074e64:
 	b		_08074f12
 
 _08074e84:	.4byte 0x0000F851
-_08074e88:	.4byte 0x0400010C
+_08074e88:	.4byte Timer3Counter_Reload
 
 _08074e8c:
 	add		r0, r5, #0x0
@@ -163910,7 +163910,7 @@ sub_08074f30:
 
 _08074f48:	.4byte 0x03006E20
 _08074f4c:	.4byte 0x0300241C
-_08074f50:	.4byte 0x0400012A
+_08074f50:	.4byte SIOData_Normal_8bitandUARTMode
 
 _08074f54:
 	ldr		r0, _08074f7c
@@ -163938,7 +163938,7 @@ _08074f70:
 .incbin "base.gba", 0x74F7A, 0x2
 
 _08074f7c:	.4byte 0x0300241C
-_08074f80:	.4byte 0x04000123
+_08074f80:	.4byte SIOData1_1stChild__Multi_PlayerMode_+ 0x1
 _08074f84:	.4byte 0x08074f88
 _08074f88:	.4byte 0x08074f9c
 
@@ -163975,7 +163975,7 @@ sub_080752a8:
 
 .incbin "base.gba", 0x752CE, 0x2
 
-_080752d0:	.4byte 0x0400010C
+_080752d0:	.4byte Timer3Counter_Reload
 _080752d4:	.4byte 0xffbfffff
 _080752d8:	.4byte 0x03006E20
 
@@ -164038,7 +164038,7 @@ _08075324:
 
 _08075348:	.4byte 0x03002430
 _0807534c:	.4byte 0x03006E20
-_08075350:	.4byte 0x0400010C
+_08075350:	.4byte Timer3Counter_Reload
 _08075354:	.4byte 0xfffffeff
 	thumb_func_end sub_080752a8
 
@@ -164058,7 +164058,7 @@ sub_08075358:
 
 .incbin "base.gba", 0x7536E, 0x2
 
-_08075370:	.4byte 0x04000200
+_08075370:	.4byte InterruptEnableRegister
 _08075374:	.4byte 0x0000FF3F
 _08075378:	.4byte 0x03006E20
 	thumb_func_end sub_08075358
@@ -164079,7 +164079,7 @@ sub_0807537c:
 	bx		lr
 
 _08075394:	.4byte 0x03006E20
-_08075398:	.4byte 0x04000200
+_08075398:	.4byte InterruptEnableRegister
 	thumb_func_end sub_0807537c
 
 	thumb_func_start sub_0807539c
@@ -164453,8 +164453,8 @@ _080757a6:
 
 .incbin "base.gba", 0x757AE, 0x2
 
-_080757b0:	.4byte 0x0400010C
-_080757b4:	.4byte 0x04000200
+_080757b0:	.4byte Timer3Counter_Reload
+_080757b4:	.4byte InterruptEnableRegister
 _080757b8:	.4byte 0x0000FF3F
 _080757bc:	.4byte 0x050001D9
 	thumb_func_end sub_08075768
@@ -164961,7 +164961,7 @@ _08075c94:	.4byte 0xfffffbff
 _08075c98:	.4byte 0xffffdfff
 _08075c9c:	.4byte 0x0000FFF7
 _08075ca0:	.4byte 0x0000FFEF
-_08075ca4:	.4byte 0x0400010C
+_08075ca4:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_08075b7c
 
 	thumb_func_start sub_08075ca8
@@ -165952,7 +165952,7 @@ _080764f0:
 .incbin "base.gba", 0x764FA, 0x2
 
 _080764fc:	.4byte 0x03006E20
-_08076500:	.4byte 0x0400010C
+_08076500:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_08076448
 
 	thumb_func_start sub_08076504
@@ -166153,7 +166153,7 @@ _08076936:
 	bx		r0
 
 _0807693c:	.4byte 0x03006E20
-_08076940:	.4byte 0x0400010C
+_08076940:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_080768d0
 
 	thumb_func_start sub_08076944
@@ -175845,7 +175845,7 @@ _0807b726:
 	bx		r0
 
 _0807b72c:	.4byte 0x03006E20
-_0807b730:	.4byte 0x0400010C
+_0807b730:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_0807b6dc
 
 	thumb_func_start sub_0807b734
@@ -176198,7 +176198,7 @@ _0807b9ea:
 	bx		r0
 
 _0807b9f0:	.4byte 0x03006E20
-_0807b9f4:	.4byte 0x0400010C
+_0807b9f4:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_0807b9a0
 
 	thumb_func_start sub_0807b9f8
@@ -176577,7 +176577,7 @@ _0807bcda:
 	pop		{ r0 }
 	bx		r0
 
-_0807bce0:	.4byte 0x0400010C
+_0807bce0:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_0807bc4c
 
 	thumb_func_start sub_0807bce4
@@ -176653,7 +176653,7 @@ _0807bd70:
 
 .incbin "base.gba", 0x7BD76, 0x2
 
-_0807bd78:	.4byte 0x0400010C
+_0807bd78:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_0807bce4
 
 	thumb_func_start sub_0807bd7c
@@ -176729,7 +176729,7 @@ _0807be0a:
 	pop		{ r0 }
 	bx		r0
 
-_0807be10:	.4byte 0x0400010C
+_0807be10:	.4byte Timer3Counter_Reload
 	thumb_func_end sub_0807bd7c
 
 	thumb_func_start sub_0807be14
@@ -181410,8 +181410,8 @@ _0807dfbc:
 	b		_0807dfe4
 
 _0807dfd4:	.4byte 0x03002788
-_0807dfd8:	.4byte 0x04000200
-_0807dfdc:	.4byte 0x04000208
+_0807dfd8:	.4byte InterruptEnableRegister
+_0807dfdc:	.4byte InterruptMasterEnableRegister
 
 _0807dfe0:
 	ldr		r0, _0807dfe8
@@ -181421,7 +181421,7 @@ _0807dfe4:
 
 .incbin "base.gba", 0x7DFE6, 0x2
 
-_0807dfe8:	.4byte 0x04000208
+_0807dfe8:	.4byte InterruptMasterEnableRegister
 	thumb_func_end sub_0807df78
 
 	thumb_func_start sub_0807dfec
@@ -181447,9 +181447,9 @@ sub_0807dfec:
 	strh	r0, [r1, #0x0]
 	bx		lr
 
-_0807e014:	.4byte 0x040000D4
-_0807e018:	.4byte 0x040000D8
-_0807e01c:	.4byte 0x040000DE
+_0807e014:	.4byte DMA3SourceAddress
+_0807e018:	.4byte DMA3DestinationAddress
+_0807e01c:	.4byte DMA3Control
 
 .incbin "base.gba", 0x7E020, 0x30
 	thumb_func_end sub_0807dfec
@@ -183516,10 +183516,10 @@ sub_0830a8c0:
 	strh	r1, [r0, #0x0]
 	bx		lr
 
-_0830a8ec:	.4byte 0x04000134
-_0830a8f0:	.4byte 0x04000128
+_0830a8ec:	.4byte SIOModeSelect_GeneralPurposeData
+_0830a8f0:	.4byte SIOControlRegister
 _0830a8f4:	.4byte 0x00002003
-_0830a8f8:	.4byte 0x0400012A
+_0830a8f8:	.4byte SIOData_Normal_8bitandUARTMode
 	thumb_func_end sub_0830a8c0
 
 	thumb_func_start sub_0830a8fc
@@ -183565,7 +183565,7 @@ _0830a926:
 	eor		r0, r5
 	b		_0830acdc
 
-_0830a94c:	.4byte 0x04000128
+_0830a94c:	.4byte SIOControlRegister
 
 _0830a950:
 	ldrb	r0, [r7, #0x18]
@@ -183672,9 +183672,9 @@ _0830a9ee:
 
 .incbin "base.gba", 0x30AA0A, 0x2
 
-_0830aa0c:	.4byte 0x04000120
+_0830aa0c:	.4byte SIOData0_Parent__Multi_PlayerMode_
 _0830aa10:	.4byte 0x0000FFFF
-_0830aa14:	.4byte 0x04000126
+_0830aa14:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 _0830aa18:	.4byte 0x00007208
 
 _0830aa1c:
@@ -183723,7 +183723,7 @@ _0830aa58:
 	bl		sub_0830ad38
 	b		_0830aa82
 
-_0830aa70:	.4byte 0x04000120
+_0830aa70:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0830aa74:
 	sub		r0, #0x1
@@ -183782,7 +183782,7 @@ _0830aaba:
 	b		_0830ab82
 
 _0830aad8:	.4byte 0x03000184
-_0830aadc:	.4byte 0x04000120
+_0830aadc:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0830aae0:
 	mov		r5, #0x3
@@ -183824,7 +183824,7 @@ _0830ab1a:
 .incbin "base.gba", 0x30AB22, 0x2
 
 _0830ab24:	.4byte 0x03000184
-_0830ab28:	.4byte 0x04000120
+_0830ab28:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0830ab2c:
 	mov		r3, #0x1
@@ -183883,7 +183883,7 @@ _0830ab82:
 .incbin "base.gba", 0x30AB8E, 0x2
 
 _0830ab90:	.4byte 0x03000184
-_0830ab94:	.4byte 0x04000120
+_0830ab94:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0830ab98:
 	mov		r0, #0xd1
@@ -183944,7 +183944,7 @@ _0830abe4:
 
 .incbin "base.gba", 0x30AC02, 0x2
 
-_0830ac04:	.4byte 0x04000126
+_0830ac04:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 
 _0830ac08:
 	add		r0, r7, #0x0
@@ -184010,7 +184010,7 @@ _0830ac60:
 
 .incbin "base.gba", 0x30AC7A, 0x2
 
-_0830ac7c:	.4byte 0x04000120
+_0830ac7c:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0830ac80:
 	mov		r1, r12
@@ -184098,8 +184098,8 @@ sub_0830acec:
 
 .incbin "base.gba", 0x30AD16, 0x2
 
-_0830ad18:	.4byte 0x04000128
-_0830ad1c:	.4byte 0x0400012A
+_0830ad18:	.4byte SIOControlRegister
+_0830ad1c:	.4byte SIOData_Normal_8bitandUARTMode
 _0830ad20:	.4byte 0x00002083
 
 _0830ad24:
@@ -184233,7 +184233,7 @@ _0830aeae:
 
 .incbin "base.gba", 0x30AEB6, 0x2
 
-_0830aeb8:	.4byte 0x04000126
+_0830aeb8:	.4byte SIOData3_3rdChild__Multi_PlayerMode_
 
 _0830aebc:
 	lsl		r0, r4, #0x1
@@ -184275,7 +184275,7 @@ _0830aed8:
 
 .incbin "base.gba", 0x30AF02, 0x2
 
-_0830af04:	.4byte 0x04000120
+_0830af04:	.4byte SIOData0_Parent__Multi_PlayerMode_
 
 _0830af08:
 	add		r0, r3, #0x0
@@ -184340,7 +184340,7 @@ _0830af58:
 
 .incbin "base.gba", 0x30AF66, 0x2
 
-_0830af68:	.4byte 0x04000128
+_0830af68:	.4byte SIOControlRegister
 _0830af6c:	.4byte 0x0000795C
 	thumb_func_end sub_0830af34
 
@@ -184448,10 +184448,10 @@ _0830afe6:
 
 .incbin "base.gba", 0x30B036, 0x2
 
-_0830b038:	.4byte 0x04000208
-_0830b03c:	.4byte 0x04000200
+_0830b038:	.4byte InterruptMasterEnableRegister
+_0830b03c:	.4byte InterruptEnableRegister
 _0830b040:	.4byte 0x0000FF3F
-_0830b044:	.4byte 0x04000134
+_0830b044:	.4byte SIOModeSelect_GeneralPurposeData
 _0830b048:	.4byte 0x00004003
 _0830b04c:	.4byte 0x03002E80
 _0830b050:	.4byte 0x05000050
@@ -185184,8 +185184,8 @@ sub_0830d900:
 	pop		{ r0 }
 	bx		r0
 
-_0830d938:	.4byte 0x04000134
-_0830d93c:	.4byte 0x04000202
+_0830d938:	.4byte SIOModeSelect_GeneralPurposeData
+_0830d93c:	.4byte InterruptRequestFlags_IRQAcknowledge
 _0830d940:	.4byte 0x02007771
 	thumb_func_end sub_0830d900
 
@@ -185266,7 +185266,7 @@ _0830d9b4:
 	b		_0830d9f0
 
 _0830d9c0:	.4byte 0x030001F0
-_0830d9c4:	.4byte 0x04000128
+_0830d9c4:	.4byte SIOControlRegister
 _0830d9c8:	.4byte 0x03003030
 _0830d9cc:	.4byte 0x00003FFF
 
@@ -185296,7 +185296,7 @@ _0830d9f0:
 .incbin "base.gba", 0x30D9F6, 0x2
 
 _0830d9f8:	.4byte 0x03003030
-_0830d9fc:	.4byte 0x04000130
+_0830d9fc:	.4byte KeyStatus
 _0830da00:	.4byte 0x030051B8
 _0830da04:	.4byte 0x000003FF
 	thumb_func_end sub_0830d988
@@ -185676,7 +185676,7 @@ _0830dcb4:
 
 .incbin "base.gba", 0x30DCCA, 0x2
 
-_0830dccc:	.4byte 0x04000130
+_0830dccc:	.4byte KeyStatus
 _0830dcd0:	.4byte 0x000003FF
 _0830dcd4:	.4byte 0x030051B0
 
@@ -185717,7 +185717,7 @@ sub_0830dcf8:
 	bl		sub_0830d900
 	b		_0830dd44
 
-_0830dd14:	.4byte 0x04000128
+_0830dd14:	.4byte SIOControlRegister
 _0830dd18:	.4byte 0x03003030
 
 _0830dd1c:
@@ -185780,7 +185780,7 @@ sub_0830de00:
 
 .incbin "base.gba", 0x30DE0E, 0x2
 
-_0830de10:	.4byte 0x0400010C
+_0830de10:	.4byte Timer3Counter_Reload
 
 .incbin "base.gba", 0x30DE14, 0x200
 	thumb_func_end sub_0830de00
@@ -185972,7 +185972,7 @@ _0830e134:
 .incbin "base.gba", 0x30E15A, 0x2
 
 _0830e15c:	.4byte 0x03000294
-_0830e160:	.4byte 0x0400012A
+_0830e160:	.4byte SIOData_Normal_8bitandUARTMode
 _0830e164:	.4byte 0x030002A0
 _0830e168:	.4byte 0x03000284
 
@@ -186027,7 +186027,7 @@ _0830e1ba:
 	mov		r0, #0x5
 	b		_0830e1d4
 
-_0830e1c4:	.4byte 0x04000128
+_0830e1c4:	.4byte SIOControlRegister
 _0830e1c8:	.4byte 0x03000250
 _0830e1cc:	.4byte 0x03000284
 
@@ -186136,9 +186136,9 @@ _0830e2a0:	.4byte 0x030002A8
 _0830e2a4:	.4byte 0x030002B4
 _0830e2a8:	.4byte 0x030002B8
 _0830e2ac:	.4byte 0x02007FED
-_0830e2b0:	.4byte 0x04000134
-_0830e2b4:	.4byte 0x04000128
-_0830e2b8:	.4byte 0x0400010E
+_0830e2b0:	.4byte SIOModeSelect_GeneralPurposeData
+_0830e2b4:	.4byte SIOControlRegister
+_0830e2b8:	.4byte Timer3Control
 _0830e2bc:	.4byte 0x02007E15
 _0830e2c0:	.4byte 0x000100C0
 _0830e2c4:	.4byte 0x0300024C
@@ -186310,10 +186310,10 @@ _0830e40c:
 
 .incbin "base.gba", 0x30E416, 0x2
 
-_0830e418:	.4byte 0x04000134
-_0830e41c:	.4byte 0x0400012A
+_0830e418:	.4byte SIOModeSelect_GeneralPurposeData
+_0830e41c:	.4byte SIOData_Normal_8bitandUARTMode
 _0830e420:	.4byte 0x030002A0
-_0830e424:	.4byte 0x04000128
+_0830e424:	.4byte SIOControlRegister
 _0830e428:	.4byte 0x03000250
 _0830e42c:	.4byte 0x0300024C
 _0830e430:	.4byte 0x030051C0
@@ -186359,7 +186359,7 @@ _0830e434:
 
 .incbin "base.gba", 0x30E47E, 0x2
 
-_0830e480:	.4byte 0x04000128
+_0830e480:	.4byte SIOControlRegister
 _0830e484:	.4byte 0x030051C0
 _0830e488:	.4byte 0x03000248
 _0830e48c:	.4byte 0x0300024C
@@ -186400,9 +186400,9 @@ _0830e4cc:
 
 .incbin "base.gba", 0x30E4D2, 0x2
 
-_0830e4d4:	.4byte 0x0400012A
+_0830e4d4:	.4byte SIOData_Normal_8bitandUARTMode
 _0830e4d8:	.4byte 0x030002A0
-_0830e4dc:	.4byte 0x04000128
+_0830e4dc:	.4byte SIOControlRegister
 _0830e4e0:	.4byte 0x03000250
 _0830e4e4:	.4byte 0x0300024C
 
@@ -188493,7 +188493,7 @@ _0830ff7c:
 	beq		_0830ffb8
 	b		_0830ffba
 
-_0830ffa8:	.4byte 0x040000D4
+_0830ffa8:	.4byte DMA3SourceAddress
 _0830ffac:	.4byte 0x0000FFFF
 _0830ffb0:	.4byte 0xffff0000
 
@@ -188579,7 +188579,7 @@ sub_08310008:
 
 .incbin "base.gba", 0x31003A, 0x2
 
-_0831003c:	.4byte 0x04000004
+_0831003c:	.4byte GeneralLCDStatus_STAT_LYC_
 _08310040:	.4byte 0x03005220
 _08310044:	.4byte 0x030030D0
 	thumb_func_end sub_08310008
@@ -188607,7 +188607,7 @@ sub_08310048:
 	pop		{ r0 }
 	bx		r0
 
-_08310074:	.4byte 0x04000004
+_08310074:	.4byte GeneralLCDStatus_STAT_LYC_
 _08310078:	.4byte 0x03005220
 	thumb_func_end sub_08310048
 
@@ -188678,7 +188678,7 @@ _083100ea:
 .incbin "base.gba", 0x3100F2, 0x2
 
 _083100f4:	.4byte 0x03005220
-_083100f8:	.4byte 0x04000004
+_083100f8:	.4byte GeneralLCDStatus_STAT_LYC_
 	thumb_func_end sub_0831007c
 
 	thumb_func_start sub_083100fc
@@ -188728,7 +188728,7 @@ _08310132:
 .incbin "base.gba", 0x31014A, 0x2
 
 _0831014c:	.4byte 0x03005220
-_08310150:	.4byte 0x04000004
+_08310150:	.4byte GeneralLCDStatus_STAT_LYC_
 	thumb_func_end sub_08310110
 
 	thumb_func_start sub_08310154
@@ -191170,7 +191170,7 @@ sub_08311af8:
 
 .incbin "base.gba", 0x311B22, 0x2
 
-_08311b24:	.4byte 0x0400000C
+_08311b24:	.4byte BG2Control
 
 _08311b28:
 	mov		r0, #0x80
@@ -211994,7 +211994,7 @@ _08325246:
 _08325250:	.4byte 0x03007FF0
 _08325254:	.4byte 0x68736D53
 _08325258:	.4byte 0x030029A9
-_0832525c:	.4byte 0x04000006
+_0832525c:	.4byte VerticalCounter_LY_
 _08325260:	.4byte 0x00000350
 _08325264:	.4byte 0x00000630
 
@@ -212815,9 +212815,9 @@ _0832618c:
 	pop		{ r0 }
 	bx		r0
 
-_08326194:	.4byte 0x04000084
-_08326198:	.4byte 0x04000080
-_0832619c:	.4byte 0x04000063
+_08326194:	.4byte ControlSoundon_off_NR52_
+_08326198:	.4byte ControlStereo_Volume_Enable_NR50_NR51_
+_0832619c:	.4byte Channel1Duty_Length_Envelope_NR11_NR12_ + 0x1
 _083261a0:	.4byte 0x03007FF0
 _083261a4:	.4byte 0x68736D53
 _083261a8:	.4byte 0x03006910
@@ -212945,13 +212945,13 @@ _0832622c:
 
 .incbin "base.gba", 0x3262A6, 0x2
 
-_083262a8:	.4byte 0x040000C4
+_083262a8:	.4byte DMA1WordCount
 _083262ac:	.4byte 0x84400004
-_083262b0:	.4byte 0x040000C6
+_083262b0:	.4byte DMA1Control
 _083262b4:	.4byte 0x00000B0E
-_083262b8:	.4byte 0x04000089
-_083262bc:	.4byte 0x040000BC
-_083262c0:	.4byte 0x040000A0
+_083262b8:	.4byte SoundPWMControl + 0x1
+_083262bc:	.4byte DMA1SourceAddress
+_083262c0:	.4byte ChannelAFIFO_Data0_3
 _083262c4:	.4byte 0x03007FF0
 _083262c8:	.4byte 0x05000260
 _083262cc:	.4byte 0x0201FADD
@@ -213030,10 +213030,10 @@ _08326360:	.4byte 0x0202E05C
 _08326364:	.4byte 0x00091D1B
 _08326368:	.4byte 0x00001388
 _0832636c:	.4byte 0x00002710
-_08326370:	.4byte 0x04000102
-_08326374:	.4byte 0x04000100
+_08326370:	.4byte Timer0Control
+_08326374:	.4byte Timer0Counter_Reload
 _08326378:	.4byte 0x00044940
-_0832637c:	.4byte 0x04000006
+_0832637c:	.4byte VerticalCounter_LY_
 	thumb_func_end sub_083262dc
 
 	thumb_func_start sub_08326380
@@ -213116,7 +213116,7 @@ _08326406:
 
 _0832640c:	.4byte 0x03007FF0
 _08326410:	.4byte 0x68736D53
-_08326414:	.4byte 0x04000089
+_08326414:	.4byte SoundPWMControl + 0x1
 	thumb_func_end sub_08326380
 
 	thumb_func_start sub_08326418
@@ -213211,9 +213211,9 @@ _083264b2:
 
 _083264b8:	.4byte 0x03007FF0
 _083264bc:	.4byte 0x978C92AD
-_083264c0:	.4byte 0x040000C4
+_083264c0:	.4byte DMA1WordCount
 _083264c4:	.4byte 0x84400004
-_083264c8:	.4byte 0x040000C6
+_083264c8:	.4byte DMA1Control
 _083264cc:	.4byte 0x0500018C
 	thumb_func_end sub_0832646c
 
@@ -213246,7 +213246,7 @@ _083264f4:
 
 _083264fc:	.4byte 0x03007FF0
 _08326500:	.4byte 0x68736D53
-_08326504:	.4byte 0x040000C6
+_08326504:	.4byte DMA1Control
 	thumb_func_end sub_083264d0
 
 	thumb_func_start sub_08326508
@@ -214617,8 +214617,8 @@ _083275a4:
 	b		_083275cc
 
 _083275bc:	.4byte 0x030027A0
-_083275c0:	.4byte 0x04000200
-_083275c4:	.4byte 0x04000208
+_083275c0:	.4byte InterruptEnableRegister
+_083275c4:	.4byte InterruptMasterEnableRegister
 
 _083275c8:
 	ldr		r0, _083275d0
@@ -214628,7 +214628,7 @@ _083275cc:
 
 .incbin "base.gba", 0x3275CE, 0x2
 
-_083275d0:	.4byte 0x04000208
+_083275d0:	.4byte InterruptMasterEnableRegister
 	thumb_func_end sub_08327560
 
 	thumb_func_start sub_083275d4
@@ -214654,9 +214654,9 @@ sub_083275d4:
 	strh	r0, [r1, #0x0]
 	bx		lr
 
-_083275fc:	.4byte 0x040000D4
-_08327600:	.4byte 0x040000D8
-_08327604:	.4byte 0x040000DE
+_083275fc:	.4byte DMA3SourceAddress
+_08327600:	.4byte DMA3DestinationAddress
+_08327604:	.4byte DMA3Control
 
 .incbin "base.gba", 0x327608, 0x30
 	thumb_func_end sub_083275d4
@@ -214846,10 +214846,10 @@ _08340a0a:
 
 .incbin "base.gba", 0x340A5A, 0x2
 
-_08340a5c:	.4byte 0x04000208
-_08340a60:	.4byte 0x04000200
+_08340a5c:	.4byte InterruptMasterEnableRegister
+_08340a60:	.4byte InterruptEnableRegister
 _08340a64:	.4byte 0x0000FF3F
-_08340a68:	.4byte 0x04000134
+_08340a68:	.4byte SIOModeSelect_GeneralPurposeData
 _08340a6c:	.4byte 0x00004003
 _08340a70:	.4byte 0x03000600
 _08340a74:	.4byte 0x05000050
@@ -214874,7 +214874,7 @@ sub_08340a78:
 	beq		_08340b0c
 	b		_08340b1a
 
-_08340a98:	.4byte 0x04000128
+_08340a98:	.4byte SIOControlRegister
 _08340a9c:	.4byte 0x03000600
 
 _08340aa0:
@@ -214967,10 +214967,10 @@ _08340b1a:
 
 .incbin "base.gba", 0x340B4A, 0x2
 
-_08340b4c:	.4byte 0x04000208
-_08340b50:	.4byte 0x04000200
+_08340b4c:	.4byte InterruptMasterEnableRegister
+_08340b50:	.4byte InterruptEnableRegister
 _08340b54:	.4byte 0x0000FF7F
-_08340b58:	.4byte 0x04000202
+_08340b58:	.4byte InterruptRequestFlags_IRQAcknowledge
 _08340b5c:	.4byte 0x000092C6
 _08340b60:	.4byte 0x03000600
 
@@ -215108,8 +215108,8 @@ _08340c4c:
 
 _08340c54:	.4byte 0x03000600
 _08340c58:	.4byte 0x03000740
-_08340c5c:	.4byte 0x04000002
-_08340c60:	.4byte 0x0400010E
+_08340c5c:	.4byte Undocumented_Greenswap
+_08340c60:	.4byte Timer3Control
 	thumb_func_end sub_08340b94
 
 	thumb_func_start sub_08340c64
@@ -215266,9 +215266,9 @@ _08340d72:
 	orr		r0, r4
 	b		_08340dba
 
-_08340d8c:	.4byte 0x04000208
+_08340d8c:	.4byte InterruptMasterEnableRegister
 _08340d90:	.4byte 0x03000600
-_08340d94:	.4byte 0x04000002
+_08340d94:	.4byte Undocumented_Greenswap
 _08340d98:	.4byte 0x05000002
 
 _08340d9c:

@@ -78,7 +78,7 @@
     .set Channel2Duty_Length_Envelope_NR21_NR22_        , 0x4000068
     .set Channel2Frequency_Length_Envelope_NR23_NR24_   , 0x400006C
     .set Channel3Stop_WaveRAMselect_NR30_               , 0x4000070
-    .set Channel3Length_Volume_NR31_NR32_               , 0x4000070
+    .set Channel3Length_Volume_NR31_NR32_               , 0x4000072
     .set Channel3Frequency_Controll_NR33_NR34_          , 0x4000074
     .set Channel4Length_Envelope_NR41_NR42_             , 0x4000078
     .set Channel4Frequency_Controll_NR43_NR44_          , 0x400007C
@@ -104,7 +104,8 @@
     .set DMA3SourceAddress                              , 0x40000D4
     .set DMA3DestinationAddress                         , 0x40000D8
     .set DMA3WordCount                                  , 0x40000DC
-    .set DMA3Control                                    , 0x40000DE 
+    .set DMA3Control                                    , 0x40000DE
+    .set DMA_Unused                                     , 0x40000E0  
     .set Timer0Counter_Reload                           , 0x4000100
     .set Timer0Control                                  , 0x4000102
     .set Timer1Counter_Reload                           , 0x4000104
