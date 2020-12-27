@@ -28,7 +28,7 @@ _AgbMain: @ 8026BDC
     ldr     r5, _08026D40             
 	movs    r0, 0x1                          
     ldr     r1, _08026D44                
-	bl      0x807DF78 @ sub_807DF78                       
+	bl      sub_0807df78                      
 	movs    r2, 0x80                         
 	lsls    r2, r2, 0x13                      
 	ldrh    r0, [r2]                        
@@ -129,11 +129,11 @@ _AgbMain: @ 8026BDC
 	strh    r0, [r1]                        
 	ldr     r1, _08026D94                     
 	movs    r0, 0x0                          
-	bl      0x807DF78 @ sub_807DF78                        
+	bl      sub_0807df78                     
 	movs    r1, 0x90                         
 	lsls    r1, r1, 0x9                       
 	movs    r0, 0x2                          
-	bl      0x807DF78 @ sub_807DF78                       
+	bl      sub_0807df78                   
 	ldr     r1, _08026D98                   
 	cmp     r1, 0x0                          
 	bne     0x8026CD0                       
@@ -155,7 +155,7 @@ _AgbMain: @ 8026BDC
 	movs    r0, 0x2                          
 	movs    r1, 0x80                         
 	lsls    r1, r1, 0x9                      
-	bl      0x807DF78 @ sub_807DF78                       
+	bl      sub_0807df78                       
 	ldr     r0, _08026DA8 @ _ShowMGBIntro     [pc, 0xA4]                  
 	str     r0, [r5]                        
 	movs    r0, 0x1                          
