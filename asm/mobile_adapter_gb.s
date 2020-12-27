@@ -626,7 +626,7 @@ _TryLoadMGBMainMenu: @ 0805a930
     adds	r7, r0, #0
     movs	r6, #0
     adds	r0, r4, #0
-    bl	    0x8057900
+    bl	    0x8057900 
     cmp	    r0, #0
     bne	    _805A9A0
     movs	r6, #1
@@ -636,7 +636,7 @@ _805A9A0:
     mov	    r0, r8
     bl	    _LoadUsername
     cmp	    r0, #0
-    bne 	_805A9B4
+    bne 	_805A9B4 @ Found Username
     movs	r0, #1
     orrs	r6, r0
     adds	r0, r5, #0
@@ -710,8 +710,8 @@ _805AA32:
     bl	    0x8060ce4
 _805AA46:
     bl	    0x8059dc8
-    cmp	    r6, #0
-    beq 	_805AA78
+    cmp	    r6, #0 @ movs    r6, #0   
+    beq 	_805AA78 @ _805AA78    @ The check for MGB
     ldr	    r0, _0805AA68 @ _LoadMGBRegistrationMenu    [pc, #24]	@ (0x5aa68)
     ldr	    r2, _0805AA6C @ RunGameLogic_CallBack       [pc, #24]	@ (0x5aa6c)
     str	    r0, [r2, #0]

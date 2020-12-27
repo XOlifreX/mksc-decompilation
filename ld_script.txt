@@ -1,4 +1,4 @@
-ENTRY(Start)
+ENTRY(_entryPoint)
 
 SECTIONS {
     . = 0x8000000;
