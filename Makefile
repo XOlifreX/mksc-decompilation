@@ -1,3 +1,10 @@
+ifeq ($(OS),Windows_NT)
+EXE := .exe
+else
+EXE :=
+endif
+
+
 TOOLCHAIN ?= $(DEVKITARM)
 PREFIX ?= arm-none-eabi-
 
@@ -22,16 +29,17 @@ SHA1 		:= sha1sum -c
 
 .PHONY: rom tools gbagfx scaninc clean compare
 
-gfx     	:= @tools/gbagfx/gbagfx
-scaninc 	:= tools/scaninc/scaninc
+gfx     	:= tools/gbagfx/gbagfx$(EXE)
+scaninc 	:= tools/scaninc/scaninc$(EXE)
 
+mka 		:= asm/mka.s
 objs 		:= asm/mka.o
 LDSCRIPT	:= ld_script.txt
 rom 		:= mka.gba
 elf 		:= $(rom:.gba=.elf)
 
 
-$(foreach obj, $(objs), \
+$(foreach obj, $(mka), \
 	$(eval $(obj)_deps := $(shell $(scaninc) $(obj:.o=.s))) \
 )
 
