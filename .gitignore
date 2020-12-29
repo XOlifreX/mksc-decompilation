@@ -1,10 +1,13 @@
 *.gba
 *.out
+*.elf
 *.sav
 *.o
 *.gba.bak
 *.txt
-graphics/*.exe
 *.pal
 *.spr
 *.s
+asm/*.o
+graphics/*.exe
+tools/*/*.exe
