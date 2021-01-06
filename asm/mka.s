@@ -148298,7 +148298,7 @@ _MGBIntroLogo_Pal:
 _MGBIntroLogo_LZ:
 .incbin "../graphics/mobile_adapter_gb/intro/mgb_intro_logo.lz" // 80F3958
 
-.incbin "base.gba", 0xF48e4, 0xe4
+.incbin "base.gba", 0xF4000, 0x9c8
 _080f49c8:	.4byte 0x080e3c40
 
 .incbin "base.gba", 0xF49CC, 0xC

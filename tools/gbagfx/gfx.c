@@ -498,6 +498,9 @@ void WriteGbaPalette(char *path, struct Palette *palette)
 		unsigned char blue = DOWNCONVERT_BIT_DEPTH(palette->colors[i].blue);
 
 		uint16_t paletteEntry = SET_GBA_PAL(red, green, blue);
+		
+		if (((paletteEntry & 0xFF00) >> 8) >= 0x7E) // MKA specific palette shenanigans
+			paletteEntry |= 0x8000;
 
 		fputc(paletteEntry & 0xFF, fp);
 		fputc(paletteEntry >> 8, fp);

@@ -1,4 +1,8 @@
-MOBILEADAPTERGBINTRO := graphics/mobile_adapter_gb/intro
+MGB_DIR := graphics/mobile_adapter_gb
+NUM_TILES := -num_tiles
 
-$(MOBILEADAPTERGBINTRO)/mgb_intro_logo.4bpp: $(MOBILEADAPTERGBINTRO)/mgb_intro_logo.png
-	$(gfx) $< $@
+include $(MGB_DIR)/mgb.mk
+
+gfx_clean: mgb_clean
+
+gfx_build: mgb_build
