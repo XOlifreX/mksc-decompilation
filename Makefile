@@ -5,48 +5,62 @@ EXE :=
 endif
 
 
-TOOLCHAIN ?= $(DEVKITARM)
+TOOLCHAIN ?= $(DEVKITARM)/bin/
 PREFIX ?= arm-none-eabi-
 
-export PATH := $(TOOLCHAIN)/bin:$(PATH)
-
-CPP 		:= $(PREFIX)cpp$(EXE)
-AS 			:= $(PREFIX)as$(EXE)
-LD 			:= $(PREFIX)ld$(EXE)
-OBJCOPY 	:= $(PREFIX)objcopy$(EXE)
+CPP 		:= $(TOOLCHAIN)$(PREFIX)cpp$(EXE)
+AS 			:= $(TOOLCHAIN)$(PREFIX)as$(EXE)
+LD 			:= $(TOOLCHAIN)$(PREFIX)ld$(EXE)
+OBJCOPY 	:= $(TOOLCHAIN)$(PREFIX)objcopy$(EXE)
 
 GBAGFX     	:= tools/gbagfx/gbagfx$(EXE)
 SCANINC 	:= tools/scaninc/scaninc$(EXE)
 
+SHA1SUM 		:= sha1sum -c
+
 ASFLAGS 	:= -mcpu=arm7tdmi -Iasm
 
-SHA1 		:= sha1sum -c
+CC1             := tools/agbcc/bin/old_agbcc$(EXE)
+override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
 
-mka 		:= asm/mka.s
-objs 		:= asm/mka.o
-LDSCRIPT	:= ld_script.txt
-rom 		:= mka.gba
-elf 		:= $(rom:.gba=.elf)
+CPPFLAGS := -I tools/agbcc -I tools/agbcc/include -iquote include -nostdinc
 
-.PHONY: all clean compare
+ASFILE := $(wildcard asm/*.s)
+CFILE := $(wildcard src/*.c)
+ASOBJFILE := $(ASFILE:.s=.o)
+COBJFILE := $(CFILE:.c=.o)
 
-all: gfx_clean gfx_build compare rom_clean
+NAME 		:= mka
+LDSCRIPT	:= ld_script.ld
+ROM 		:= $(NAME).gba
+ELF 		:= $(NAME).elf
+
+.PHONY: all rom compare clean 
+
+all: gfx_clean gfx_build rom
+
+rom: $(ROM) compare clean
 
 # GFX
 include graphics_file_rules.mk
 
 # Compare
-compare: $(rom)
-	$(SHA1) mka.sha1
-
-# Build
-%.o: %.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-$(rom): $(objs)
-	$(LD) -T $(LDSCRIPT) -o $(elf) $(objs)
-	$(OBJCOPY) -O binary $(elf) $(rom)
+compare: $(ROM)
+	$(SHA1SUM) mka.sha1
 
 # Clean
-rom_clean:
-	@$(RM) $(ROM) $(elf) $(objs)
+clean:
+	@$(RM) $(ELF) $(ASOBJFILE) $(COBJFILE)
+
+# Build
+$(ROM): $(ELF)
+	$(OBJCOPY) -O binary $< $@
+
+$(ELF): %.elf: $(ASOBJFILE) $(COBJFILE) $(LDSCRIPT)
+	$(LD) -T $(LDSCRIPT) -Map $*.map -o $@ $(ASOBJFILE) $(COBJFILE) -L tools/agbcc/lib -lgcc -lc
+
+$(COBJFILE): %.o: %.c
+	$(CPP) $(CPPFLAGS) $< | $(CC1) $(CFLAGS) | $(AS) $(ASFLAGS) -o $@ 
+
+$(ASOBJFILE): %.o: %.s
+	$(AS) $(ASFLAGS) -o $@ $<

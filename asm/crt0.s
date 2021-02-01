@@ -1,3 +1,7 @@
+	.include "defines.s"
+	.include "macros.s"
+    .include "rom_header.s"
+
     arm_func_start Init
 Init: @ 080000C0
     mov     r0, #PSR_IRQ_MODE                                  

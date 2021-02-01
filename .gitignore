@@ -11,3 +11,8 @@
 asm/*.o
 graphics/*.exe
 tools/*/*.exe
+tools/gbagfx/*.4bpp
+tools/gbagfx/*.gbapal
+tools/gbagfx/*.png
+tools/agbcc
+tools/agbcc/*

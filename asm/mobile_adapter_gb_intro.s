@@ -1,138 +1,142 @@
-       	thumb_func_start _ShowMGBIntro
-_ShowMGBIntro: @ 8001900
-    push	{r4-r6, lr}
-    ldr	    r6, _08001A18 @ [pc, #276]	@ (0x1a18)
-    ldr	    r0, _08001A1C @ [pc, #276]	@ (0x1a1c)
-    adds	r4, r6, r0
-    ldr	    r1, _08001A20 @ [pc, #276]	@ (0x1a20)
-    movs	r2, #128	@ 0x80
-    lsls	r2, r2, #8
-    adds	r0, r4, #0
-    bl	    0x8027188
-    ldr	    r5, _08001A24 @ [pc, #268]	@ (0x1a24)
-    adds	r0, r4, #0
-    movs	r1, #1
-    movs	r2, #12
-    bl	    0x80271b8
-    str	    r0, [r5, #0]
-    adds	r5, r0, #0
-    ldrh	r0, [r5, #8]
-    movs	r0, #4
-    strh	r0, [r5, #8]
-    ldrh	r0, [r5, #6]
-    movs	r0, #128	@ 0x80
-    lsls	r0, r0, #1
-    strh	r0, [r5, #6]
-    ldrh	r0, [r5, #0]
-    movs	r0, #191	@ 0xbf
-    strh	r0, [r5, #0]
-    ldrh	r0, [r5, #4]
-    movs	r0, #16
-    strh	r0, [r5, #4]
-    ldr	    r4, [pc, #232]	@ (0x1a28)
-    movs	r0, #1
-    movs	r1, #2
-    negs	r1, r1
-    bl	    0x807df78
-    str	    r4, [r6, #12]
-    movs	r0, #2
-    ldr	    r1, _08001A2C @ [pc, #220]	@ (0x1a2c)
-    bl	    0x807df78
-    bl	    _DrawFrameRunAudio
-    ldr	    r0, _08001A30 @ [pc, #212]	@ (0x1a30)
-    ldr	    r4, _08001A34 @ [pc, #216]	@ (0x1a34)
-    adds	r1, r4, #0
-    bl	    _CallHardwareLZ77DecompressToMemory8Bit
-    bl	    0x8029f34
-    ldr	    r2, _08001A38 @ [pc, #208]	@ (0x1a38)
-    ldr	    r3, _08001A3C @ [pc, #208]	@ (0x1a3c)
-    adds	r1, r4, #0
-    bl	    0x8029ee4
-    bl	    _DrawFrameRunAudio
-    movs	r1, #192	@ 0xc0
-    lsls	r1, r1, #19
-    movs	r0, #0
-    bl	    0x80281c4
-    ldr	    r4, _08001A40 @[pc, #192]	@ (0x1a40)
-    movs	r0, #0
-    movs	r1, #0
-    movs	r2, #0
-    bl	    0x80281b0
-    adds	r1, r0, #0
-    adds	r0, r4, #0
-    bl	    _CallHardwareLZ77DecompressToMemory8Bit
-    movs	r0, #1
-    bl	    0x80281fc
-    bl	    _DrawFrameRunAudio
-    ldr	    r4, _08001A44 @ [pc, #164]	@ (0x1a44)
-    movs	r0, #0
-    bl	    0x8028130
-    adds	r1, r0, #0
-    adds	r0, r4, #0
-    movs	r2, #8
-    bl	    _CallHardwareSetCpuFast
-    movs	r0, #1
-    bl	    0x8028168
-    bl	    _DrawFrameRunAudio
-    movs	r4, #0
-    movs	r6, #16
-_80019BC:
-    bl	    _DrawFrameRunAudio
-    subs	r0, r6, r4
-    ldrh	r1, [r5, #4]
-    strh	r0, [r5, #4]
-    adds	r4, #1
-    cmp	    r4, #15
-    ble 	_80019BC
-    movs	r4, #59	@ 0x3b
-_80019CE:
-    bl	    _DrawFrameRunAudio
-    subs	r4, #1
-    cmp	    r4, #0
-    bge 	_80019CE
-    movs	r4, #0
-_80019DA:
-    bl	    _DrawFrameRunAudio
-    ldrh	r0, [r5, #4]
-    strh	r4, [r5, #4]
-    adds	r4, #1
-    cmp	    r4, #15
-    ble 	_80019DA
-    movs	r5, #0
-    ldr	    r4, _08001A18 @ [pc, #44]	@ (0x1a18)
-    movs	r0, #1
-    movs	r1, #2
-    negs	r1, r1
-    bl	    0x807df78
-    str	    r5, [r4, #12]
-    movs	r0, #2
-    ldr	    r1, _08001A2C @ [pc, #48]	@ (0x1a2c)
-    bl	    0x807df78
-    ldr	    r0, _08001A48 @[pc, #68]	@ (0x1a48)
-    str	    r0, [r4, #0]
-    ldrb	r0, [r4, #8]
-    adds	r0, #1
-    movs	r1, #7
-    ands	r0, r1
-    strb	r0, [r4, #8]
-    movs	r0, #1
-    pop	    {r4, r5, r6}
-    pop	    {r1}
-    bx	    r1
+	.include "defines.s"
+	.include "ram.s"
+	.include "macros.s"
 
-			.2byte 0x0
-_08001A18: 	.4byte RunGameLogic_CallBack
-_08001A1C: 	.4byte 0x704
-_08001A20: 	.4byte 0x202A400
-_08001A24: 	.4byte 0x3000004
-_08001A28: 	.4byte 0x8001A4D
-_08001A2C: 	.4byte 0x10001
-_08001A30: 	.4byte 0x80F3958
-_08001A34: 	.4byte 0x2010400
-_08001A38: 	.4byte 0x6004000
-_08001A3C: 	.4byte 0x80000600
-_08001A40: 	.4byte 0x80F4000
-_08001A44: 	.4byte 0x80F3938
-_08001A48: 	.4byte 0x8000E79
+	thumb_func_start _ShowMGBIntro
+_ShowMGBIntro:
+	push	{ r4, r5, r6, lr }
+	ldr		r6, _08001a18
+	ldr		r0, _08001a1c
+	add		r4, r6, r0
+	ldr		r1, _08001a20
+	mov		r2, #0x80
+	lsl		r2, r2, #0x8
+	add		r0, r4, #0x0
+	bl		sub_08027188
+	ldr		r5, _08001a24
+	add		r0, r4, #0x0
+	mov		r1, #0x1
+	mov		r2, #0xc
+	bl		sub_080271b8
+	str		r0, [r5, #0x0]
+	add		r5, r0, #0x0
+	ldrh	r0, [r5, #0x8]
+	mov		r0, #0x4
+	strh	r0, [r5, #0x8]
+	ldrh	r0, [r5, #0x6]
+	mov		r0, #0x80
+	lsl		r0, r0, #0x1
+	strh	r0, [r5, #0x6]
+	ldrh	r0, [r5, #0x0]
+	mov		r0, #0xbf
+	strh	r0, [r5, #0x0]
+	ldrh	r0, [r5, #0x4]
+	mov		r0, #0x10
+	strh	r0, [r5, #0x4]
+	ldr		r4, _08001a28
+	mov		r0, #0x1
+	mov		r1, #0x2
+	neg		r1, r1
+	bl		sub_0807df78
+	str		r4, [r6, #0xc]
+	mov		r0, #0x2
+	ldr		r1, _08001a2c
+	bl		sub_0807df78
+	bl		_UpdateGame
+	ldr		r0, _08001a30
+	ldr		r4, _08001a34
+	add		r1, r4, #0x0
+	bl		_CallHardwareLZ77DecompressToMemory8Bit
+	bl		sub_08029f34
+	ldr		r2, _08001a38
+	ldr		r3, _08001a3c
+	add		r1, r4, #0x0
+	bl		sub_08029ee4
+	bl		_UpdateGame
+	mov		r1, #0xc0
+	lsl		r1, r1, #0x13
+	mov		r0, #0x0
+	bl		sub_080281c4
+	ldr		r4, _08001a40
+	mov		r0, #0x0
+	mov		r1, #0x0
+	mov		r2, #0x0
+	bl		sub_080281b0
+	add		r1, r0, #0x0
+	add		r0, r4, #0x0
+	bl		_CallHardwareLZ77DecompressToMemory8Bit
+	mov		r0, #0x1
+	bl		sub_080281fc
+	bl		_UpdateGame
+	ldr		r4, _08001a44
+	mov		r0, #0x0
+	bl		sub_08028130
+	add		r1, r0, #0x0
+	add		r0, r4, #0x0
+	mov		r2, #0x8
+	bl		_CallHardwareSetCpuFast
+	mov		r0, #0x1
+	bl		sub_08028168
+	bl		_UpdateGame
+	mov		r4, #0x0
+	mov		r6, #0x10
+_080019bc:
+	bl		_UpdateGame
+	sub		r0, r6, r4
+	ldrh	r1, [r5, #0x4]
+	strh	r0, [r5, #0x4]
+	add		r4, #0x1
+	cmp		r4, #0xf
+	ble		_080019bc
+	mov		r4, #0x3b
+_080019ce:
+	bl		_UpdateGame
+	sub		r4, #0x1
+	cmp		r4, #0x0
+	bge		_080019ce
+	mov		r4, #0x0
+_080019da:
+	bl		_UpdateGame
+	ldrh	r0, [r5, #0x4]
+	strh	r4, [r5, #0x4]
+	add		r4, #0x1
+	cmp		r4, #0xf
+	ble		_080019da
+	mov		r5, #0x0
+	ldr		r4, _08001a18
+	mov		r0, #0x1
+	mov		r1, #0x2
+	neg		r1, r1
+	bl		sub_0807df78
+	str		r5, [r4, #0xc]
+	mov		r0, #0x2
+	ldr		r1, _08001a2c
+	bl		sub_0807df78
+	ldr		r0, _08001a48
+	str		r0, [r4, #0x0]
+	ldrb	r0, [r4, #0x8]
+	add		r0, #0x1
+	mov		r1, #0x7
+	and		r0, r1
+	strb	r0, [r4, #0x8]
+	mov		r0, #0x1
+	pop		{ r4, r5, r6 }
+	pop		{ r1 }
+	bx		r1
 
-    thumb_func_end _ShowMGBIntro
+	.2byte	0x0
+	
+_08001a18:	.4byte RunGameLogic_CallBack
+_08001a1c:	.4byte 0x00000704
+_08001a20:	.4byte 0x0202A400
+_08001a24:	.4byte 0x03000004
+_08001a28:	.4byte 0x08001a4d
+_08001a2c:	.4byte 0x00010001
+_08001a30:	.4byte 0x080f3958
+_08001a34:	.4byte 0x02010400
+_08001a38:	.4byte 0x06004000
+_08001a3c:	.4byte 0x80000600
+_08001a40:	.4byte 0x080f4000
+_08001a44:	.4byte 0x080f3938
+_08001a48:	.4byte 0x08000E79
+	thumb_func_end _ShowMGBIntro

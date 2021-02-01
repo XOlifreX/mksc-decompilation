@@ -1,6 +1,0 @@
-ENTRY(_entryPoint)
-
-SECTIONS {
-    . = 0x8000000;
-    .text : { *(.text); }
-}
