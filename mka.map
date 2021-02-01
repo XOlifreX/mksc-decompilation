@@ -1106,7 +1106,7 @@ Linker script and memory map
                 0x08057900                sub_08057900
                 0x08057930                sub_08057930
  asm/mobile_adapter_gb0.o(.text)
- .text          0x08057950     0x9314 asm/mobile_adapter_gb0.o
+ .text          0x08057950     0x92a4 asm/mobile_adapter_gb0.o
                 0x08057950                _MGBLoadUsername
                 0x08057980                sub_08057980
                 0x080579a0                _MGBLoadPassword
@@ -1261,21 +1261,25 @@ Linker script and memory map
                 0x08060958                sub_08060958
                 0x080609b8                sub_080609b8
                 0x08060ae4                sub_08060ae4
+ src/mobile_adapter_gb.o(.text)
+ .text          0x08060bf4      0x154 src/mobile_adapter_gb.o
                 0x08060bf4                sub_08060bf4
                 0x08060c00                sub_08060c00
-                0x08060c60                sub_08060c60
- src/mobile_adapter_gb.o(.text)
- .text          0x08060c64       0x64 src/mobile_adapter_gb.o
+                0x08060c5c                sub_08060c5c
+                0x08060c60                getUsernameFromMGBStruct
                 0x08060c64                checkUsernameExists
                 0x08060c80                clearUsername
                 0x08060c94                CopyUsernameToBuffer
                 0x08060cac                setUsername
-                0x08060cc4                sub_08060cc4
+                0x08060cc4                getMgbUnkString1FromMGBStruct
+                0x08060cc8                checkMgbUnkString1Exists
+                0x08060ce4                clearMgbUnkString1
+                0x08060cf8                copyMgbUnkString1ToBuffer
+                0x08060d10                setMgbUnkString1
+                0x08060d28                getMgbUnkString2FromMGBStruct
+                0x08060d2c                checkMgbUnkString2Exists
  asm/mobile_adapter_gb1.o(.text)
- .text          0x08060cc8     0x9434 asm/mobile_adapter_gb1.o
-                0x08060ce4                sub_08060ce4
-                0x08060d10                sub_08060d10
-                0x08060d28                sub_08060d28
+ .text          0x08060d48     0x93b4 asm/mobile_adapter_gb1.o
                 0x08060d48                sub_08060d48
                 0x08060d74                sub_08060d74
                 0x08060e1c                sub_08060e1c

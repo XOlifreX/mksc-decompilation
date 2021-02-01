@@ -7,7 +7,6 @@
 *.txt
 *.pal
 *.spr
-*.s
 asm/*.o
 graphics/*.exe
 tools/*/*.exe
