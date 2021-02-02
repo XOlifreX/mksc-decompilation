@@ -8465,7 +8465,7 @@ sub_0806e5ec:
 	beq		_0806e68e
 	add		r0, r7, #0x0
 	add		r1, r6, #0x0
-	bl		sub_08060d74
+	bl		setMgbUnkString4
 _0806e68e:
 	add		r0, r4, #0x0
 	add		sp, #0x10

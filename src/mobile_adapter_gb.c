@@ -146,19 +146,19 @@ void setMgbUnkString1(MGBUserInfo* MGBUserInfo, char* buffer)
 }
 
 // 08060d28
-char* getMgbUnkString2FromMGBStruct(MGBUserInfo* MGBUserInfo)
+char* getMgbUnkString4FromMGBStruct(MGBUserInfo* MGBUserInfo)
 {
-    return MGBUserInfo->unkString2;
+    return MGBUserInfo->unkString4;
 }
 
 // 08060d2c
-bool checkMgbUnkString2Exists(MGBUserInfo* MGBUserInfo) 
+bool checkMgbUnkString4Exists(MGBUserInfo* MGBUserInfo) 
 {
-    char* SomeString = MGBUserInfo->unkString2;
+    char* SomeString = MGBUserInfo->unkString4;
     char temp;
     int i;
 
-    for (i = 0; i < 128; i++) {
+    for (i = 0; i < MGB_UNKSTRING4_SIZE; i++) {
         temp = *SomeString++;
 
         if (temp != '\0')
@@ -166,4 +166,151 @@ bool checkMgbUnkString2Exists(MGBUserInfo* MGBUserInfo)
     }
 
     return false;
+}
+
+// 08060d48
+void clearMgbUnkString4(MGBUserInfo* MGBUserInfo) 
+{
+    char* SomeString = MGBUserInfo->unkString4;
+    char nullByte = '\0';
+    int i;
+
+    for (i = (MGB_UNKSTRING4_SIZE - 1); i >= 0; i--) {
+        *SomeString++ = nullByte;
+    } 
+}
+
+// 08060d5c
+void copyMgbUnkString4ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString4;
+    int i;
+    
+    for (i = (MGB_UNKSTRING4_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060d74
+void setMgbUnkString4(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString4;
+    int i;
+    
+    for (i = (MGB_UNKSTRING4_SIZE - 1); i >= 0; i--)
+        *SomeString++ = *buffer++;
+}
+
+// 08060d8c
+char* getMgbUnkString2FromMGBStruct(MGBUserInfo* MGBUserInfo)
+{
+    return MGBUserInfo->unkString2;
+}
+
+// 08060d90
+void clearMgbUnkString2(MGBUserInfo* MGBUserInfo) 
+{
+    char* SomeString = MGBUserInfo->unkString2;
+    char nullByte = '\0';
+    int i;
+
+    for (i = (MGB_UNKSTRING2_SIZE - 1); i >= 0; i--) {
+        *SomeString++ = nullByte;
+    } 
+}
+
+// 08060da4
+void copyMgbUnkString2ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString2;
+    int i;
+    
+    for (i = (MGB_UNKSTRING2_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060dbc
+void setMgbUnkString2(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString2;
+    int i;
+    
+    for (i = (MGB_UNKSTRING2_SIZE - 1); i >= 0; i--)
+        *SomeString++ = *buffer++;
+}
+
+// 08060dd4
+char* getMgbUnkString3FromMGBStruct(MGBUserInfo* MGBUserInfo)
+{
+    return MGBUserInfo->unkString3;
+}
+
+// 08060dd8
+void clearMgbUnkString3(MGBUserInfo* MGBUserInfo) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    char nullByte = '\0';
+    int i;
+
+    for (i = (MGB_UNKSTRING3_SIZE - 1); i >= 0; i--) {
+        *SomeString++ = nullByte;
+    } 
+}
+
+// 08060dec
+void copyMgbUnkString3ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    int i;
+    
+    for (i = (MGB_UNKSTRING3_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060e04
+void setMgbUnkString3(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    int i;
+    
+    for (i = (MGB_UNKSTRING3_SIZE - 1); i >= 0; i--)
+        *SomeString++ = *buffer++;
+}
+
+// 08060e1c
+char* getMgbUnkValue1FromMGBStruct(MGBUserInfo* MGBUserInfo)
+{
+    return MGBUserInfo->unkValue1;
+}
+
+/*
+** Don't know what 0x2f does. 
+*/
+// _08060e20
+bool checkMgbUnkValue1OverLimit(MGBUserInfo* MGBUserInfo)
+{
+    char toCheck = MGBUserInfo->unkValue1[0];
+
+    return toCheck < 0x2f;
+}
+
+/*
+** Don't know what 0x2f does. 
+*/
+// _08060e30
+bool setMgbUnkValue1ToLimit(MGBUserInfo* MGBUserInfo)
+{
+    MGBUserInfo->unkValue1[0] = 0x2f;
+}
+
+// _08060e38
+bool copyMgbUnkValue1ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer)
+{
+    *buffer = MGBUserInfo->unkValue1[0];
+}
+
+// _08060e40
+bool setMgbUnkValue1ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer)
+{
+    char* location = MGBUserInfo->unkValue1;
+    *location = *buffer;
 }

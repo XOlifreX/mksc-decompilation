@@ -35,11 +35,11 @@ LDSCRIPT	:= ld_script.ld
 ROM 		:= $(NAME).gba
 ELF 		:= $(NAME).elf
 
-.PHONY: all rom compare clean 
+.PHONY: graphics rom
 
-all: gfx_clean gfx_build rom
+graphics: gfx_clean gfx_build rom
 
-rom: $(ROM) compare clean
+rom: $(ROM) clean compare
 
 # GFX
 include graphics_file_rules.mk

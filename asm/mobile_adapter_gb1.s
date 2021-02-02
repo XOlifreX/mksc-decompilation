@@ -3,66 +3,6 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08060d48
-sub_08060d48:
-	add		r0, #0x52
-	mov		r2, #0x0
-	mov		r1, #0x7f
-_08060d4e:
-	strb	r2, [r0, #0x0]
-	add		r0, #0x1
-	sub		r1, #0x1
-	cmp		r1, #0x0
-	bge		_08060d4e
-	bx		lr
-
-.incbin "base.gba", 0x60D5A, 0x1A
-	thumb_func_end sub_08060d48
-
-	thumb_func_start sub_08060d74
-sub_08060d74:
-	add		r2, r0, #0x0
-	add		r2, #0x52
-	mov		r3, #0x7f
-_08060d7a:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	add		r1, #0x1
-	add		r2, #0x1
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08060d7a
-	bx		lr
-
-.incbin "base.gba", 0x60D8A, 0x92
-	thumb_func_end sub_08060d74
-
-	thumb_func_start sub_08060e1c
-sub_08060e1c:
-	add		r0, #0x2d
-	bx		lr
-
-.incbin "base.gba", 0x60E20, 0x10
-	thumb_func_end sub_08060e1c
-
-	thumb_func_start sub_08060e30
-sub_08060e30:
-	add		r0, #0x2d
-	mov		r1, #0x2f
-	strb	r1, [r0, #0x0]
-	bx		lr
-	thumb_func_end sub_08060e30
-
-	thumb_func_start sub_08060e38
-sub_08060e38:
-	add		r0, #0x2d
-	ldrb	r0, [r0, #0x0]
-	strb	r0, [r1, #0x0]
-	bx		lr
-
-.incbin "base.gba", 0x60E40, 0x8
-	thumb_func_end sub_08060e38
-
 	thumb_func_start sub_08060e48
 sub_08060e48:
 	add		r0, #0x1c

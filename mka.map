@@ -1262,7 +1262,7 @@ Linker script and memory map
                 0x080609b8                sub_080609b8
                 0x08060ae4                sub_08060ae4
  src/mobile_adapter_gb.o(.text)
- .text          0x08060bf4      0x154 src/mobile_adapter_gb.o
+ .text          0x08060bf4      0x254 src/mobile_adapter_gb.o
                 0x08060bf4                sub_08060bf4
                 0x08060c00                sub_08060c00
                 0x08060c5c                sub_08060c5c
@@ -1276,15 +1276,26 @@ Linker script and memory map
                 0x08060ce4                clearMgbUnkString1
                 0x08060cf8                copyMgbUnkString1ToBuffer
                 0x08060d10                setMgbUnkString1
-                0x08060d28                getMgbUnkString2FromMGBStruct
-                0x08060d2c                checkMgbUnkString2Exists
+                0x08060d28                getMgbUnkString4FromMGBStruct
+                0x08060d2c                checkMgbUnkString4Exists
+                0x08060d48                clearMgbUnkString4
+                0x08060d5c                copyMgbUnkString4ToBuffer
+                0x08060d74                setMgbUnkString4
+                0x08060d8c                getMgbUnkString2FromMGBStruct
+                0x08060d90                clearMgbUnkString2
+                0x08060da4                copyMgbUnkString2ToBuffer
+                0x08060dbc                setMgbUnkString2
+                0x08060dd4                getMgbUnkString3FromMGBStruct
+                0x08060dd8                clearMgbUnkString3
+                0x08060dec                copyMgbUnkString3ToBuffer
+                0x08060e04                setMgbUnkString3
+                0x08060e1c                getMgbUnkValue1FromMGBStruct
+                0x08060e20                checkMgbUnkValue1OverLimit
+                0x08060e30                setMgbUnkValue1ToLimit
+                0x08060e38                copyMgbUnkValue1ToBuffer
+                0x08060e40                setMgbUnkValue1ToBuffer
  asm/mobile_adapter_gb1.o(.text)
- .text          0x08060d48     0x93b4 asm/mobile_adapter_gb1.o
-                0x08060d48                sub_08060d48
-                0x08060d74                sub_08060d74
-                0x08060e1c                sub_08060e1c
-                0x08060e30                sub_08060e30
-                0x08060e38                sub_08060e38
+ .text          0x08060e48     0x92b4 asm/mobile_adapter_gb1.o
                 0x08060e48                sub_08060e48
                 0x08060e4c                sub_08060e4c
                 0x08060e6c                sub_08060e6c

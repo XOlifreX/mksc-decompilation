@@ -6392,10 +6392,10 @@ _TryLoadMGBMainMenu: @ 0805a930
 	bl		sub_08060e84
 	str		r0, [sp, #0x44]
 	add		r0, r5, #0x0
-	bl		sub_08060e1c
+	bl		getMgbUnkValue1FromMGBStruct
 	str		r0, [sp, #0x48]
 	add		r0, r5, #0x0
-	bl		getMgbUnkString2FromMGBStruct
+	bl		getMgbUnkString4FromMGBStruct
 	str		r0, [sp, #0x4C]
 	add		r0, r5, #0x0
 	bl		getMgbUnkString1FromMGBStruct
@@ -6467,7 +6467,7 @@ _0805aa0a:
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		sub_08060e30
+	bl		setMgbUnkValue1ToLimit
 _0805aa1e:
 	ldr		r0, [sp, #0x4C]
 	bl		sub_08057a44
@@ -6476,7 +6476,7 @@ _0805aa1e:
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		sub_08060d48
+	bl		clearMgbUnkString4
 _0805aa32:
 	ldr		r0, [sp, #0x50]
 	bl		sub_08057b80
@@ -8745,7 +8745,7 @@ _0805bbf6:
 	bge		_0805bbf6
 	mov		r0, r8
 	add		r1, sp, #0xc
-	bl		sub_08060e38
+	bl		copyMgbUnkValue1ToBuffer
 	add		r0, sp, #0xc
 	ldrb	r0, [r0, #0x0]
 	mov		r1, #0xa
@@ -13146,7 +13146,7 @@ _0805e5a0:
 	mov		r7, #0x1
 	add		r0, r5, #0x0
 	add		r1, sp, #0x4
-	bl		sub_08060e38
+	bl		copyMgbUnkValue1ToBuffer
 	b		_0805e5ce
 _0805e5ac:
 	mov		r7, #0x2
