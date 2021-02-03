@@ -1262,7 +1262,7 @@ Linker script and memory map
                 0x080609b8                sub_080609b8
                 0x08060ae4                sub_08060ae4
  src/mobile_adapter_gb.o(.text)
- .text          0x08060bf4      0x254 src/mobile_adapter_gb.o
+ .text          0x08060bf4      0x3a0 src/mobile_adapter_gb.o
                 0x08060bf4                sub_08060bf4
                 0x08060c00                sub_08060c00
                 0x08060c5c                sub_08060c5c
@@ -1294,19 +1294,26 @@ Linker script and memory map
                 0x08060e30                setMgbUnkValue1ToLimit
                 0x08060e38                copyMgbUnkValue1ToBuffer
                 0x08060e40                setMgbUnkValue1ToBuffer
- asm/mobile_adapter_gb1.o(.text)
- .text          0x08060e48     0x92b4 asm/mobile_adapter_gb1.o
-                0x08060e48                sub_08060e48
-                0x08060e4c                sub_08060e4c
-                0x08060e6c                sub_08060e6c
-                0x08060e84                sub_08060e84
-                0x08060ea4                sub_08060ea4
-                0x08060ee8                sub_08060ee8
-                0x08060efc                sub_08060efc
+                0x08060e48                getMgbUnkString5FromMGBStruct
+                0x08060e4c                clearMgbUnkString5
+                0x08060e54                copyMgbUnkString5ToBuffer
+                0x08060e6c                setMgbUnkString5
+                0x08060e84                getMgbUnkString3FromMGBStruct_2
+                0x08060e88                checkMgbUnkString3IsValid
+                0x08060ea4                clearMgbUnkString3_2
+                0x08060eb8                copyMgbUnkString3ToBuffer_2
+                0x08060ed0                copyMgbUnkString3ToBuffer_3
+                0x08060ee8                getMgbUnkString2FromMGBStruct_2
+                0x08060eec                checkMgbUnkString2IsValid
+                0x08060efc                fillMgbUnkString2
+                0x08060f10                copyMgbUnkString2ToBuffer_2
+                0x08060f28                copyMgbUnkString2ToBuffer_3
                 0x08060f40                sub_08060f40
-                0x08060f44                sub_08060f44
-                0x08060f60                sub_08060f60
-                0x08060f70                sub_08060f70
+                0x08060f44                checkStringIsNotEmpty
+                0x08060f60                clearString
+                0x08060f70                clearMGBUserInfoObject
+ asm/mobile_adapter_gb1.o(.text)
+ .text          0x08060f94     0x9168 asm/mobile_adapter_gb1.o
                 0x08060f94                sub_08060f94
                 0x08061010                sub_08061010
                 0x08061048                sub_08061048

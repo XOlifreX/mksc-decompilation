@@ -5895,7 +5895,7 @@ _0805a41c:
 	bl		sub_08057fa8
 	ldr		r1, _0805a584
 	add		r0, r7, r1
-	bl		sub_08060f70
+	bl		clearMGBUserInfoObject // sub_08060f70
 	add		r0, r7, #0x0
 	add		r0, #0x39
 	mov		r5, #0x0
@@ -5918,7 +5918,7 @@ _0805a41c:
 	strb	r4, [r0, #0x0]
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	ldr		r1, _0805a588
 	add		r0, r7, r1
 	str		r5, [r0, #0x0]
@@ -6383,13 +6383,13 @@ _TryLoadMGBMainMenu: @ 0805a930
 	bl		getUsernameFromMGBStruct
 	mov		r8, r0
 	add		r0, r5, #0x0
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	mov		r10, r0
 	add		r0, r5, #0x0
-	bl		sub_08060ee8
+	bl		checkMgbUnkString2IsValid
 	str		r0, [sp, #0x40]
 	add		r0, r5, #0x0
-	bl		sub_08060e84
+	bl		getMgbUnkString3FromMGBStruct_2
 	str		r0, [sp, #0x44]
 	add		r0, r5, #0x0
 	bl		getMgbUnkValue1FromMGBStruct
@@ -6409,7 +6409,7 @@ _TryLoadMGBMainMenu: @ 0805a930
 	bne		_0805a9a0
 	mov		r6, #0x1
 	add		r0, r5, #0x0
-	bl		sub_08060f60
+	bl		clearString
 _0805a9a0:
 	mov		r0, r8
 	bl		_MGBLoadUsername
@@ -6432,7 +6432,7 @@ _0805a9b4:
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	b		_0805a9e2
 
 _0805a9d4:	.4byte 0x0203EBE0
@@ -6440,7 +6440,7 @@ _0805a9d8:	.4byte 0x00000AE5
 
 _0805a9dc:
 	add		r0, r5, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 _0805a9e2:
 	ldr		r0, [sp, #0x40]
 	bl		sub_08057b28
@@ -6449,7 +6449,7 @@ _0805a9e2:
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		sub_08060efc
+	bl		fillMgbUnkString2
 _0805a9f6:
 	ldr		r0, [sp, #0x44]
 	bl		sub_08057a9c
@@ -6458,7 +6458,7 @@ _0805a9f6:
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		sub_08060ea4
+	bl		clearMgbUnkString3_2
 _0805aa0a:
 	ldr		r0, [sp, #0x48]
 	bl		sub_08057af4
@@ -6513,7 +6513,7 @@ _0805aa74:	.4byte 0x0203ED50
 
 _0805aa78:
 	add		r0, r5, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	ldr		r1, _0805ab70
 	add		r1, r9
 	mov		r0, #0x1
@@ -7101,7 +7101,7 @@ sub_0805af0c:
 	bl		sub_08060bf4
 	mov		r1, #0xff
 	str		r1, [sp, #0x8]
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	bl		sub_08060298
 	ldr		r4, _0805b044
 	mov		r0, #0x1
@@ -8266,7 +8266,7 @@ sub_0805b7f4:
 	mov		r0, #0xff
 	str		r0, [sp, #0xc]
 	add		r0, r4, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	ldr		r4, _0805b96c
 	mov		r0, #0x1
 	mov		r1, #0x0
@@ -9037,7 +9037,7 @@ sub_0805be34:
 	bl		getUsernameFromMGBStruct
 	add		r6, r0, #0x0
 	add		r0, r5, #0x0
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r1, r0, #0x0
 	ldr		r0, _0805be6c
 	add		r4, r4, r0
@@ -9086,7 +9086,7 @@ sub_0805be94:
 	bl		getUsernameFromMGBStruct
 	add		r5, r0, #0x0
 	add		r0, r4, #0x0
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r1, r0, #0x0
 	ldrb	r0, [r5, #0x0]
 	cmp		r0, #0x0
@@ -9230,7 +9230,7 @@ _0805bf90:
 	cmp		r0, #0x0
 	beq		_0805c0b4
 	mov		r0, r8
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	ldr		r0, _0805c078
 	bl		sub_080579d0
 	ldr		r0, _0805c07c
@@ -9355,7 +9355,7 @@ sub_0805c0e4:
 	bl		getUsernameFromMGBStruct
 	mov		r9, r0
 	add		r0, r4, #0x0
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r6, r0, #0x0
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -9482,11 +9482,11 @@ _0805c1e2:
 	bl		sub_0802983c
 	bl		_UpdateGame
 	add		r0, r4, #0x0
-	bl		sub_08060f44
+	bl		checkStringIsNotEmpty
 	cmp		r0, #0x0
 	bne		_0805c226
 	add		r0, r4, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	bl		sub_080609b8
 _0805c226:
 	ldr		r0, _0805c248
@@ -9498,7 +9498,7 @@ _0805c226:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	add		r0, r4, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	pop		{ r4 }
 	pop		{ r1 }
@@ -9915,7 +9915,7 @@ sub_0805c58c:
 	ldr		r0, [r0, #0x0]
 	mov		r8, r0
 	bl		sub_08060bf4
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x0
 	bl		sub_0805c0e4
 	ldr		r4, _0805c6c0
@@ -10150,7 +10150,7 @@ sub_0805c788:
 	ldr		r7, [r0, #0x0]
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	bl		sub_08060298
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -12425,7 +12425,7 @@ sub_0805df80:
 	ldr		r7, [r0, #0x0]
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	bl		sub_08059dc8
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -13609,7 +13609,7 @@ _0805e968:
 	and		r1, r2
 	strb	r1, [r0, #0x8]
 	ldr		r0, [sp, #0xC]
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0x14
 	pop		{ r3, r4, r5 }
@@ -13942,7 +13942,7 @@ _0805ec28:
 	and		r1, r2
 	strb	r1, [r0, #0x8]
 	ldr		r0, [sp, #0xC]
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0x14
 	pop		{ r3, r4, r5 }
@@ -14017,7 +14017,7 @@ sub_0805ec5c:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	mov		r0, r9
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0xc
 	pop		{ r3, r4 }
@@ -14993,7 +14993,7 @@ sub_0805f4e0:
 	ldr		r4, _0805f530
 	add		r0, r5, #0x0
 	bl		sub_08060bf4
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	b		_0805f536
 
 _0805f524:	.4byte 0x0203EBE0
@@ -15404,7 +15404,7 @@ sub_0805f848:
 	strb	r0, [r2, #0x8]
 	add		r0, r4, #0x0
 	bl		sub_08060bf4
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 _0805f898:
 	mov		r0, #0x1
 	pop		{ r4 }
@@ -15678,7 +15678,7 @@ _0805faee:
 	cmp		r6, #0x1
 	bne		_0805fb48
 	add		r0, r4, #0x0
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r5, r0, #0x0
 	bl		sub_08057370
 	add		r4, r0, #0x0
@@ -15799,7 +15799,7 @@ sub_0805fc08:
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
 	mov		r4, #0x0
-	bl		sub_08060f44
+	bl		checkStringIsNotEmpty
 	cmp		r0, #0x0
 	beq		_0805fc3c
 	ldr		r0, _0805fc34
@@ -16630,7 +16630,7 @@ sub_08060298:
 	ldr		r0, _080602cc
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r4, r0, #0x0
 	bl		sub_08057370
 	add		r1, r0, #0x0

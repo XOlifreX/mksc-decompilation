@@ -3,157 +3,6 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08060e48
-sub_08060e48:
-	add		r0, #0x1c
-	bx		lr
-	thumb_func_end sub_08060e48
-
-	thumb_func_start sub_08060e4c
-sub_08060e4c:
-	mov		r1, #0x0
-	strb	r1, [r0, #0x1c]
-	bx		lr
-
-.incbin "base.gba", 0x60E52, 0x1A
-	thumb_func_end sub_08060e4c
-
-	thumb_func_start sub_08060e6c
-sub_08060e6c:
-	add		r2, r0, #0x0
-	add		r2, #0x1c
-	mov		r3, #0x10
-_08060e72:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	add		r1, #0x1
-	add		r2, #0x1
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08060e72
-	bx		lr
-
-.align 2, 0
-.pool
-	thumb_func_end sub_08060e6c
-
-	thumb_func_start sub_08060e84
-sub_08060e84:
-	add		r0, #0x4a
-	bx		lr
-
-.incbin "base.gba", 0x60E88, 0x1C
-	thumb_func_end sub_08060e84
-
-	thumb_func_start sub_08060ea4
-sub_08060ea4:
-	add		r0, #0x4a
-	mov		r2, #0xf
-	mov		r1, #0x7
-_08060eaa:
-	strb	r2, [r0, #0x0]
-	add		r0, #0x1
-	sub		r1, #0x1
-	cmp		r1, #0x0
-	bge		_08060eaa
-	bx		lr
-
-.incbin "base.gba", 0x60EB6, 0x32
-	thumb_func_end sub_08060ea4
-
-	thumb_func_start sub_08060ee8
-sub_08060ee8:
-	add		r0, #0x3e
-	bx		lr
-
-.incbin "base.gba", 0x60EEC, 0x10
-	thumb_func_end sub_08060ee8
-
-	thumb_func_start sub_08060efc
-sub_08060efc:
-	add		r0, #0x3e
-	mov		r2, #0xf
-	mov		r1, #0xb
-_08060f02:
-	strb	r2, [r0, #0x0]
-	add		r0, #0x1
-	sub		r1, #0x1
-	cmp		r1, #0x0
-	bge		_08060f02
-	bx		lr
-
-.incbin "base.gba", 0x60F0E, 0x32
-	thumb_func_end sub_08060efc
-
-	thumb_func_start sub_08060f40
-sub_08060f40:
-	bx		lr
-
-.align 2, 0
-.pool
-	thumb_func_end sub_08060f40
-
-	thumb_func_start sub_08060f44
-sub_08060f44:
-	add		r1, r0, #0x0
-	mov		r2, #0x0
-_08060f48:
-	ldrb	r0, [r1, #0x0]
-	add		r1, #0x1
-	cmp		r0, #0x0
-	beq		_08060f54
-	mov		r0, #0x1
-	b		_08060f5c
-_08060f54:
-	add		r2, #0x1
-	cmp		r2, #0xf
-	ble		_08060f48
-	mov		r0, #0x0
-_08060f5c:
-	bx		lr
-
-.align 2, 0
-.pool
-	thumb_func_end sub_08060f44
-
-	thumb_func_start sub_08060f60
-sub_08060f60:
-	mov		r2, #0x0
-	mov		r1, #0xf
-_08060f64:
-	strb	r2, [r0, #0x0]
-	add		r0, #0x1
-	sub		r1, #0x1
-	cmp		r1, #0x0
-	bge		_08060f64
-	bx		lr
-	thumb_func_end sub_08060f60
-
-	thumb_func_start sub_08060f70
-sub_08060f70:
-	push	{ r4, lr }
-	add		r2, r0, #0x0
-	mov		r1, #0x0
-	ldr		r4, _08060f90
-	mov		r3, #0x0
-_08060f7a:
-	strb	r3, [r0, #0x0]
-	add		r0, #0x1
-	add		r1, #0x1
-	cmp		r1, r4
-	bls		_08060f7a
-	mov		r0, #0x0
-	strb	r0, [r2, #0x0]
-	pop		{ r4 }
-	pop		{ r0 }
-	bx		r0
-
-.align 2, 0
-.pool
-
-_08060f90:	.4byte 0x00000363
-	thumb_func_end sub_08060f70
-
 	thumb_func_start sub_08060f94
 sub_08060f94:
 	push	{ r4, r5, r6, r7, lr }
@@ -2917,7 +2766,7 @@ sub_08062310:
 	bl		sub_08060bf4
 	ldr		r1, _0806238c
 	mov		r10, r1
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	add		r4, sp, #0x3c
@@ -3519,7 +3368,7 @@ sub_08062828:
 	ldmia	r1!, { r0, r3, r7 }
 	stmia	r2!, { r0, r3, r7 }
 	mov		r0, r9
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	mov		r3, #0x10
@@ -3789,7 +3638,7 @@ sub_08062a80:
 	bl		sub_08060bf4
 	ldr		r1, _08062ae8
 	mov		r9, r1
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r9
 	add		r4, sp, #0x34
@@ -3994,7 +3843,7 @@ sub_08062c3c:
 	mov		r10, r0
 	bl		sub_08060bf4
 	ldr		r5, _08062ca8
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	add		r1, r5, #0x0
 	add		r6, sp, #0x30
@@ -4165,7 +4014,7 @@ sub_08062db0:
 	mov		r10, r0
 	bl		sub_08060bf4
 	ldr		r5, _08062e18
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	add		r1, r5, #0x0
 	add		r6, sp, #0x30
@@ -4329,7 +4178,7 @@ sub_08062f14:
 	bl		sub_08060bf4
 	ldr		r1, _08062f88
 	mov		r10, r1
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	add		r5, sp, #0x3c
@@ -4525,7 +4374,7 @@ sub_080630b0:
 	bl		sub_08060bf4
 	ldr		r1, _08063208
 	mov		r9, r1
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r9
 	add		r4, sp, #0x3c
@@ -4880,7 +4729,7 @@ sub_080633c0:
 	mov		r9, r1
 	sub		r1, #0x1
 	mov		r8, r1
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	add		r1, r7, #0x0
 	add		r6, sp, #0x28
@@ -5030,7 +4879,7 @@ sub_08063500:
 	ldr		r1, _0806356c
 	mov		r8, r1
 	ldr		r7, _08063570
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r8
 	add		r6, sp, #0x30
@@ -5467,7 +5316,7 @@ sub_080638b0:
 	mov		r9, r2
 	ldr		r1, _08063908
 	mov		r10, r1
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r9
 	mov		r3, #0x10
@@ -5830,7 +5679,7 @@ sub_08063bd0:
 	ldr		r1, [r2, #0x14]
 	add		r7, r1, #0x0
 	add		r7, #0x14
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	add		r5, sp, #0x3c
@@ -6208,7 +6057,7 @@ sub_08063f1c:
 	ldr		r1, [r2, #0x14]
 	add		r1, #0x14
 	str		r1, [sp, #0xA4]
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r2, r0, #0x0
 	ldr		r1, _08063fc8
 	add		r4, sp, #0x3c
@@ -7437,7 +7286,7 @@ sub_08064a94:
 	ldr		r0, _08064ae8
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r5, r0, #0x0
 	mov		r7, #0x0
 	mov		r0, #0x14
@@ -9107,7 +8956,7 @@ sub_080656b0:
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
 	mov		r8, r0
-	bl		sub_08060e48
+	bl		getMgbUnkString5FromMGBStruct
 	add		r3, r0, #0x0
 	mov		r2, #0x0
 _080656d2:
@@ -9185,7 +9034,7 @@ _080656d2:
 	beq		_08065788
 	mov		r0, r8
 	add		r1, r6, #0x0
-	bl		sub_08060e6c
+	bl		setMgbUnkString5
 _08065788:
 	add		r0, r4, #0x0
 	add		sp, #0x14
@@ -9223,7 +9072,7 @@ sub_080657b0:
 	bl		_MGBLoadPassword
 	add		r0, r4, #0x0
 	mov		r1, sp
-	bl		sub_08060e6c
+	bl		setMgbUnkString5
 	mov		r1, #0x1
 _080657de:
 	mov		r0, sp
@@ -9819,7 +9668,7 @@ _08065cd0:
 	mov		r0, #0x0
 	bl		sub_080602f0
 	mov		r0, r10
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0x10
 	pop		{ r3, r4, r5 }
@@ -10021,7 +9870,7 @@ _08065e7c:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	mov		r0, r9
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0xc
 	pop		{ r3, r4 }
@@ -10205,7 +10054,7 @@ _08066014:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	mov		r0, r8
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0xc
 	pop		{ r3 }
@@ -10531,7 +10380,7 @@ _08066306:
 	mov		r0, #0x0
 	bl		sub_080602f0
 	ldr		r0, [sp, #0x10]
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x1
 	add		sp, #0x18
 	pop		{ r3, r4, r5 }
@@ -15626,7 +15475,7 @@ _08069c3a:
 	cmp		r3, r4
 	bls		_08069c3a
 	add		r0, r5, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	add		r1, sp, #0xc
 	mov		r0, #0x0
 	strb	r0, [r1, #0x0]

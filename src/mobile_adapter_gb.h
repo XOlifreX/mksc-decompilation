@@ -8,6 +8,7 @@
 #define MGB_UNKSTRING2_SIZE 12
 #define MGB_UNKSTRING3_SIZE 8
 #define MGB_UNKSTRING4_SIZE 128
+#define MGB_UNKSTRING5_SIZE 17
 #define MGB_UNKVALUE1_SIZE 1
 
 #define MGB_unk_val1 0xAE6
@@ -15,10 +16,10 @@
 
 
 typedef struct MGBUserInfo {
-    char unkn1[16];
+    char unkn[16];
     char Username[MGB_USERNAME_SIZE];
-    char unk2[8];
-    char unk3[16];
+    char unk2[7];
+    char unkString5[MGB_UNKSTRING5_SIZE];
     char unkValue1[MGB_UNKVALUE1_SIZE];
     char unkString1[MGB_UNKSTRING1_SIZE]; // All FF
     char unkString2[MGB_UNKSTRING2_SIZE];

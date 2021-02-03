@@ -33,7 +33,7 @@ _0806a126:
 	cmp		r3, r4
 	bls		_0806a126
 	add		r0, r5, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x0
 	str		r0, [sp, #0xC]
 	ldr		r0, _0806a15c
@@ -802,7 +802,7 @@ sub_0806a78c:
 	cmp		r0, #0x0
 	bne		_0806a7b0
 	add		r0, r4, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	b		_0806a840
 
 _0806a7ac:	.4byte 0x0203EBE0
@@ -1436,7 +1436,7 @@ _0806ad00:
 	bl		sub_080602f0
 _0806ad0c:
 	mov		r0, r8
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	ldr		r0, _0806ad34
 	ldr		r2, _0806ad38
 	str		r0, [r2, #0x0]
@@ -4656,7 +4656,7 @@ _0806c7a8:	.4byte 0x08111628
 
 _0806c7ac:
 	add		r0, r4, #0x0
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 _0806c7b2:
 	ldr		r0, _0806c7cc
 	ldr		r2, _0806c7d0
@@ -5089,7 +5089,7 @@ _0806cb38:
 	orr		r0, r1
 	str		r0, [r2, #0x0]
 	mov		r0, r9
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x0
 	bl		sub_080281d4
 	mov		r0, #0x0
@@ -5154,7 +5154,7 @@ _0806cc04:	.4byte RunGameLogic_CallBack
 
 _0806cc08:
 	mov		r0, r9
-	bl		sub_08060e4c
+	bl		clearMgbUnkString5
 	mov		r0, #0x0
 	bl		sub_080281d4
 	mov		r0, #0x0

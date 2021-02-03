@@ -285,7 +285,7 @@ char* getMgbUnkValue1FromMGBStruct(MGBUserInfo* MGBUserInfo)
 /*
 ** Don't know what 0x2f does. 
 */
-// _08060e20
+// 08060e20
 bool checkMgbUnkValue1OverLimit(MGBUserInfo* MGBUserInfo)
 {
     char toCheck = MGBUserInfo->unkValue1[0];
@@ -296,21 +296,216 @@ bool checkMgbUnkValue1OverLimit(MGBUserInfo* MGBUserInfo)
 /*
 ** Don't know what 0x2f does. 
 */
-// _08060e30
+// 08060e30
 bool setMgbUnkValue1ToLimit(MGBUserInfo* MGBUserInfo)
 {
     MGBUserInfo->unkValue1[0] = 0x2f;
 }
 
-// _08060e38
+// 08060e38
 bool copyMgbUnkValue1ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer)
 {
     *buffer = MGBUserInfo->unkValue1[0];
 }
 
-// _08060e40
+// 08060e40
 bool setMgbUnkValue1ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer)
 {
     char* location = MGBUserInfo->unkValue1;
     *location = *buffer;
+}
+
+// 08060e48
+char* getMgbUnkString5FromMGBStruct(MGBUserInfo* MGBUserInfo)
+{
+    return MGBUserInfo->unkString5;
+}
+
+// 08060e4c
+char* clearMgbUnkString5(MGBUserInfo* MGBUserInfo)
+{
+    *MGBUserInfo->unkString5 = '\0';
+}
+
+// 08060e54
+void copyMgbUnkString5ToBuffer(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString5;
+    int i;
+    
+    for (i = (MGB_UNKSTRING5_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060e6c
+void setMgbUnkString5(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString5;
+    int i;
+    
+    for (i = (MGB_UNKSTRING5_SIZE - 1); i >= 0; i--)
+        *SomeString++ = *buffer++;
+}
+
+// 08060e84
+char* getMgbUnkString3FromMGBStruct_2(MGBUserInfo* MGBUserInfo)
+{
+    return MGBUserInfo->unkString3;
+}
+
+/*
+** Not sure what '\x0f' is used for... Illegal character?
+*/
+// 08060e88
+bool checkMgbUnkString3IsValid(MGBUserInfo* MGBUserInfo) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    char temp;
+    int i;
+
+    for (i = 0; i < MGB_UNKSTRING3_SIZE; i++) {
+        temp = *SomeString++;
+
+        if (temp == '\x0f')
+            return false;
+    }
+
+    return true; 
+}
+
+/*
+** Not sure what '\x0f' is used for... Illegal character?
+*/
+// 08060ea4
+void clearMgbUnkString3_2(MGBUserInfo* MGBUserInfo) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    char nullByte = '\x0f';
+    int i;
+
+    for (i = (MGB_UNKSTRING3_SIZE - 1); i >= 0; i--) {
+        *SomeString++ = nullByte;
+    } 
+}
+
+// 08060eb8
+void copyMgbUnkString3ToBuffer_2(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    int i;
+    
+    for (i = (MGB_UNKSTRING3_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060ed0
+void copyMgbUnkString3ToBuffer_3(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString3;
+    int i;
+    
+    for (i = (MGB_UNKSTRING3_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060ee8
+char* getMgbUnkString2FromMGBStruct_2(MGBUserInfo* MGBUserInfo)
+{
+    return MGBUserInfo->unkString2;
+}
+
+// 08060ee8
+bool checkMgbUnkString2IsValid(MGBUserInfo* MGBUserInfo)
+{
+    char toCheck = MGBUserInfo->unkString2[0];
+
+    if (toCheck == '\x0f')
+        return false;
+    
+    return true;
+}
+
+// 08060efc
+void fillMgbUnkString2(MGBUserInfo* MGBUserInfo) 
+{
+    char* SomeString = MGBUserInfo->unkString2;
+    char nullByte = '\x0f';
+    int i;
+
+    for (i = (MGB_UNKSTRING2_SIZE - 1); i >= 0; i--) {
+        *SomeString++ = nullByte;
+    } 
+}
+
+// 08060f10
+void copyMgbUnkString2ToBuffer_2(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString2;
+    int i;
+    
+    for (i = (MGB_UNKSTRING2_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060f28
+void copyMgbUnkString2ToBuffer_3(MGBUserInfo* MGBUserInfo, char* buffer) 
+{
+    char* SomeString = MGBUserInfo->unkString2;
+    int i;
+    
+    for (i = (MGB_UNKSTRING2_SIZE - 1); i >= 0; i--)
+        *buffer++ = *SomeString++;
+}
+
+// 08060f40
+void sub_08060f40() {
+  return;
+}
+
+/*
+** NOT SURE IF CORRECTLY DOCUMENTED
+*/
+// 08060f44
+bool checkStringIsNotEmpty(char* buffer) 
+{
+    char temp;
+    int i;
+
+    for (i = 0; i < 16; i++) {
+        temp = *buffer++;
+
+        if (temp != '\0')
+            return true;
+    }
+
+    return false; 
+}
+
+// 08060f60
+void clearString(char* buffer) 
+{
+    char nullByte = '\0';
+    int i;
+
+    for (i = 0xf; i >= 0; i--) {
+        *buffer++ = nullByte;
+    } 
+}
+
+/*
+** NOT SURE IF IT'S SUPPOSED TO BE FOR THIS TYPE OF STRUCT!!!
+*/
+// 08060f70
+void clearMGBUserInfoObject(MGBUserInfo* MGBUserInfo) 
+{
+    char* temp = (char*)MGBUserInfo;
+    int i = 0;
+    int size = 0x363;
+    char nullByte = '\0';
+    
+    do {
+        *temp++ = nullByte;
+    } while (++i <= size);
+  
+  *((char*)MGBUserInfo) = 0;
 }

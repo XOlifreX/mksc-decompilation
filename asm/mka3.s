@@ -76557,7 +76557,7 @@ _08057060:
 	mov		r1, #0xee
 	lsl		r1, r1, #0x3
 	add		r0, r7, r1
-	bl		sub_08060f70
+	bl		clearMGBUserInfoObject
 	bl		sub_08057e34
 	ldr		r2, _080570f8
 	add		r0, r7, r2
