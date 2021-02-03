@@ -2766,7 +2766,7 @@ sub_08062310:
 	bl		sub_08060bf4
 	ldr		r1, _0806238c
 	mov		r10, r1
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	add		r4, sp, #0x3c
@@ -3368,7 +3368,7 @@ sub_08062828:
 	ldmia	r1!, { r0, r3, r7 }
 	stmia	r2!, { r0, r3, r7 }
 	mov		r0, r9
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	mov		r3, #0x10
@@ -3638,7 +3638,7 @@ sub_08062a80:
 	bl		sub_08060bf4
 	ldr		r1, _08062ae8
 	mov		r9, r1
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r9
 	add		r4, sp, #0x34
@@ -3843,7 +3843,7 @@ sub_08062c3c:
 	mov		r10, r0
 	bl		sub_08060bf4
 	ldr		r5, _08062ca8
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	add		r1, r5, #0x0
 	add		r6, sp, #0x30
@@ -4014,7 +4014,7 @@ sub_08062db0:
 	mov		r10, r0
 	bl		sub_08060bf4
 	ldr		r5, _08062e18
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	add		r1, r5, #0x0
 	add		r6, sp, #0x30
@@ -4178,7 +4178,7 @@ sub_08062f14:
 	bl		sub_08060bf4
 	ldr		r1, _08062f88
 	mov		r10, r1
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	add		r5, sp, #0x3c
@@ -4374,7 +4374,7 @@ sub_080630b0:
 	bl		sub_08060bf4
 	ldr		r1, _08063208
 	mov		r9, r1
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r9
 	add		r4, sp, #0x3c
@@ -4729,7 +4729,7 @@ sub_080633c0:
 	mov		r9, r1
 	sub		r1, #0x1
 	mov		r8, r1
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	add		r1, r7, #0x0
 	add		r6, sp, #0x28
@@ -4879,7 +4879,7 @@ sub_08063500:
 	ldr		r1, _0806356c
 	mov		r8, r1
 	ldr		r7, _08063570
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r8
 	add		r6, sp, #0x30
@@ -5316,7 +5316,7 @@ sub_080638b0:
 	mov		r9, r2
 	ldr		r1, _08063908
 	mov		r10, r1
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r9
 	mov		r3, #0x10
@@ -5679,7 +5679,7 @@ sub_08063bd0:
 	ldr		r1, [r2, #0x14]
 	add		r7, r1, #0x0
 	add		r7, #0x14
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	mov		r1, r10
 	add		r5, sp, #0x3c
@@ -6057,7 +6057,7 @@ sub_08063f1c:
 	ldr		r1, [r2, #0x14]
 	add		r1, #0x14
 	str		r1, [sp, #0xA4]
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r2, r0, #0x0
 	ldr		r1, _08063fc8
 	add		r4, sp, #0x3c
@@ -7022,11 +7022,11 @@ sub_0806483c:
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
 	add		r4, r0, #0x0
-	bl		getUsernameFromMGBStruct
+	bl		getMgbNicknameFromMGBStruct
 	add		r5, r0, #0x0
 	ldr		r1, _080648d0
 	add		r0, r4, #0x0
-	bl		setUsername
+	bl		setMgbNickname
 	add		r0, r5, #0x0
 	bl		sub_08057980
 	bl		sub_08057428
@@ -7102,7 +7102,7 @@ sub_080648e4:
 	bl		sub_08060bf4
 	add		r7, r0, #0x0
 	add		r0, r6, #0x0
-	bl		_MGBLoadUsername
+	bl		_MGBLoadMgbNickname
 	mov		r0, #0x0
 	bl		sub_080281d4
 	mov		r0, #0x1
@@ -7162,7 +7162,7 @@ sub_080648e4:
 	bl		sub_08057980
 	add		r0, r7, #0x0
 	add		r1, r6, #0x0
-	bl		setUsername
+	bl		setMgbNickname
 _08064992:
 	add		r0, r4, #0x0
 	add		sp, #0x10
@@ -7286,7 +7286,7 @@ sub_08064a94:
 	ldr		r0, _08064ae8
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r5, r0, #0x0
 	mov		r7, #0x0
 	mov		r0, #0x14
@@ -8956,7 +8956,7 @@ sub_080656b0:
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
 	mov		r8, r0
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r3, r0, #0x0
 	mov		r2, #0x0
 _080656d2:
@@ -9034,7 +9034,7 @@ _080656d2:
 	beq		_08065788
 	mov		r0, r8
 	add		r1, r6, #0x0
-	bl		setMgbUnkString5
+	bl		setMgbPassword
 _08065788:
 	add		r0, r4, #0x0
 	add		sp, #0x14
@@ -9072,7 +9072,7 @@ sub_080657b0:
 	bl		_MGBLoadPassword
 	add		r0, r4, #0x0
 	mov		r1, sp
-	bl		setMgbUnkString5
+	bl		setMgbPassword
 	mov		r1, #0x1
 _080657de:
 	mov		r0, sp
@@ -9668,7 +9668,7 @@ _08065cd0:
 	mov		r0, #0x0
 	bl		sub_080602f0
 	mov		r0, r10
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0x10
 	pop		{ r3, r4, r5 }
@@ -9870,7 +9870,7 @@ _08065e7c:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	mov		r0, r9
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0xc
 	pop		{ r3, r4 }
@@ -10054,7 +10054,7 @@ _08066014:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	mov		r0, r8
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0xc
 	pop		{ r3 }
@@ -10380,7 +10380,7 @@ _08066306:
 	mov		r0, #0x0
 	bl		sub_080602f0
 	ldr		r0, [sp, #0x10]
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0x18
 	pop		{ r3, r4, r5 }
@@ -15475,7 +15475,7 @@ _08069c3a:
 	cmp		r3, r4
 	bls		_08069c3a
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	add		r1, sp, #0xc
 	mov		r0, #0x0
 	strb	r0, [r1, #0x0]

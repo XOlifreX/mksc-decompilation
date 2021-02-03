@@ -1107,17 +1107,17 @@ Linker script and memory map
                 0x08057930                sub_08057930
  asm/mobile_adapter_gb0.o(.text)
  .text          0x08057950     0x92a4 asm/mobile_adapter_gb0.o
-                0x08057950                _MGBLoadUsername
+                0x08057950                _MGBLoadMgbNickname
                 0x08057980                sub_08057980
                 0x080579a0                _MGBLoadPassword
                 0x080579d0                sub_080579d0
                 0x080579f4                sub_080579f4
                 0x08057a24                sub_08057a24
-                0x08057a44                sub_08057a44
-                0x08057a9c                sub_08057a9c
-                0x08057af4                sub_08057af4
-                0x08057b28                sub_08057b28
-                0x08057b80                sub_08057b80
+                0x08057a44                _getMgbAddress
+                0x08057a9c                _getMgbZipcode
+                0x08057af4                _getMgbPrefectureId
+                0x08057b28                _getMgbPhoneNumber
+                0x08057b80                _getMgbRealName
                 0x08057bd8                sub_08057bd8
                 0x08057c14                sub_08057c14
                 0x08057c3c                sub_08057c3c
@@ -1266,48 +1266,48 @@ Linker script and memory map
                 0x08060bf4                sub_08060bf4
                 0x08060c00                sub_08060c00
                 0x08060c5c                sub_08060c5c
-                0x08060c60                getUsernameFromMGBStruct
-                0x08060c64                checkUsernameExists
-                0x08060c80                clearUsername
-                0x08060c94                CopyUsernameToBuffer
-                0x08060cac                setUsername
-                0x08060cc4                getMgbUnkString1FromMGBStruct
-                0x08060cc8                checkMgbUnkString1Exists
-                0x08060ce4                clearMgbUnkString1
-                0x08060cf8                copyMgbUnkString1ToBuffer
-                0x08060d10                setMgbUnkString1
-                0x08060d28                getMgbUnkString4FromMGBStruct
-                0x08060d2c                checkMgbUnkString4Exists
-                0x08060d48                clearMgbUnkString4
-                0x08060d5c                copyMgbUnkString4ToBuffer
-                0x08060d74                setMgbUnkString4
-                0x08060d8c                getMgbUnkString2FromMGBStruct
-                0x08060d90                clearMgbUnkString2
-                0x08060da4                copyMgbUnkString2ToBuffer
-                0x08060dbc                setMgbUnkString2
-                0x08060dd4                getMgbUnkString3FromMGBStruct
-                0x08060dd8                clearMgbUnkString3
-                0x08060dec                copyMgbUnkString3ToBuffer
-                0x08060e04                setMgbUnkString3
-                0x08060e1c                getMgbUnkValue1FromMGBStruct
-                0x08060e20                checkMgbUnkValue1OverLimit
-                0x08060e30                setMgbUnkValue1ToLimit
-                0x08060e38                copyMgbUnkValue1ToBuffer
-                0x08060e40                setMgbUnkValue1ToBuffer
-                0x08060e48                getMgbUnkString5FromMGBStruct
-                0x08060e4c                clearMgbUnkString5
-                0x08060e54                copyMgbUnkString5ToBuffer
-                0x08060e6c                setMgbUnkString5
-                0x08060e84                getMgbUnkString3FromMGBStruct_2
-                0x08060e88                checkMgbUnkString3IsValid
-                0x08060ea4                clearMgbUnkString3_2
-                0x08060eb8                copyMgbUnkString3ToBuffer_2
-                0x08060ed0                copyMgbUnkString3ToBuffer_3
-                0x08060ee8                getMgbUnkString2FromMGBStruct_2
-                0x08060eec                checkMgbUnkString2IsValid
-                0x08060efc                fillMgbUnkString2
-                0x08060f10                copyMgbUnkString2ToBuffer_2
-                0x08060f28                copyMgbUnkString2ToBuffer_3
+                0x08060c60                getMgbNicknameFromMGBStruct
+                0x08060c64                checkMgbNicknameExists
+                0x08060c80                clearMgbNickname
+                0x08060c94                copyMgbNicknameToBuffer
+                0x08060cac                setMgbNickname
+                0x08060cc4                getMgbRealNameFromMGBStruct
+                0x08060cc8                checkMgbRealNameExists
+                0x08060ce4                clearMgbRealName
+                0x08060cf8                copyMgbRealNameToBuffer
+                0x08060d10                setMgbRealName
+                0x08060d28                getMgbAddressFromMGBStruct
+                0x08060d2c                checkMgbAddressExists
+                0x08060d48                clearMgbAddress
+                0x08060d5c                copyMgbAddressToBuffer
+                0x08060d74                setMgbAddress
+                0x08060d8c                getPhoneNumberFromMGBStruct
+                0x08060d90                clearMgbPhoneNumber
+                0x08060da4                copyMgbPhoneNumberToBuffer
+                0x08060dbc                setMgbPhoneNumber
+                0x08060dd4                getMgbZipcodeFromMGBStruct
+                0x08060dd8                clearMgbZipcode
+                0x08060dec                copyMgbZipcodeToBuffer
+                0x08060e04                setMgbZipcode
+                0x08060e1c                getMgbPrefectureIdFromMGBStruct
+                0x08060e20                checkMgbPrefectureIdIsValid
+                0x08060e30                invalidateMgbPrefectureId
+                0x08060e38                copyMgbPrefectureIdToBuffer
+                0x08060e40                setMgbPrefectureIdToBuffer
+                0x08060e48                getMgbPasswordFromMGBStruct
+                0x08060e4c                clearMgbPassword
+                0x08060e54                copyMgbPasswordToBuffer
+                0x08060e6c                setMgbPassword
+                0x08060e84                getMgbZipcodeFromMGBStruct_2
+                0x08060e88                checkMgbZipcodeIsValid
+                0x08060ea4                invalidateMgbZipcode
+                0x08060eb8                copyMgbZipcodeToBuffer_2
+                0x08060ed0                copyMgbZipcodeToBuffer_3
+                0x08060ee8                getMgbPhoneNumberFromMGBStruct_2
+                0x08060eec                checkMgbPhoneNumberIsValid
+                0x08060efc                invalidateMgbPhoneNumber
+                0x08060f10                copyMgbPhoneNumberToBuffer_2
+                0x08060f28                copyMgbPhoneNumberToBuffer_3
                 0x08060f40                sub_08060f40
                 0x08060f44                checkStringIsNotEmpty
                 0x08060f60                clearString

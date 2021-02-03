@@ -2,8 +2,8 @@
 	.include "ram.s"
 	.include "macros.s"
 
-	thumb_func_start _MGBLoadUsername
-_MGBLoadUsername: @ 08057950
+	thumb_func_start _MGBLoadMgbNickname
+_MGBLoadMgbNickname: @ 08057950
 	push	{ r4, lr }
 	add		r1, r0, #0x0
 	ldr		r0, _0805797c
@@ -30,7 +30,7 @@ _0805796e:
 	bx		r1
 
 _0805797c:	.4byte 0x02032B80
-	thumb_func_end _MGBLoadUsername
+	thumb_func_end _MGBLoadMgbNickname
 
 	thumb_func_start sub_08057980
 sub_08057980:
@@ -164,8 +164,8 @@ _08057a2e:
 _08057a40:	.4byte 0x02032B80
 	thumb_func_end sub_08057a24
 
-	thumb_func_start sub_08057a44
-sub_08057a44:
+	thumb_func_start _getMgbAddress
+_getMgbAddress: @ 08057a44
 	push	{ r4, lr }
 	ldr		r1, _08057a70
 	ldr		r2, _08057a74
@@ -195,10 +195,10 @@ _08057a70:	.4byte 0x02032B80
 _08057a74:	.4byte 0x00000AF5
 
 .incbin "base.gba", 0x57A78, 0x24
-	thumb_func_end sub_08057a44
+	thumb_func_end _getMgbAddress
 
-	thumb_func_start sub_08057a9c
-sub_08057a9c:
+	thumb_func_start _getMgbZipcode
+_getMgbZipcode: @ 08057a9c
 	push	{ r4, lr }
 	ldr		r1, _08057ac8
 	ldr		r2, _08057acc
@@ -228,10 +228,10 @@ _08057ac8:	.4byte 0x02032B80
 _08057acc:	.4byte 0x00000B75
 
 .incbin "base.gba", 0x57AD0, 0x24
-	thumb_func_end sub_08057a9c
+	thumb_func_end _getMgbZipcode
 
-	thumb_func_start sub_08057af4
-sub_08057af4:
+	thumb_func_start _getMgbPrefectureId
+_getMgbPrefectureId: @ 08057af4
 	ldr		r1, _08057b0c
 	ldr		r2, _08057b10
 	add		r1, r1, r2
@@ -250,10 +250,10 @@ _08057b0c:	.4byte 0x02032B80
 _08057b10:	.4byte 0x00000AE6
 
 .incbin "base.gba", 0x57B14, 0x14
-	thumb_func_end sub_08057af4
+	thumb_func_end _getMgbPrefectureId
 
-	thumb_func_start sub_08057b28
-sub_08057b28:
+	thumb_func_start _getMgbPhoneNumber
+_getMgbPhoneNumber: @ 08057b28
 	push	{ r4, lr }
 	ldr		r1, _08057b54
 	ldr		r2, _08057b58
@@ -283,10 +283,10 @@ _08057b54:	.4byte 0x02032B80
 _08057b58:	.4byte 0x00000B8D
 
 .incbin "base.gba", 0x57B5C, 0x24
-	thumb_func_end sub_08057b28
+	thumb_func_end _getMgbPhoneNumber
 
-	thumb_func_start sub_08057b80
-sub_08057b80:
+	thumb_func_start _getMgbRealName
+_getMgbRealName: @ 08057b80
 	push	{ r4, lr }
 	ldr		r1, _08057bac
 	ldr		r2, _08057bb0
@@ -316,7 +316,7 @@ _08057bac:	.4byte 0x02032B80
 _08057bb0:	.4byte 0x00000B7D
 
 .incbin "base.gba", 0x57BB4, 0x24
-	thumb_func_end sub_08057b80
+	thumb_func_end _getMgbRealName
 
 	thumb_func_start sub_08057bd8
 sub_08057bd8:
@@ -3129,14 +3129,14 @@ sub_08058fdc:
 	strb	r0, [r6, #0x17]
 	ldr		r1, _0805908c
 	add		r0, r7, r1
-	bl		_MGBLoadUsername
+	bl		_MGBLoadMgbNickname
 	mov		r0, #0x0
 	bl		sub_08057378
 	add		r5, r0, #0x0
 	add		r4, r5, #0x0
 	add		r4, #0x8
 	add		r0, #0xc
-	bl		_MGBLoadUsername
+	bl		_MGBLoadMgbNickname
 	ldrb	r0, [r5, #0x8]
 	strb	r0, [r6, #0x11]
 	ldrh	r1, [r4, #0x2]
@@ -3162,17 +3162,17 @@ _08059046:
 	beq		_080590a0
 	ldr		r1, _08059094
 	add		r0, r6, r1
-	bl		sub_08057b80
+	bl		_getMgbRealName
 	ldr		r1, _08059098
 	add		r0, r6, r1
-	bl		sub_08057b28
+	bl		_getMgbPhoneNumber
 	ldr		r1, _0805909c
 	add		r0, r6, r1
-	bl		sub_08057a9c
+	bl		_getMgbZipcode
 	mov		r1, #0x82
 	lsl		r1, r1, #0x5
 	add		r0, r6, r1
-	bl		sub_08057a44
+	bl		_getMgbAddress
 	b		_080590d2
 
 .align 2, 0
@@ -5918,7 +5918,7 @@ _0805a41c:
 	strb	r4, [r0, #0x0]
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	ldr		r1, _0805a588
 	add		r0, r7, r1
 	str		r5, [r0, #0x0]
@@ -6380,25 +6380,25 @@ _TryLoadMGBMainMenu: @ 0805a930
 	bl		sub_08060f40
 	add		r4, r0, #0x0
 	add		r0, r5, #0x0
-	bl		getUsernameFromMGBStruct
+	bl		getMgbNicknameFromMGBStruct
 	mov		r8, r0
 	add		r0, r5, #0x0
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	mov		r10, r0
 	add		r0, r5, #0x0
-	bl		checkMgbUnkString2IsValid
+	bl		getMgbPhoneNumberFromMGBStruct_2
 	str		r0, [sp, #0x40]
 	add		r0, r5, #0x0
-	bl		getMgbUnkString3FromMGBStruct_2
+	bl		getMgbZipcodeFromMGBStruct_2
 	str		r0, [sp, #0x44]
 	add		r0, r5, #0x0
-	bl		getMgbUnkValue1FromMGBStruct
+	bl		getMgbPrefectureIdFromMGBStruct
 	str		r0, [sp, #0x48]
 	add		r0, r5, #0x0
-	bl		getMgbUnkString4FromMGBStruct
+	bl		getMgbAddressFromMGBStruct
 	str		r0, [sp, #0x4C]
 	add		r0, r5, #0x0
-	bl		getMgbUnkString1FromMGBStruct
+	bl		getMgbRealNameFromMGBStruct
 	str		r0, [sp, #0x50]
 	bl		sub_08057370
 	add		r7, r0, #0x0
@@ -6412,13 +6412,13 @@ _TryLoadMGBMainMenu: @ 0805a930
 	bl		clearString
 _0805a9a0:
 	mov		r0, r8
-	bl		_MGBLoadUsername
+	bl		_MGBLoadMgbNickname
 	cmp		r0, #0x0
 	bne		_0805a9b4
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		clearUsername
+	bl		clearMgbNickname
 _0805a9b4:
 	ldr		r1, _0805a9d8
 	add		r0, r7, r1
@@ -6432,7 +6432,7 @@ _0805a9b4:
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	b		_0805a9e2
 
 _0805a9d4:	.4byte 0x0203EBE0
@@ -6440,58 +6440,58 @@ _0805a9d8:	.4byte 0x00000AE5
 
 _0805a9dc:
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 _0805a9e2:
 	ldr		r0, [sp, #0x40]
-	bl		sub_08057b28
+	bl		_getMgbPhoneNumber
 	cmp		r0, #0x0
 	bne		_0805a9f6
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		fillMgbUnkString2
+	bl		invalidateMgbPhoneNumber
 _0805a9f6:
 	ldr		r0, [sp, #0x44]
-	bl		sub_08057a9c
+	bl		_getMgbZipcode
 	cmp		r0, #0x0
 	bne		_0805aa0a
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString3_2
+	bl		invalidateMgbZipcode
 _0805aa0a:
 	ldr		r0, [sp, #0x48]
-	bl		sub_08057af4
+	bl		_getMgbPrefectureId
 	cmp		r0, #0x0
 	bne		_0805aa1e
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		setMgbUnkValue1ToLimit
+	bl		invalidateMgbPrefectureId
 _0805aa1e:
 	ldr		r0, [sp, #0x4C]
-	bl		sub_08057a44
+	bl		_getMgbAddress
 	cmp		r0, #0x0
 	bne		_0805aa32
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString4
+	bl		clearMgbAddress
 _0805aa32:
 	ldr		r0, [sp, #0x50]
-	bl		sub_08057b80
+	bl		_getMgbRealName
 	cmp		r0, #0x0
 	bne		_0805aa46
 	mov		r0, #0x1
 	orr		r6, r0
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString1
+	bl		clearMgbRealName
 _0805aa46:
-	bl		sub_08059dc8
+	bl		sub_08059dc8 @ Password check or???
 	cmp		r6, #0x0
 	beq		_0805aa78
-	ldr		r0, _0805aa68
-	ldr		r2, _0805aa6c
+	ldr		r0, _0805aa68 @ _LoadMGBRegistrationMenu
+	ldr		r2, _0805aa6c @ RunGameLogic_CallBack
 	str		r0, [r2, #0x0]
 	ldrb	r0, [r2, #0x8]
 	add		r0, #0x1
@@ -6513,7 +6513,7 @@ _0805aa74:	.4byte 0x0203ED50
 
 _0805aa78:
 	add		r0, r5, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	ldr		r1, _0805ab70
 	add		r1, r9
 	mov		r0, #0x1
@@ -7101,7 +7101,7 @@ sub_0805af0c:
 	bl		sub_08060bf4
 	mov		r1, #0xff
 	str		r1, [sp, #0x8]
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	bl		sub_08060298
 	ldr		r4, _0805b044
 	mov		r0, #0x1
@@ -8266,7 +8266,7 @@ sub_0805b7f4:
 	mov		r0, #0xff
 	str		r0, [sp, #0xc]
 	add		r0, r4, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	ldr		r4, _0805b96c
 	mov		r0, #0x1
 	mov		r1, #0x0
@@ -8745,7 +8745,7 @@ _0805bbf6:
 	bge		_0805bbf6
 	mov		r0, r8
 	add		r1, sp, #0xc
-	bl		copyMgbUnkValue1ToBuffer
+	bl		copyMgbPrefectureIdToBuffer
 	add		r0, sp, #0xc
 	ldrb	r0, [r0, #0x0]
 	mov		r1, #0xa
@@ -9034,10 +9034,10 @@ sub_0805be34:
 	add		r0, r4, #0x0
 	bl		sub_08060bf4
 	add		r5, r0, #0x0
-	bl		getUsernameFromMGBStruct
+	bl		getMgbNicknameFromMGBStruct
 	add		r6, r0, #0x0
 	add		r0, r5, #0x0
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r1, r0, #0x0
 	ldr		r0, _0805be6c
 	add		r4, r4, r0
@@ -9083,10 +9083,10 @@ sub_0805be94:
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
 	add		r4, r0, #0x0
-	bl		getUsernameFromMGBStruct
+	bl		getMgbNicknameFromMGBStruct
 	add		r5, r0, #0x0
 	add		r0, r4, #0x0
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r1, r0, #0x0
 	ldrb	r0, [r5, #0x0]
 	cmp		r0, #0x0
@@ -9230,7 +9230,7 @@ _0805bf90:
 	cmp		r0, #0x0
 	beq		_0805c0b4
 	mov		r0, r8
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	ldr		r0, _0805c078
 	bl		sub_080579d0
 	ldr		r0, _0805c07c
@@ -9352,10 +9352,10 @@ sub_0805c0e4:
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
 	add		r4, r0, #0x0
-	bl		getUsernameFromMGBStruct
+	bl		getMgbNicknameFromMGBStruct
 	mov		r9, r0
 	add		r0, r4, #0x0
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r6, r0, #0x0
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -9486,7 +9486,7 @@ _0805c1e2:
 	cmp		r0, #0x0
 	bne		_0805c226
 	add		r0, r4, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	bl		sub_080609b8
 _0805c226:
 	ldr		r0, _0805c248
@@ -9498,7 +9498,7 @@ _0805c226:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	add		r0, r4, #0x0
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	pop		{ r4 }
 	pop		{ r1 }
@@ -9915,7 +9915,7 @@ sub_0805c58c:
 	ldr		r0, [r0, #0x0]
 	mov		r8, r0
 	bl		sub_08060bf4
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x0
 	bl		sub_0805c0e4
 	ldr		r4, _0805c6c0
@@ -10150,7 +10150,7 @@ sub_0805c788:
 	ldr		r7, [r0, #0x0]
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	bl		sub_08060298
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -11672,7 +11672,7 @@ _0805d53e:
 	add		r1, r1, r3
 	add		r4, r0, r1
 	mov		r0, r8
-	bl		_MGBLoadUsername
+	bl		_MGBLoadMgbNickname
 	ldr		r0, [sp, #0x1E8]
 	bl		sub_08057900
 	cmp		r4, #0x0
@@ -12425,7 +12425,7 @@ sub_0805df80:
 	ldr		r7, [r0, #0x0]
 	add		r0, r7, #0x0
 	bl		sub_08060bf4
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	bl		sub_08059dc8
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -13146,7 +13146,7 @@ _0805e5a0:
 	mov		r7, #0x1
 	add		r0, r5, #0x0
 	add		r1, sp, #0x4
-	bl		copyMgbUnkValue1ToBuffer
+	bl		copyMgbPrefectureIdToBuffer
 	b		_0805e5ce
 _0805e5ac:
 	mov		r7, #0x2
@@ -13609,7 +13609,7 @@ _0805e968:
 	and		r1, r2
 	strb	r1, [r0, #0x8]
 	ldr		r0, [sp, #0xC]
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0x14
 	pop		{ r3, r4, r5 }
@@ -13942,7 +13942,7 @@ _0805ec28:
 	and		r1, r2
 	strb	r1, [r0, #0x8]
 	ldr		r0, [sp, #0xC]
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0x14
 	pop		{ r3, r4, r5 }
@@ -14017,7 +14017,7 @@ sub_0805ec5c:
 	and		r0, r1
 	strb	r0, [r2, #0x8]
 	mov		r0, r9
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	mov		r0, #0x1
 	add		sp, #0xc
 	pop		{ r3, r4 }
@@ -14993,7 +14993,7 @@ sub_0805f4e0:
 	ldr		r4, _0805f530
 	add		r0, r5, #0x0
 	bl		sub_08060bf4
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 	b		_0805f536
 
 _0805f524:	.4byte 0x0203EBE0
@@ -15404,7 +15404,7 @@ sub_0805f848:
 	strb	r0, [r2, #0x8]
 	add		r0, r4, #0x0
 	bl		sub_08060bf4
-	bl		clearMgbUnkString5
+	bl		clearMgbPassword
 _0805f898:
 	mov		r0, #0x1
 	pop		{ r4 }
@@ -15678,7 +15678,7 @@ _0805faee:
 	cmp		r6, #0x1
 	bne		_0805fb48
 	add		r0, r4, #0x0
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r5, r0, #0x0
 	bl		sub_08057370
 	add		r4, r0, #0x0
@@ -16630,7 +16630,7 @@ sub_08060298:
 	ldr		r0, _080602cc
 	ldr		r0, [r0, #0x0]
 	bl		sub_08060bf4
-	bl		getMgbUnkString5FromMGBStruct
+	bl		getMgbPasswordFromMGBStruct
 	add		r4, r0, #0x0
 	bl		sub_08057370
 	add		r1, r0, #0x0
