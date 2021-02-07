@@ -4,7 +4,6 @@
 *.sav
 *.o
 *.gba.bak
-*.txt
 *.pal
 *.spr
 asm/*.o

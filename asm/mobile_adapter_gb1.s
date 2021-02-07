@@ -7102,7 +7102,7 @@ sub_080648e4:
 	bl		sub_08060bf4
 	add		r7, r0, #0x0
 	add		r0, r6, #0x0
-	bl		_MGBLoadMgbNickname
+	bl		getMgbNicknameFromSave
 	mov		r0, #0x0
 	bl		sub_080281d4
 	mov		r0, #0x1

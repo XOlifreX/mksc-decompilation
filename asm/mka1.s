@@ -12443,7 +12443,7 @@ _0800cce4:
 	asr		r0, r0, #0x10
 	mov		r9, r0
 	add		r0, sp, #0x4
-	bl		_MGBLoadMgbNickname
+	bl		getMgbNicknameFromSave
 	ldr		r0, _0800ce4c
 	add		r3, sp, #0x4
 	mov		r6, #0x1f

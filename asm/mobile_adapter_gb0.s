@@ -2,36 +2,6 @@
 	.include "ram.s"
 	.include "macros.s"
 
-	thumb_func_start _MGBLoadMgbNickname
-_MGBLoadMgbNickname: @ 08057950
-	push	{ r4, lr }
-	add		r1, r0, #0x0
-	ldr		r0, _0805797c
-	add		r3, r0, #0x0
-	add		r3, #0x1c
-	mov		r4, #0x0
-	mov		r2, #0x4
-_0805795e:
-	ldrb	r0, [r3, #0x0]
-	strb	r0, [r1, #0x0] 
-	lsl		r0, r0, #0x18
-	add		r3, #0x1
-	add		r1, #0x1
-	cmp		r0, #0x0
-	beq		_0805796e
-	mov		r4, #0x1
-_0805796e:
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_0805795e
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 } 
-	bx		r1
-
-_0805797c:	.4byte 0x02032B80
-	thumb_func_end _MGBLoadMgbNickname
-
 	thumb_func_start sub_08057980
 sub_08057980:
 	add		r1, r0, #0x0
@@ -3129,14 +3099,14 @@ sub_08058fdc:
 	strb	r0, [r6, #0x17]
 	ldr		r1, _0805908c
 	add		r0, r7, r1
-	bl		_MGBLoadMgbNickname
+	bl		getMgbNicknameFromSave
 	mov		r0, #0x0
 	bl		sub_08057378
 	add		r5, r0, #0x0
 	add		r4, r5, #0x0
 	add		r4, #0x8
 	add		r0, #0xc
-	bl		_MGBLoadMgbNickname
+	bl		getMgbNicknameFromSave
 	ldrb	r0, [r5, #0x8]
 	strb	r0, [r6, #0x11]
 	ldrh	r1, [r4, #0x2]
@@ -6412,7 +6382,7 @@ _TryLoadMGBMainMenu: @ 0805a930
 	bl		clearString
 _0805a9a0:
 	mov		r0, r8
-	bl		_MGBLoadMgbNickname
+	bl		getMgbNicknameFromSave
 	cmp		r0, #0x0
 	bne		_0805a9b4
 	mov		r0, #0x1
@@ -11672,7 +11642,7 @@ _0805d53e:
 	add		r1, r1, r3
 	add		r4, r0, r1
 	mov		r0, r8
-	bl		_MGBLoadMgbNickname
+	bl		getMgbNicknameFromSave
 	ldr		r0, [sp, #0x1E8]
 	bl		sub_08057900
 	cmp		r4, #0x0

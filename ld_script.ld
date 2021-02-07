@@ -1,6 +1,21 @@
 ENTRY(_entryPoint)
 
 SECTIONS {
+
+    . = 0x2000000;
+
+    ewram (NOLOAD) :
+    ALIGN(4)
+    {
+        gHeap = .;
+
+        . = 0x20000;
+
+        INCLUDE "sym_ewram.ld"
+
+        . = 0x40000;
+    }
+
     . = 0x8000000;
     .text :
     ALIGN(4)
@@ -13,8 +28,9 @@ SECTIONS {
 	    asm/mka2.o (.text);
         asm/game.o (.text);
 	    asm/mka3.o (.text);
+        src/mgb_save.o (.text);
         asm/mobile_adapter_gb0.o (.text);
-        src/mobile_adapter_gb.o (.text);
+        src/mgb_profile.o (.text);
         asm/mobile_adapter_gb1.o (.text);
 	    asm/mka4.o (.text);
         asm/swi.o (.text)

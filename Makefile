@@ -15,6 +15,7 @@ OBJCOPY 	:= $(TOOLCHAIN)$(PREFIX)objcopy$(EXE)
 
 GBAGFX     	:= tools/gbagfx/gbagfx$(EXE)
 SCANINC 	:= tools/scaninc/scaninc$(EXE)
+RAMSCRGEN 	:= tools/ramscrgen/ramscrgen$(EXE)
 
 SHA1SUM 		:= sha1sum -c
 
@@ -30,10 +31,14 @@ CFILE := $(wildcard src/*.c)
 ASOBJFILE := $(ASFILE:.s=.o)
 COBJFILE := $(CFILE:.c=.o)
 
-NAME 		:= mka
-LDSCRIPT	:= ld_script.ld
-ROM 		:= $(NAME).gba
-ELF 		:= $(NAME).elf
+NAME 				:= mka
+ROM 				:= $(NAME).gba
+ELF 				:= $(NAME).elf
+LDSCRIPT			:= ld_script.ld
+EWRAM_FILENAME		:= sym_ewram
+EWRAM_SECTIONNAME	:= ewram_data
+EWRAM_LDSCRIPT		:= $(EWRAM_FILENAME).ld
+EWRAM_TXTSCRIPT		:= $(EWRAM_FILENAME).txt
 
 .PHONY: graphics rom
 
@@ -50,13 +55,16 @@ compare: $(ROM)
 
 # Clean
 clean:
-	@$(RM) $(ELF) $(ASOBJFILE) $(COBJFILE)
+	@$(RM) $(ELF) $(ASOBJFILE) $(COBJFILE) $(EWRAM_LDSCRIPT)
 
 # Build
+$(EWRAM_LDSCRIPT): $(EWRAM_TXTSCRIPT)
+	$(RAMSCRGEN) $(EWRAM_SECTIONNAME) $(EWRAM_TXTSCRIPT) ENGLISH >$(EWRAM_LDSCRIPT)
+
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 
-$(ELF): %.elf: $(ASOBJFILE) $(COBJFILE) $(LDSCRIPT)
+$(ELF): %.elf: $(ASOBJFILE) $(COBJFILE) $(LDSCRIPT) $(EWRAM_LDSCRIPT)
 	$(LD) -T $(LDSCRIPT) -Map $*.map -o $@ $(ASOBJFILE) $(COBJFILE) -L tools/agbcc/lib -lgcc -lc
 
 $(COBJFILE): %.o: %.c

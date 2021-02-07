@@ -1,4 +1,4 @@
- #include "mobile_adapter_gb.h"
+ #include "mgb_profile.h"
 
 // 08060bf4
 int sub_08060bf4(int unk)
@@ -10,22 +10,22 @@ int sub_08060bf4(int unk)
  * Called from GB Tourney Menu select
 */
 // 08060c00
-void sub_08060c00(MGBUserInfo2* UserInfo)
+void sub_08060c00(MGBUserInfoSaveData* UserInfo)
 {
     char* temp;
 
     sub_08060958(); // ClearMGBUserInfoStruct
     sub_08057900(UserInfo->unk1);
-    _MGBLoadMgbNickname(UserInfo->Username);   
-    UserInfo->unk2 = NULL;  
-    _MGBLoadPassword(UserInfo->Password);   
-    temp = sub_08057370() + MGB_unk_val1;
-    UserInfo->unk3 = *temp;
+    getMgbNicknameFromSave(UserInfo->unk2);
+    UserInfo->unk3 = NULL;
+    _MGBLoadPassword(UserInfo->Nickname);
+    temp = sub_08057370() + 0xAE6;
+    UserInfo->unk6[0] = *temp;
 
-    _getMgbRealName(UserInfo->Country);
-    _getMgbPhoneNumber(UserInfo->unk4);
-    _getMgbZipcode(UserInfo->unk5);
-    _getMgbAddress(UserInfo->Town);
+    _getMgbRealName(UserInfo->unk7);
+    _getMgbPhoneNumber(UserInfo->unk9);
+    _getMgbZipcode(UserInfo->unk10);
+    _getMgbAddress(UserInfo->unk11);
 }
 
 // 08060c5c
