@@ -30,3 +30,5 @@ typedef struct MGBUserInfoSaveData {
 } MGBUserInfoSaveData;
 
 extern struct MGBUserInfoSaveData gUserInfoSaveData;
+
+extern bool sub_08056030(char* someString, char param_1);

@@ -371,7 +371,7 @@ ewram           0x02000000    0x40000
  .text          0x0802711c       0x2c asm/game.o
                 0x0802711c                _UpdateGame
  asm/mka3.o(.text)
- .text          0x08027148    0x307b8 asm/mka3.o
+ .text          0x08027148    0x30790 asm/mka3.o
                 0x08027148                sub_08027148
                 0x08027158                sub_08027158
                 0x08027188                sub_08027188
@@ -1121,9 +1121,9 @@ ewram           0x02000000    0x40000
                 0x08057850                sub_08057850
                 0x08057878                sub_08057878
                 0x080578a0                sub_080578a0
-                0x080578d8                sub_080578d8
  src/mgb_save.o(.text)
- .text          0x08057900      0x124 src/mgb_save.o
+ .text          0x080578d8      0x14c src/mgb_save.o
+                0x080578d8                sub_080578d8
                 0x08057900                getMgbUn2FromSave
                 0x08057930                setMgbRealNameFromSave
                 0x08057950                getMgbNicknameFromSave

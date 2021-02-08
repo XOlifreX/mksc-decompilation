@@ -4,6 +4,18 @@
 
 EWRAM_DATA ALIGNED(4) struct MGBUserInfoSaveData gUserInfoSaveData = {0};
 
+// 080578d8
+int sub_080578d8(char param_1) 
+{
+    char someString[32];
+    int temp;
+
+    if (sub_08056030(someString, param_1))
+        return -1;
+    
+    return someString[9] << 0x18 >> 0x18;
+}
+
 // 08057900
 bool getMgbUn2FromSave(char* buffer) 
 {
@@ -116,7 +128,7 @@ void setMgbPasswordFromSave(char* buffer)
 {
     MGBUserInfoSaveData* userInfoData = &gUserInfoSaveData;
     char* password = userInfoData->Password;
-    
+
     char temp;
     int i;
 
