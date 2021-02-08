@@ -2,13 +2,13 @@
 
 A pret styled decompilation of Mario Kart Super Circuit for the GBA.
 
-This is only at its disassembly phase and very much a WIP. The project setup is fully based on YamaArashi's work on his original pokeemerald decompilation project.
+The current focuss is on understanding and documenting everything about the now defunct Mobile Adapter GB feature which allowed you to upload your time trail ghosts to online leaderboards & play in tournament styled GP's with your scores/times publised to online leaderboards.
 
 
 ## Building
 
-Running build.bat will generate the JPN version. The JPN version is chosen to include all the Mobile Adapter GB functionalities.
-An original JPN rom is required to build the rom. The build tools are from DevKitARM.
+Running make will generate a JPN version of Mario Kart Super Circuit (known as Mario Kart Advance in JPN). The JPN version is chosen to include all the Mobile Adapter GB functionalities.
+To succesfully compile the rom, an original JPN ROM is needed in the root of the project with the exact name "base.gba". The build tools needed are included in DevKitARM. The agbcc compiler needs to be included seperatly too, place the agbcc compiler in the Tools folder and call the folder "agbcc". (A more clear how-to will be included in the near future)
 
 
 ## Info & Contributions
