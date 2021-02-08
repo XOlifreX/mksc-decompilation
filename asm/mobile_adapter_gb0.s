@@ -2,114 +2,6 @@
 	.include "ram.s"
 	.include "macros.s"
 
-	thumb_func_start sub_08057980
-sub_08057980:
-	add		r1, r0, #0x0
-	ldr		r0, _0805799c
-	add		r3, r0, #0x0
-	add		r3, #0x1c
-	mov		r2, #0x4
-_0805798a:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r3, #0x0]
-	add		r1, #0x1
-	add		r3, #0x1
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_0805798a
-	bx		lr
-
-.align 2, 0
-.pool
-
-_0805799c:	.4byte 0x02032B80
-	thumb_func_end sub_08057980
-
-	thumb_func_start _MGBLoadPassword
-_MGBLoadPassword: @ 080579A0
-	add		r2, r0, #0x0
-	ldr		r0, _080579b4
-	ldr		r3, _080579b8
-	add		r1, r0, r3
-	ldrb	r0, [r1, #0x0]
-	cmp		r0, #0x0
-	bne		_080579bc
-	mov		r0, #0x0
-	b		_080579ce
-
-	.2byte 	0x0
-
-_080579b4:	.4byte 0x02032B80
-_080579b8:	.4byte 0x00000AD4
-
-_080579bc:
-	mov		r3, #0x10
-_080579be:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	add		r1, #0x1
-	add		r2, #0x1
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_080579be
-	mov		r0, #0x1
-_080579ce:
-	bx		lr
-	thumb_func_end _MGBLoadPassword
-
-	thumb_func_start sub_080579d0
-sub_080579d0:
-	add		r1, r0, #0x0
-	ldr		r0, _080579ec
-	ldr		r2, _080579f0
-	add		r3, r0, r2
-	mov		r2, #0x10
-_080579da:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r3, #0x0]
-	add		r1, #0x1
-	add		r3, #0x1
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_080579da
-	bx		lr
-
-.align 2, 0
-.pool
-
-_080579ec:	.4byte 0x02032B80
-_080579f0:	.4byte 0x00000AD4
-	thumb_func_end sub_080579d0
-
-	thumb_func_start sub_080579f4
-sub_080579f4:
-	push	{ r4, lr }
-	add		r1, r0, #0x0
-	ldr		r0, _08057a20
-	add		r3, r0, #0x0
-	add		r3, #0x21
-	mov		r4, #0x0
-	mov		r2, #0x4
-_08057a02:
-	ldrb	r0, [r3, #0x0]
-	strb	r0, [r1, #0x0]
-	lsl		r0, r0, #0x18
-	add		r3, #0x1
-	add		r1, #0x1
-	cmp		r0, #0x0
-	beq		_08057a12
-	mov		r4, #0x1
-_08057a12:
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_08057a02
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-_08057a20:	.4byte 0x02032B80
-	thumb_func_end sub_080579f4
 
 	thumb_func_start sub_08057a24
 sub_08057a24:
@@ -614,7 +506,7 @@ sub_08057dec:
 	sub		sp, #0x1c
 	ldr		r4, _08057e2c
 	mov		r0, sp
-	bl		sub_08057900
+	bl		getMgbUn2FromSave
 	add		r5, sp, #0x14
 	add		r0, r4, #0x0
 	add		r1, r5, #0x0
@@ -631,7 +523,7 @@ sub_08057dec:
 	mov		r2, #0x4
 	bl		sub_08071b6c
 	mov		r0, sp
-	bl		sub_08057930
+	bl		setMgbRealNameFromSave
 	add		sp, #0x1c
 	pop		{ r4, r5 }
 	pop		{ r0 }
@@ -3091,7 +2983,7 @@ sub_08058fdc:
 	cmp		r0, #0x0
 	beq		_080590d2
 	add		r0, r6, #0x0
-	bl		sub_08057900
+	bl		getMgbUn2FromSave
 	bl		sub_08057370
 	ldr		r1, _08059088
 	add		r0, r0, r1
@@ -5487,7 +5379,7 @@ _0805a194:
 	bl		sub_08057378
 	add		r0, r5, #0x4
 	mov		r1, #0x0
-	bl		sub_080579f4
+	bl		getMgbUn4FromSave
 	ldrb	r1, [r5, #0x0]
 	mov		r0, #0x20
 	orr		r0, r1
@@ -6347,7 +6239,7 @@ _TryLoadMGBMainMenu: @ 0805a930
 	mov		r9, r0
 	bl		sub_08060bf4
 	add		r5, r0, #0x0
-	bl		sub_08060f40
+	bl		mgbLoadMGBDataToEWRAM
 	add		r4, r0, #0x0
 	add		r0, r5, #0x0
 	bl		getMgbNicknameFromMGBStruct
@@ -6374,7 +6266,7 @@ _TryLoadMGBMainMenu: @ 0805a930
 	add		r7, r0, #0x0
 	mov		r6, #0x0
 	add		r0, r4, #0x0
-	bl		sub_08057900
+	bl		getMgbUn2FromSave
 	cmp		r0, #0x0
 	bne		_0805a9a0
 	mov		r6, #0x1
@@ -6396,7 +6288,7 @@ _0805a9b4:
 	cmp		r0, #0x0
 	beq		_0805a9dc
 	mov		r0, r10
-	bl		_MGBLoadPassword
+	bl		getMgbPasswordFromSave
 	cmp		r0, #0x0
 	bne		_0805a9e2
 	mov		r0, #0x1
@@ -9202,7 +9094,7 @@ _0805bf90:
 	mov		r0, r8
 	bl		clearMgbPassword
 	ldr		r0, _0805c078
-	bl		sub_080579d0
+	bl		setMgbPasswordFromSave
 	ldr		r0, _0805c07c
 	add		r0, r9
 	strb	r5, [r0, #0x0]
@@ -11644,7 +11536,7 @@ _0805d53e:
 	mov		r0, r8
 	bl		getMgbNicknameFromSave
 	ldr		r0, [sp, #0x1E8]
-	bl		sub_08057900
+	bl		getMgbUn2FromSave
 	cmp		r4, #0x0
 	beq		_0805d660
 	ldrh	r1, [r4, #0x2]
@@ -13416,7 +13308,7 @@ _0805e80c:
 	add		r4, r7, r4
 	add		r0, r4, #0x0
 	mov		r1, #0x0
-	bl		sub_080579f4
+	bl		getMgbUn4FromSave
 	add		r0, r4, #0x0
 	add		r1, r6, #0x0
 	bl		sub_08057c14
@@ -13754,7 +13646,7 @@ _0805eada:
 	add		r4, r8
 	add		r0, r4, #0x0
 	mov		r1, #0x0
-	bl		sub_080579f4
+	bl		getMgbUn4FromSave
 	add		r0, r4, #0x0
 	add		r1, r5, #0x0
 	bl		sub_08057c14
@@ -15643,7 +15535,7 @@ _0805faee:
 	add		r0, r5, #0x0
 	bl		sub_08060bf4
 	add		r4, r0, #0x0
-	bl		sub_08060f40
+	bl		mgbLoadMGBDataToEWRAM
 	add		r7, r0, #0x0
 	cmp		r6, #0x1
 	bne		_0805fb48
@@ -15653,7 +15545,7 @@ _0805faee:
 	bl		sub_08057370
 	add		r4, r0, #0x0
 	add		r0, r5, #0x0
-	bl		sub_080579d0
+	bl		setMgbPasswordFromSave
 	ldr		r0, _0805fb40
 	add		r4, r4, r0
 	strb	r6, [r4, #0x0]
@@ -16613,7 +16505,7 @@ sub_08060298:
 	cmp		r0, #0x0
 	beq		_080602c4
 	add		r0, r4, #0x0
-	bl		_MGBLoadPassword
+	bl		getMgbPasswordFromSave
 _080602c4:
 	ldrb	r0, [r4, #0x0]
 	pop		{ r4 }
@@ -17612,7 +17504,7 @@ _08060ab8:
 	cmp		r4, #0xf
 	ble		_08060ab8
 	add		r0, r7, #0x0
-	bl		sub_08057930
+	bl		setMgbRealNameFromSave
 	bl		sub_08057428
 	mov		r0, #0x1
 _08060ad8:

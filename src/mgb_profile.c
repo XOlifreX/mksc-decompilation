@@ -10,26 +10,26 @@ int sub_08060bf4(int unk)
  * Called from GB Tourney Menu select
 */
 // 08060c00
-void sub_08060c00(MGBUserInfoSaveData* UserInfo)
+void loadMgbUserDataFromSave(MGBUserInfo* UserInfo)
 {
     char* temp;
 
     sub_08060958(); // ClearMGBUserInfoStruct
-    sub_08057900(UserInfo->unk1);
-    getMgbNicknameFromSave(UserInfo->unk2);
-    UserInfo->unk3 = NULL;
-    _MGBLoadPassword(UserInfo->Nickname);
+    getMgbUn2FromSave(UserInfo->unk0);
+    getMgbNicknameFromSave(UserInfo->Nickname);
+    UserInfo->unk1 = NULL;
+    getMgbPasswordFromSave(UserInfo->Password);
     temp = sub_08057370() + 0xAE6;
-    UserInfo->unk6[0] = *temp;
+    UserInfo->PrefectureId[0] = *temp;
 
-    _getMgbRealName(UserInfo->unk7);
-    _getMgbPhoneNumber(UserInfo->unk9);
-    _getMgbZipcode(UserInfo->unk10);
-    _getMgbAddress(UserInfo->unk11);
+    _getMgbRealName(UserInfo->RealName);
+    _getMgbPhoneNumber(UserInfo->PhoneNumber);
+    _getMgbZipcode(UserInfo->Zipcode);
+    _getMgbAddress(UserInfo->Address);
 }
 
 // 08060c5c
-void sub_08060c5c()
+void mgbUnusedReturn1()
 {
     return;
 }
@@ -451,8 +451,8 @@ void copyMgbPhoneNumberToBuffer_3(MGBUserInfo* MGBUserInfo, char* buffer)
 }
 
 // 08060f40
-void sub_08060f40() {
-  return;
+void mgbLoadMGBDataToEWRAM() {
+  return; // callback from r14
 }
 
 /*

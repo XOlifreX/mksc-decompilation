@@ -108,10 +108,10 @@ ewram           0x02000000    0x40000
  *fill*         0x02020000    0x12b80 
                 0x02032b80                . = ALIGN (0x4)
  src/mgb_save.o(ewram_data)
- ewram_data     0x02032b80       0x74 src/mgb_save.o
+ ewram_data     0x02032b80      0xad8 src/mgb_save.o
                 0x02032b80                gUserInfoSaveData
                 0x00040000                . = 0x40000
- *fill*         0x02032bf4     0xd40c 
+ *fill*         0x02033658     0xc9a8 
                 0x08000000                . = 0x8000000
 
 .text           0x08000000   0x400000
@@ -371,7 +371,7 @@ ewram           0x02000000    0x40000
  .text          0x0802711c       0x2c asm/game.o
                 0x0802711c                _UpdateGame
  asm/mka3.o(.text)
- .text          0x08027148    0x30808 asm/mka3.o
+ .text          0x08027148    0x307b8 asm/mka3.o
                 0x08027148                sub_08027148
                 0x08027158                sub_08027158
                 0x08027188                sub_08027188
@@ -1122,17 +1122,17 @@ ewram           0x02000000    0x40000
                 0x08057878                sub_08057878
                 0x080578a0                sub_080578a0
                 0x080578d8                sub_080578d8
-                0x08057900                sub_08057900
-                0x08057930                sub_08057930
  src/mgb_save.o(.text)
- .text          0x08057950       0x30 src/mgb_save.o
+ .text          0x08057900      0x124 src/mgb_save.o
+                0x08057900                getMgbUn2FromSave
+                0x08057930                setMgbRealNameFromSave
                 0x08057950                getMgbNicknameFromSave
+                0x08057980                setMgbNicknameFromSave
+                0x080579a0                getMgbPasswordFromSave
+                0x080579d0                setMgbPasswordFromSave
+                0x080579f4                getMgbUn4FromSave
  asm/mobile_adapter_gb0.o(.text)
- .text          0x08057980     0x9274 asm/mobile_adapter_gb0.o
-                0x08057980                sub_08057980
-                0x080579a0                _MGBLoadPassword
-                0x080579d0                sub_080579d0
-                0x080579f4                sub_080579f4
+ .text          0x08057a24     0x91d0 asm/mobile_adapter_gb0.o
                 0x08057a24                sub_08057a24
                 0x08057a44                _getMgbAddress
                 0x08057a9c                _getMgbZipcode
@@ -1285,8 +1285,8 @@ ewram           0x02000000    0x40000
  src/mgb_profile.o(.text)
  .text          0x08060bf4      0x3a0 src/mgb_profile.o
                 0x08060bf4                sub_08060bf4
-                0x08060c00                sub_08060c00
-                0x08060c5c                sub_08060c5c
+                0x08060c00                loadMgbUserDataFromSave
+                0x08060c5c                mgbUnusedReturn1
                 0x08060c60                getMgbNicknameFromMGBStruct
                 0x08060c64                checkMgbNicknameExists
                 0x08060c80                clearMgbNickname
@@ -1329,7 +1329,7 @@ ewram           0x02000000    0x40000
                 0x08060efc                invalidateMgbPhoneNumber
                 0x08060f10                copyMgbPhoneNumberToBuffer_2
                 0x08060f28                copyMgbPhoneNumberToBuffer_3
-                0x08060f40                sub_08060f40
+                0x08060f40                mgbLoadMGBDataToEWRAM
                 0x08060f44                checkStringIsNotEmpty
                 0x08060f60                clearString
                 0x08060f70                clearMGBUserInfoObject
@@ -2270,6 +2270,7 @@ LOAD asm/defines.o
 LOAD asm/mka0.o
 LOAD asm/data.o
 LOAD asm/mobile_adapter_gb0.o
+LOAD asm/mka4.o
 LOAD asm/main.o
 LOAD asm/mka3.o
 LOAD asm/ram.o
@@ -2281,7 +2282,6 @@ LOAD asm/swi.o
 LOAD asm/rom_header.o
 LOAD asm/mobile_adapter_gb_intro.o
 LOAD asm/mka6.o
-LOAD asm/mka4.o
 LOAD asm/mka1.o
 LOAD src/mgb_save.o
 LOAD src/mgb_profile.o

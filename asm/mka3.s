@@ -76040,7 +76040,7 @@ sub_08056cc8:
 	push	{ r5, r6, r7 }
 	sub		sp, #0x54
 	mov		r0, sp
-	bl		sub_08057900
+	bl		getMgbUn2FromSave
 	add		r0, sp, #0x10
 	mov		r1, #0x0
 	strh	r1, [r0, #0x0]
@@ -76048,7 +76048,7 @@ sub_08056cc8:
 	ldr		r1, _08056de0
 	bl		sub_08071b6c
 	mov		r0, sp
-	bl		sub_08057930
+	bl		setMgbRealNameFromSave
 	mov		r1, #0x0
 	ldr		r2, _08056de0
 	add		r2, #0x46
@@ -76595,11 +76595,11 @@ sub_08057100:
 	sub		sp, #0x10
 	ldr		r5, _080571a8
 	mov		r0, sp
-	bl		sub_08057900
+	bl		getMgbUn2FromSave
 	bl		sub_08058ab8
 	bl		sub_08056cc8
 	mov		r0, sp
-	bl		sub_08057930
+	bl		setMgbRealNameFromSave
 	add		r1, r5, #0x0
 	add		r2, r5, #0x0
 	add		r2, #0x1c
@@ -77465,55 +77465,32 @@ _080578fa:
 	bx		r1
 	thumb_func_end sub_080578d8
 
-	thumb_func_start sub_08057900
-sub_08057900:
-	push	{ r4, lr }
-	add		r1, r0, #0x0
-	ldr		r0, _0805792c
-	add		r3, r0, #0x0
-	add		r3, #0xc
-	mov		r4, #0x0
-	mov		r2, #0xf
-_0805790e:
-	ldrb	r0, [r3, #0x0]
-	strb	r0, [r1, #0x0]
-	lsl		r0, r0, #0x18
-	add		r3, #0x1
-	add		r1, #0x1
-	cmp		r0, #0x0
-	beq		_0805791e
-	mov		r4, #0x1
-_0805791e:
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_0805790e
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
+@ 	thumb_func_start sub_08057900
+@ sub_08057900:
+@ 	push	{ r4, lr }
+@ 	add		r1, r0, #0x0
+@ 	ldr		r0, _0805792c
+@ 	add		r3, r0, #0x0
+@ 	add		r3, #0xc
+@ 	mov		r4, #0x0
+@ 	mov		r2, #0xf
+@ _0805790e:
+@ 	ldrb	r0, [r3, #0x0]
+@ 	strb	r0, [r1, #0x0]
+@ 	lsl		r0, r0, #0x18
+@ 	add		r3, #0x1
+@ 	add		r1, #0x1
+@ 	cmp		r0, #0x0
+@ 	beq		_0805791e
+@ 	mov		r4, #0x1
+@ _0805791e:
+@ 	sub		r2, #0x1
+@ 	cmp		r2, #0x0
+@ 	bge		_0805790e
+@ 	add		r0, r4, #0x0
+@ 	pop		{ r4 }
+@ 	pop		{ r1 }
+@ 	bx		r1
 
-_0805792c:	.4byte 0x02032B80
-	thumb_func_end sub_08057900
-
-	thumb_func_start sub_08057930
-sub_08057930:
-	add		r1, r0, #0x0
-	ldr		r0, _0805794c
-	add		r3, r0, #0x0
-	add		r3, #0xc
-	mov		r2, #0xf
-_0805793a:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r3, #0x0]
-	add		r1, #0x1
-	add		r3, #0x1
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_0805793a
-	bx		lr
-
-.align 2, 0
-.pool
-
-_0805794c:	.4byte 0x02032B80
-	thumb_func_end sub_08057930
+@ _0805792c:	.4byte 0x02032B80
+@ 	thumb_func_end sub_08057900

@@ -1060,7 +1060,7 @@ _08061794:
 	add		r4, #0x4a
 	ldr		r0, [sp, #0x2C]
 	bl		sub_08060bf4
-	bl		sub_08060f40
+	bl		mgbLoadMGBDataToEWRAM
 	add		r6, r0, #0x0
 	ldrb	r0, [r5, #0x0]
 	str		r4, [sp, #0x44]
@@ -7028,7 +7028,7 @@ sub_0806483c:
 	add		r0, r4, #0x0
 	bl		setMgbNickname
 	add		r0, r5, #0x0
-	bl		sub_08057980
+	bl		setMgbNicknameFromSave
 	bl		sub_08057428
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -7159,7 +7159,7 @@ sub_080648e4:
 	cmp		r4, #0x0
 	beq		_08064992
 	add		r0, r6, #0x0
-	bl		sub_08057980
+	bl		setMgbNicknameFromSave
 	add		r0, r7, #0x0
 	add		r1, r6, #0x0
 	bl		setMgbNickname
@@ -7186,7 +7186,7 @@ sub_080649b0:
 	cmp		r0, #0x0
 	beq		_08064a82
 	add		r0, sp, #0xc
-	bl		sub_08057980
+	bl		setMgbNicknameFromSave
 	bl		sub_08057428
 	mov		r0, #0x0
 	bl		sub_080281d4
@@ -9069,7 +9069,7 @@ sub_080657b0:
 	cmp		r0, #0x0
 	beq		_080657de
 	mov		r0, sp
-	bl		_MGBLoadPassword
+	bl		getMgbPasswordFromSave
 	add		r0, r4, #0x0
 	mov		r1, sp
 	bl		setMgbPassword
@@ -15456,7 +15456,7 @@ _LoadMGBMobileGPMenu:
 	mov		r0, #0x0
 	str		r0, [sp, #0x18]
 	add		r0, r5, #0x0
-	bl		sub_08060c00
+	bl		loadMgbUserDataFromSave
 	bl		sub_08057370
 	mov		r1, #0xee
 	lsl		r1, r1, #0x3

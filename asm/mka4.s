@@ -9595,7 +9595,7 @@ _0806f314:
 	cmp		r0, #0x0
 	beq		_0806f3ea
 	ldr		r0, _0806f388
-	bl		sub_080579d0
+	bl		setMgbPasswordFromSave
 	bl		sub_08057370
 	ldr		r7, _0806f38c
 	ldr		r1, _0806f390
