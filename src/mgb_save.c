@@ -4,6 +4,42 @@
 
 EWRAM_DATA ALIGNED(4) struct MGBUserInfoSaveData gUserInfoSaveData = {0};
 
+// **********************************************************************
+static inline bool copyChars(char* src, char* dest, int size)
+{
+    bool success = false;
+    char temp;
+    int i;
+
+    for (i = 0; i < size; i++) {
+        temp = *dest = *src;
+
+        src++;
+        dest++;
+        if (temp != '\0')
+            success = true;
+    }
+    return success;
+}
+// **********************************************************************
+static inline bool copyChar(char* src, char* dest, int limit)
+{
+    bool success;
+    unsigned int check;
+
+    char temp = *dest = *src;
+
+    success = false;
+
+    check = (unsigned int)(((unsigned int)temp) << 0x18) >> 0x18;
+
+    if (check <= limit)
+        success = true;
+
+    return success;
+}
+// **********************************************************************
+
 // 080578d8
 int sub_080578d8(char param_1) 
 {
@@ -43,7 +79,7 @@ bool getMgbUn2FromSave(char* buffer)
 ** COULD BE WRONG FIELD. UNKNOWN
 */
 // 08057930
-void setMgbRealNameFromSave(char* buffer) 
+void setMgbUn2FromSave(char* buffer) 
 {
     MGBUserInfoSaveData* userInfoData = &gUserInfoSaveData;
     char* realName = userInfoData->unk2;
@@ -132,8 +168,6 @@ void setMgbPasswordFromSave(char* buffer)
     char temp;
     int i;
 
-
-
     for (i = (MGB_PASSWORD_SIZE - 1); i >= 0; i--) {
         *password = *buffer;    
 
@@ -163,4 +197,93 @@ bool getMgbUn4FromSave(char* buffer)
     }
 
     return success;
+}
+
+// 08057a24
+void setMgbUnk4FromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoData = &gUserInfoSaveData;
+    char* unk4 = userInfoData->unk4;
+
+    char temp;
+    int i;
+
+    for (i = 0x4; i >= 0; i--) {
+        *unk4 = *buffer;    
+
+        buffer++;
+        unk4++;
+    }
+}
+
+// 08057a44
+bool getMgbAddressFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    return copyChars(userInfoObject->Address, buffer, MGB_ADDRESS_SIZE);
+}
+
+// 08057a78
+void setMgbAddressFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoData = &gUserInfoSaveData;
+    copyChars(buffer, userInfoData->Address, MGB_ADDRESS_SIZE);
+}
+
+// 08057a9c
+bool getMgbZipcodeFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    return copyChars(userInfoObject->Zipcode, buffer, MGB_ZIPCODE_SIZE);
+}
+
+// 08057ad0
+void setMgbZipcodeFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    copyChars(buffer, userInfoObject->Zipcode, MGB_ZIPCODE_SIZE);
+}
+
+// 08057af4
+bool getMgbPrefectureIdFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    return copyChar(userInfoObject->PrefectureId, buffer, MGB_PREFECTURE_LIST_SIZE - 1);
+}
+
+// 08057b14
+void setMgbPrefectureIdFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    char* prefectureId = userInfoObject->PrefectureId;
+
+    *prefectureId = *buffer;
+}
+
+// 08057b28
+bool getMgbPhoneNumberFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    return copyChars(userInfoObject->PhoneNumber, buffer, MGB_PHONENUMBER_SIZE);
+}
+
+// 08057b5c
+void setMgbPhoneNumberFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    copyChars(buffer, userInfoObject->PhoneNumber, MGB_PHONENUMBER_SIZE);
+}
+
+// 08057b80
+bool getMgbRealNameFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    return copyChars(userInfoObject->RealName, buffer, MGB_REALNAME_SIZE);
+}
+
+// 08057bb4
+void setMgbRealNameFromSave(char* buffer) 
+{
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    copyChars(buffer, userInfoObject->RealName, MGB_REALNAME_SIZE);
 }

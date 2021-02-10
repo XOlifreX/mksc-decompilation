@@ -76048,7 +76048,7 @@ sub_08056cc8:
 	ldr		r1, _08056de0
 	bl		sub_08071b6c
 	mov		r0, sp
-	bl		setMgbRealNameFromSave
+	bl		setMgbUn2FromSave
 	mov		r1, #0x0
 	ldr		r2, _08056de0
 	add		r2, #0x46
@@ -76599,7 +76599,7 @@ sub_08057100:
 	bl		sub_08058ab8
 	bl		sub_08056cc8
 	mov		r0, sp
-	bl		setMgbRealNameFromSave
+	bl		setMgbUn2FromSave
 	add		r1, r5, #0x0
 	add		r2, r5, #0x0
 	add		r2, #0x1c

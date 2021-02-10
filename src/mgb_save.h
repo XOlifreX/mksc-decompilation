@@ -8,13 +8,15 @@
 #define MGB_ZIPCODE_SIZE 8
 #define MGB_ADDRESS_SIZE 128
 
+#define MGB_PREFECTURE_LIST_SIZE 47
+
 typedef struct MGBUserInfoSaveData {
     char unk1[12];
     char unk2[12];
     int unk3;
-    char Nickname[5];
-    char unk4[3];
-    char unk5[4];
+    char Nickname[MGB_NICKNAME_SIZE];
+    char unk4[4];
+    char unk5[3];
     char unk5_2[5];
     char unk6[1];
     char unk7[11];
@@ -27,6 +29,13 @@ typedef struct MGBUserInfoSaveData {
     char Town[22];
     char unk13[2656];
     char Password[4];
+    char unk14[14];
+    char PrefectureId[MGB_PREFECTUREID_SIZE];
+    char unk15[14];
+    char Address[MGB_ADDRESS_SIZE];
+    char Zipcode[MGB_ZIPCODE_SIZE];
+    char RealName[MGB_REALNAME_SIZE];
+    char PhoneNumber[MGB_PHONENUMBER_SIZE];
 } MGBUserInfoSaveData;
 
 extern struct MGBUserInfoSaveData gUserInfoSaveData;

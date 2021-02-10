@@ -22,10 +22,10 @@ void loadMgbUserDataFromSave(MGBUserInfo* UserInfo)
     temp = sub_08057370() + 0xAE6;
     UserInfo->PrefectureId[0] = *temp;
 
-    _getMgbRealName(UserInfo->RealName);
-    _getMgbPhoneNumber(UserInfo->PhoneNumber);
-    _getMgbZipcode(UserInfo->Zipcode);
-    _getMgbAddress(UserInfo->Address);
+    getMgbRealNameFromSave(UserInfo->RealName);
+    getMgbPhoneNumberFromSave(UserInfo->PhoneNumber);
+    getMgbZipcodeFromSave(UserInfo->Zipcode);
+    getMgbAddressFromSave(UserInfo->Address);
 }
 
 // 08060c5c

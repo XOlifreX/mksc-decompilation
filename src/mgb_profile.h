@@ -3,8 +3,6 @@
 #include "gba/gba.h"
 #include "mgb_save.h"
 
-#define MGB_PREFECTURE_LIST_SIZE 47
-
 #define MGB_unk_val2 0x6960
 
 typedef struct MGBUserInfo {
@@ -28,4 +26,3 @@ extern char* sub_08057370();
 extern void _getMgbRealName(char* realName);
 extern void _getMgbPhoneNumber(char* phoneNumber);
 extern void _getMgbZipcode(char* zipcode);
-extern void _getMgbAddress(char* address);

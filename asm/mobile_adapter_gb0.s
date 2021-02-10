@@ -3,183 +3,6 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08057a24
-sub_08057a24:
-	add		r1, r0, #0x0
-	ldr		r0, _08057a40
-	add		r3, r0, #0x0
-	add		r3, #0x21
-	mov		r2, #0x4
-_08057a2e:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r3, #0x0]
-	add		r1, #0x1
-	add		r3, #0x1
-	sub		r2, #0x1
-	cmp		r2, #0x0
-	bge		_08057a2e
-	bx		lr
-
-.align 2, 0
-.pool
-
-_08057a40:	.4byte 0x02032B80
-	thumb_func_end sub_08057a24
-
-	thumb_func_start _getMgbAddress
-_getMgbAddress: @ 08057a44
-	push	{ r4, lr }
-	ldr		r1, _08057a70
-	ldr		r2, _08057a74
-	add		r1, r1, r2
-	add		r2, r0, #0x0
-	mov		r4, #0x0
-	mov		r3, #0x7f
-_08057a52:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	lsl		r0, r0, #0x18
-	add		r1, #0x1
-	add		r2, #0x1
-	cmp		r0, #0x0
-	beq		_08057a62
-	mov		r4, #0x1
-_08057a62:
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057a52
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-_08057a70:	.4byte 0x02032B80
-_08057a74:	.4byte 0x00000AF5
-
-.incbin "base.gba", 0x57A78, 0x24
-	thumb_func_end _getMgbAddress
-
-	thumb_func_start _getMgbZipcode
-_getMgbZipcode: @ 08057a9c
-	push	{ r4, lr }
-	ldr		r1, _08057ac8
-	ldr		r2, _08057acc
-	add		r1, r1, r2
-	add		r2, r0, #0x0
-	mov		r4, #0x0
-	mov		r3, #0x7
-_08057aaa:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	lsl		r0, r0, #0x18
-	add		r1, #0x1
-	add		r2, #0x1
-	cmp		r0, #0x0
-	beq		_08057aba
-	mov		r4, #0x1
-_08057aba:
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057aaa
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-_08057ac8:	.4byte 0x02032B80
-_08057acc:	.4byte 0x00000B75
-
-.incbin "base.gba", 0x57AD0, 0x24
-	thumb_func_end _getMgbZipcode
-
-	thumb_func_start _getMgbPrefectureId
-_getMgbPrefectureId: @ 08057af4
-	ldr		r1, _08057b0c
-	ldr		r2, _08057b10
-	add		r1, r1, r2
-	ldrb	r1, [r1, #0x0]
-	strb	r1, [r0, #0x0]
-	mov		r0, #0x0
-	lsl		r1, r1, #0x18
-	lsr		r1, r1, #0x18
-	cmp		r1, #0x2e
-	bhi		_08057b0a
-	mov		r0, #0x1
-_08057b0a:
-	bx		lr
-
-_08057b0c:	.4byte 0x02032B80
-_08057b10:	.4byte 0x00000AE6
-
-.incbin "base.gba", 0x57B14, 0x14
-	thumb_func_end _getMgbPrefectureId
-
-	thumb_func_start _getMgbPhoneNumber
-_getMgbPhoneNumber: @ 08057b28
-	push	{ r4, lr }
-	ldr		r1, _08057b54
-	ldr		r2, _08057b58
-	add		r1, r1, r2
-	add		r2, r0, #0x0
-	mov		r4, #0x0
-	mov		r3, #0xb
-_08057b36:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	lsl		r0, r0, #0x18
-	add		r1, #0x1
-	add		r2, #0x1
-	cmp		r0, #0x0
-	beq		_08057b46
-	mov		r4, #0x1
-_08057b46:
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057b36
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-_08057b54:	.4byte 0x02032B80
-_08057b58:	.4byte 0x00000B8D
-
-.incbin "base.gba", 0x57B5C, 0x24
-	thumb_func_end _getMgbPhoneNumber
-
-	thumb_func_start _getMgbRealName
-_getMgbRealName: @ 08057b80
-	push	{ r4, lr }
-	ldr		r1, _08057bac
-	ldr		r2, _08057bb0
-	add		r1, r1, r2
-	add		r2, r0, #0x0
-	mov		r4, #0x0
-	mov		r3, #0xf
-_08057b8e:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	lsl		r0, r0, #0x18
-	add		r1, #0x1
-	add		r2, #0x1
-	cmp		r0, #0x0
-	beq		_08057b9e
-	mov		r4, #0x1
-_08057b9e:
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057b8e
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-_08057bac:	.4byte 0x02032B80
-_08057bb0:	.4byte 0x00000B7D
-
-.incbin "base.gba", 0x57BB4, 0x24
-	thumb_func_end _getMgbRealName
-
 	thumb_func_start sub_08057bd8
 sub_08057bd8:
 	push	{ r4, lr }
@@ -523,7 +346,7 @@ sub_08057dec:
 	mov		r2, #0x4
 	bl		sub_08071b6c
 	mov		r0, sp
-	bl		setMgbRealNameFromSave
+	bl		setMgbUn2FromSave
 	add		sp, #0x1c
 	pop		{ r4, r5 }
 	pop		{ r0 }
@@ -3024,17 +2847,17 @@ _08059046:
 	beq		_080590a0
 	ldr		r1, _08059094
 	add		r0, r6, r1
-	bl		_getMgbRealName
+	bl		getMgbRealNameFromSave
 	ldr		r1, _08059098
 	add		r0, r6, r1
-	bl		_getMgbPhoneNumber
+	bl		getMgbPhoneNumberFromSave
 	ldr		r1, _0805909c
 	add		r0, r6, r1
-	bl		_getMgbZipcode
+	bl		getMgbZipcodeFromSave
 	mov		r1, #0x82
 	lsl		r1, r1, #0x5
 	add		r0, r6, r1
-	bl		_getMgbAddress
+	bl		getMgbAddressFromSave
 	b		_080590d2
 
 .align 2, 0
@@ -3143,7 +2966,7 @@ sub_080590ec:
 	add		r6, r5, r1
 	add		r0, r6, #0x0
 	mov		r1, #0x0
-	bl		sub_08057a24
+	bl		setMgbUnk4FromSave
 	mov		r0, #0x96
 	lsl		r0, r0, #0x4
 	add		r6, r5, r0
@@ -6305,7 +6128,7 @@ _0805a9dc:
 	bl		clearMgbPassword
 _0805a9e2:
 	ldr		r0, [sp, #0x40]
-	bl		_getMgbPhoneNumber
+	bl		getMgbPhoneNumberFromSave
 	cmp		r0, #0x0
 	bne		_0805a9f6
 	mov		r0, #0x1
@@ -6314,7 +6137,7 @@ _0805a9e2:
 	bl		invalidateMgbPhoneNumber
 _0805a9f6:
 	ldr		r0, [sp, #0x44]
-	bl		_getMgbZipcode
+	bl		getMgbZipcodeFromSave
 	cmp		r0, #0x0
 	bne		_0805aa0a
 	mov		r0, #0x1
@@ -6323,7 +6146,7 @@ _0805a9f6:
 	bl		invalidateMgbZipcode
 _0805aa0a:
 	ldr		r0, [sp, #0x48]
-	bl		_getMgbPrefectureId
+	bl		getMgbPrefectureIdFromSave
 	cmp		r0, #0x0
 	bne		_0805aa1e
 	mov		r0, #0x1
@@ -6332,7 +6155,7 @@ _0805aa0a:
 	bl		invalidateMgbPrefectureId
 _0805aa1e:
 	ldr		r0, [sp, #0x4C]
-	bl		_getMgbAddress
+	bl		getMgbAddressFromSave
 	cmp		r0, #0x0
 	bne		_0805aa32
 	mov		r0, #0x1
@@ -6341,7 +6164,7 @@ _0805aa1e:
 	bl		clearMgbAddress
 _0805aa32:
 	ldr		r0, [sp, #0x50]
-	bl		_getMgbRealName
+	bl		getMgbRealNameFromSave
 	cmp		r0, #0x0
 	bne		_0805aa46
 	mov		r0, #0x1
@@ -17504,7 +17327,7 @@ _08060ab8:
 	cmp		r4, #0xf
 	ble		_08060ab8
 	add		r0, r7, #0x0
-	bl		setMgbRealNameFromSave
+	bl		setMgbUn2FromSave
 	bl		sub_08057428
 	mov		r0, #0x1
 _08060ad8:
