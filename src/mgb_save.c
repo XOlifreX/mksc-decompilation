@@ -288,18 +288,6 @@ void setMgbRealNameFromSave(char* buffer)
     copyChars(buffer, userInfoObject->RealName, MGB_REALNAME_SIZE);
 }
 
-// /*
-//  * struct MGBSaveDatatruct1 unk14[107]; with struct size of 0x18 maybe?
-// */
-// // 08057bd8
-// bool getunk14FromSaveByOffset(char *buffer, int offset)
-// { 
-//     MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
-//     struct MGBSaveDatatruct1* unk14 = &userInfoObject->unk14[offset];
-
-//     return copyChars(unk14->unk0, buffer, MGB_NICKNAME_SIZE);
-// }
-
 // 08057bd8
 bool getunk14FromSaveByOffset(char *buffer, int index)
 { 
