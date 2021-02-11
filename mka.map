@@ -108,10 +108,10 @@ ewram           0x02000000    0x40000
  *fill*         0x02020000    0x12b80 
                 0x02032b80                . = ALIGN (0x4)
  src/mgb_save.o(ewram_data)
- ewram_data     0x02032b80      0xb9c src/mgb_save.o
+ ewram_data     0x02032b80      0xbe8 src/mgb_save.o
                 0x02032b80                gUserInfoSaveData
                 0x00040000                . = 0x40000
- *fill*         0x0203371c     0xc8e4 
+ *fill*         0x02033768     0xc898 
                 0x08000000                . = 0x8000000
 
 .text           0x08000000   0x400000

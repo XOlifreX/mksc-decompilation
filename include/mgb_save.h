@@ -35,7 +35,7 @@ typedef struct MGBUserInfoSaveData {
     char Town[22];
     char unk13[70];
     char unk14[2586];
-    //struct MGBSaveDatatruct1 unk14[107];
+    // struct MGBSaveDatatruct1 unk14[107];
     char Password[4];
     char unk15[14];
     char PrefectureId[MGB_PREFECTUREID_SIZE];
@@ -45,6 +45,8 @@ typedef struct MGBUserInfoSaveData {
     char Zipcode[MGB_ZIPCODE_SIZE];
     char RealName[MGB_REALNAME_SIZE];
     char PhoneNumber[MGB_PHONENUMBER_SIZE];
+    char unk18[4];
+    struct MGBSaveDatatruct1 unk19[3];
 } MGBUserInfoSaveData;
 
 extern struct MGBUserInfoSaveData gUserInfoSaveData;

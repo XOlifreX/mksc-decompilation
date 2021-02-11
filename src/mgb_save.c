@@ -301,12 +301,10 @@ void setMgbRealNameFromSave(char* buffer)
 // }
 
 // 08057bd8
-bool getunk14FromSaveByOffset(char *buffer, int offset)
+bool getunk14FromSaveByOffset(char *buffer, int index)
 { 
     MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
-    int newOffset = (offset * 0x18) + 0xAE6; // wtf (BA0 - AE6 => BA)
-    
-    char* unk14 = userInfoObject->unk14 + newOffset;
+    struct MGBSaveDatatruct1* unk14 = &userInfoObject->unk19[index];
 
-    return copyChars(unk14, buffer, MGB_NICKNAME_SIZE);
+    return copyChars(unk14->unk0, buffer, MGB_NICKNAME_SIZE);
 }
