@@ -3,44 +3,6 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08057bd8
-sub_08057bd8:
-	push	{ r4, lr }
-	ldr		r3, _08057c10
-	lsl		r2, r1, #0x1
-	add		r2, r2, r1
-	lsl		r2, r2, #0x3
-	mov		r1, #0xba
-	lsl		r1, r1, #0x4
-	add		r2, r2, r1
-	add		r2, r2, r3
-	add		r1, r0, #0x0
-	mov		r4, #0x0
-	mov		r3, #0x4
-_08057bf0:
-	ldrb	r0, [r2, #0x0]
-	strb	r0, [r1, #0x0]
-	lsl		r0, r0, #0x18
-	add		r2, #0x1
-	add		r1, #0x1
-	cmp		r0, #0x0
-	beq		_08057c00
-	mov		r4, #0x1
-_08057c00:
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057bf0
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-.align 2, 0
-.pool
-
-_08057c10:	.4byte 0x02032B80
-	thumb_func_end sub_08057bd8
-
 	thumb_func_start sub_08057c14
 sub_08057c14:
 	ldr		r3, _08057c38
@@ -4651,7 +4613,7 @@ _08059dd6:
 	add		r0, r0, r1
 	add		r0, r6, r0
 	add		r1, r5, #0x0
-	bl		sub_08057bd8
+	bl		getunk14FromSaveByOffset
 	lsl		r2, r5, #0x4
 	mov		r8, r2
 	add		r1, r5, #0x1

@@ -10,6 +10,12 @@
 
 #define MGB_PREFECTURE_LIST_SIZE 47
 
+// temp
+typedef struct MGBSaveDatatruct1 { 
+    char unk0[5];
+    char unk1[19];
+} MGBSaveDatatruct1;
+
 typedef struct MGBUserInfoSaveData {
     char unk1[12];
     char unk2[12];
@@ -27,11 +33,14 @@ typedef struct MGBUserInfoSaveData {
     char unk11[4];
     char unk12[8];
     char Town[22];
-    char unk13[2656];
+    char unk13[70];
+    char unk14[2586];
+    //struct MGBSaveDatatruct1 unk14[107];
     char Password[4];
-    char unk14[14];
-    char PrefectureId[MGB_PREFECTUREID_SIZE];
     char unk15[14];
+    char PrefectureId[MGB_PREFECTUREID_SIZE];
+    char unk16[13];
+    char unk17;
     char Address[MGB_ADDRESS_SIZE];
     char Zipcode[MGB_ZIPCODE_SIZE];
     char RealName[MGB_REALNAME_SIZE];
