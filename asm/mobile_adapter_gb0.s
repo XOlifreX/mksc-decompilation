@@ -3,66 +3,6 @@
 	.include "macros.s"
 
 
-@ 	thumb_func_start sub_08057c14
-@ sub_08057c14:
-@ 	ldr		r3, _08057c38
-@ 	lsl		r2, r1, #0x1
-@ 	add		r2, r2, r1
-@ 	lsl		r2, r2, #0x3
-@ 	mov		r1, #0xba
-@ 	lsl		r1, r1, #0x4
-@ 	add		r2, r2, r1
-@ 	add		r1, r0, #0x0
-@ 	add		r2, r2, r3
-@ 	mov		r3, #0x4
-@ _08057c28:
-@ 	ldrb	r0, [r1, #0x0]
-@ 	strb	r0, [r2, #0x0]
-@ 	add		r1, #0x1
-@ 	add		r2, #0x1
-@ 	sub		r3, #0x1
-@ 	cmp		r3, #0x0
-@ 	bge		_08057c28
-@ 	bx		lr
-
-@ _08057c38:	.4byte 0x02032B80
-@ 	thumb_func_end sub_08057c14
-
-	thumb_func_start sub_08057c3c
-sub_08057c3c:
-	push	{ r4, lr }
-	ldr		r3, _08057c70
-	lsl		r2, r1, #0x1
-	add		r2, r2, r1
-	lsl		r2, r2, #0x3
-	add		r2, r2, r3
-	ldr		r1, _08057c74
-	add		r2, r2, r1
-	add		r1, r0, #0x0
-	mov		r4, #0x0
-	mov		r3, #0xf
-_08057c52:
-	ldrb	r0, [r2, #0x0]
-	strb	r0, [r1, #0x0]
-	lsl		r0, r0, #0x18
-	add		r2, #0x1
-	add		r1, #0x1
-	cmp		r0, #0x0
-	beq		_08057c62
-	mov		r4, #0x1
-_08057c62:
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057c52
-	add		r0, r4, #0x0
-	pop		{ r4 }
-	pop		{ r1 }
-	bx		r1
-
-_08057c70:	.4byte 0x02032B80
-_08057c74:	.4byte 0x00000BA8
-	thumb_func_end sub_08057c3c
-
 	thumb_func_start sub_08057c78
 sub_08057c78:
 	ldr		r3, _08057c9c
@@ -4647,7 +4587,7 @@ _08059e1c:
 	add		r0, r8
 	add		r0, r6, r0
 	add		r1, r5, #0x0
-	bl		sub_08057c3c
+	bl		getMgbUnk1InUnk14FromSaveByOffset
 	cmp		r0, #0x0
 	bne		_08059e42
 	mov		r1, #0x0

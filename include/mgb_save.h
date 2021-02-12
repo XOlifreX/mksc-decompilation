@@ -10,10 +10,10 @@
 
 #define MGB_PREFECTURE_LIST_SIZE 47
 
-// temp
-typedef struct MGBSaveDatatruct1 { 
+typedef struct MGBSaveDatatruct1 {
     char unk0[5];
-    char unk1[19];
+    char unk1[3];
+    char unk2[MGB_REALNAME_SIZE];
 } MGBSaveDatatruct1;
 
 typedef struct MGBUserInfoSaveData {
