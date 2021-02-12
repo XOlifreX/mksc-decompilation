@@ -1122,7 +1122,7 @@ ewram           0x02000000    0x40000
                 0x08057878                sub_08057878
                 0x080578a0                sub_080578a0
  src/mgb_save.o(.text)
- .text          0x080578d8      0x33c src/mgb_save.o
+ .text          0x080578d8      0x364 src/mgb_save.o
                 0x080578d8                sub_080578d8
                 0x08057900                getMgbUn2FromSave
                 0x08057930                setMgbUn2FromSave
@@ -1130,7 +1130,7 @@ ewram           0x02000000    0x40000
                 0x08057980                setMgbNicknameFromSave
                 0x080579a0                getMgbPasswordFromSave
                 0x080579d0                setMgbPasswordFromSave
-                0x080579f4                getMgbUn4FromSave
+                0x080579f4                getMgbUnk4FromSave
                 0x08057a24                setMgbUnk4FromSave
                 0x08057a44                getMgbAddressFromSave
                 0x08057a78                setMgbAddressFromSave
@@ -1142,10 +1142,10 @@ ewram           0x02000000    0x40000
                 0x08057b5c                setMgbPhoneNumberFromSave
                 0x08057b80                getMgbRealNameFromSave
                 0x08057bb4                setMgbRealNameFromSave
-                0x08057bd8                getunk14FromSaveByOffset
+                0x08057bd8                getMgbUnk14FromSaveByOffset
+                0x08057c14                setMgbUnk14FromSaveByOffset
  asm/mobile_adapter_gb0.o(.text)
- .text          0x08057c14     0x8fe0 asm/mobile_adapter_gb0.o
-                0x08057c14                sub_08057c14
+ .text          0x08057c3c     0x8fb8 asm/mobile_adapter_gb0.o
                 0x08057c3c                sub_08057c3c
                 0x08057c78                sub_08057c78
                 0x08057ca4                sub_08057ca4

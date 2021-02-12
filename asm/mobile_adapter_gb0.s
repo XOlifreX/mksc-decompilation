@@ -3,30 +3,30 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08057c14
-sub_08057c14:
-	ldr		r3, _08057c38
-	lsl		r2, r1, #0x1
-	add		r2, r2, r1
-	lsl		r2, r2, #0x3
-	mov		r1, #0xba
-	lsl		r1, r1, #0x4
-	add		r2, r2, r1
-	add		r1, r0, #0x0
-	add		r2, r2, r3
-	mov		r3, #0x4
-_08057c28:
-	ldrb	r0, [r1, #0x0]
-	strb	r0, [r2, #0x0]
-	add		r1, #0x1
-	add		r2, #0x1
-	sub		r3, #0x1
-	cmp		r3, #0x0
-	bge		_08057c28
-	bx		lr
+@ 	thumb_func_start sub_08057c14
+@ sub_08057c14:
+@ 	ldr		r3, _08057c38
+@ 	lsl		r2, r1, #0x1
+@ 	add		r2, r2, r1
+@ 	lsl		r2, r2, #0x3
+@ 	mov		r1, #0xba
+@ 	lsl		r1, r1, #0x4
+@ 	add		r2, r2, r1
+@ 	add		r1, r0, #0x0
+@ 	add		r2, r2, r3
+@ 	mov		r3, #0x4
+@ _08057c28:
+@ 	ldrb	r0, [r1, #0x0]
+@ 	strb	r0, [r2, #0x0]
+@ 	add		r1, #0x1
+@ 	add		r2, #0x1
+@ 	sub		r3, #0x1
+@ 	cmp		r3, #0x0
+@ 	bge		_08057c28
+@ 	bx		lr
 
-_08057c38:	.4byte 0x02032B80
-	thumb_func_end sub_08057c14
+@ _08057c38:	.4byte 0x02032B80
+@ 	thumb_func_end sub_08057c14
 
 	thumb_func_start sub_08057c3c
 sub_08057c3c:
@@ -4613,7 +4613,7 @@ _08059dd6:
 	add		r0, r0, r1
 	add		r0, r6, r0
 	add		r1, r5, #0x0
-	bl		getunk14FromSaveByOffset
+	bl		getMgbUnk14FromSaveByOffset
 	lsl		r2, r5, #0x4
 	mov		r8, r2
 	add		r1, r5, #0x1
@@ -5164,7 +5164,7 @@ _0805a194:
 	bl		sub_08057378
 	add		r0, r5, #0x4
 	mov		r1, #0x0
-	bl		getMgbUn4FromSave
+	bl		getMgbUnk4FromSave
 	ldrb	r1, [r5, #0x0]
 	mov		r0, #0x20
 	orr		r0, r1
@@ -13093,10 +13093,10 @@ _0805e80c:
 	add		r4, r7, r4
 	add		r0, r4, #0x0
 	mov		r1, #0x0
-	bl		getMgbUn4FromSave
+	bl		getMgbUnk4FromSave
 	add		r0, r4, #0x0
 	add		r1, r6, #0x0
-	bl		sub_08057c14
+	bl		setMgbUnk14FromSaveByOffset
 	ldr		r1, _0805e89c
 	add		r0, r7, r1
 	add		r1, r6, #0x0
@@ -13431,10 +13431,10 @@ _0805eada:
 	add		r4, r8
 	add		r0, r4, #0x0
 	mov		r1, #0x0
-	bl		getMgbUn4FromSave
+	bl		getMgbUnk4FromSave
 	add		r0, r4, #0x0
 	add		r1, r5, #0x0
-	bl		sub_08057c14
+	bl		setMgbUnk14FromSaveByOffset
 	bl		sub_08057428
 _0805eaf8:
 	bl		sub_0805c408
@@ -14270,7 +14270,7 @@ sub_0805f16c:
 	add		r0, r8
 	add		r5, r5, r0
 	add		r0, r5, #0x0
-	bl		sub_08057c14
+	bl		setMgbUnk14FromSaveByOffset
 	bl		sub_08057428
 	bl		sub_0805c408
 	add		r4, r0, #0x0

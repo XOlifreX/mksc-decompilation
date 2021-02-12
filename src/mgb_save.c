@@ -160,7 +160,7 @@ void setMgbPasswordFromSave(char* buffer)
 }
 
 // 080579f4
-bool getMgbUn4FromSave(char* buffer) 
+bool getMgbUnk4FromSave(char* buffer) 
 {
     MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
     char* unk4 = userInfoObject->unk4;
@@ -280,10 +280,19 @@ void setMgbRealNameFromSave(char* buffer)
 }
 
 // 08057bd8
-bool getunk14FromSaveByOffset(char *buffer, int index)
+bool getMgbUnk14FromSaveByOffset(char *buffer, int index)
 { 
     MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
     struct MGBSaveDatatruct1* unk14 = &userInfoObject->unk19[index];
 
     return copyChars(unk14->unk0, buffer, MGB_NICKNAME_SIZE);
+}
+
+// 08057c14
+void setMgbUnk14FromSaveByOffset(char *buffer, int index)
+{ 
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    struct MGBSaveDatatruct1* unk14 = &userInfoObject->unk19[index];
+
+    copyChars(buffer, unk14->unk0, MGB_NICKNAME_SIZE);
 }
