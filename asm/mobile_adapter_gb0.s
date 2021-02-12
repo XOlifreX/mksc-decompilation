@@ -3,34 +3,6 @@
 	.include "macros.s"
 
 
-@ 	thumb_func_start sub_08057c78
-@ sub_08057c78:
-@ 	ldr		r3, _08057c9c
-@ 	lsl		r2, r1, #0x1
-@ 	add		r2, r2, r1
-@ 	lsl		r2, r2, #0x3
-@ 	add		r2, r2, r3
-@ 	add		r1, r0, #0x0
-@ 	ldr		r0, _08057ca0
-@ 	add		r2, r2, r0
-@ 	mov		r3, #0xf
-@ _08057c8a:
-@ 	ldrb	r0, [r1, #0x0]
-@ 	strb	r0, [r2, #0x0]
-@ 	add		r1, #0x1
-@ 	add		r2, #0x1
-@ 	sub		r3, #0x1
-@ 	cmp		r3, #0x0
-@ 	bge		_08057c8a
-@ 	bx		lr
-
-@ .align 2, 0
-@ .pool
-
-@ _08057c9c:	.4byte 0x02032B80
-@ _08057ca0:	.4byte 0x00000BA8
-@ 	thumb_func_end sub_08057c78
-
 	thumb_func_start sub_08057ca4
 sub_08057ca4:
 	push	{ r4, r5, r6, r7, lr }
