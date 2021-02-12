@@ -305,3 +305,12 @@ bool getMgbUnk1InUnk14FromSaveByOffset(char *buffer, int index)
 
     return copyChars(unk14->unk2, buffer, MGB_REALNAME_SIZE);
 }
+
+// 08057c78
+void setMgbUnk1InUnk14FromSaveByOffset(char *buffer, int index)
+{ 
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+    struct MGBSaveDatatruct1* unk14 = &userInfoObject->unk19[index];
+
+    copyChars(buffer, unk14->unk2, MGB_REALNAME_SIZE);
+}
