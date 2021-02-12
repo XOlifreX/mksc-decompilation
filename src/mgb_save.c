@@ -22,23 +22,6 @@ static inline bool copyChars(char* src, char* dest, int size)
     return success;
 }
 // **********************************************************************
-static inline bool copyChar(char* src, char* dest, int limit)
-{
-    bool success;
-    unsigned int check;
-
-    char temp = *dest = *src;
-
-    success = false;
-
-    check = (unsigned int)(((unsigned int)temp) << 0x18) >> 0x18;
-
-    if (check <= limit)
-        success = true;
-
-    return success;
-}
-// **********************************************************************
 
 // 080578d8
 int sub_080578d8(char param_1) 
@@ -247,8 +230,14 @@ void setMgbZipcodeFromSave(char* buffer)
 // 08057af4
 bool getMgbPrefectureIdFromSave(char* buffer) 
 {
-    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
-    return copyChar(userInfoObject->PrefectureId, buffer, MGB_PREFECTURE_LIST_SIZE - 1);
+    bool success;
+    *buffer = gUserInfoSaveData.PrefectureId[0];
+    success = 0;
+
+    if (*buffer < MGB_PREFECTURE_LIST_SIZE)
+        success = 1;
+
+    return success;
 }
 
 // 08057b14
