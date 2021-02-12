@@ -20,7 +20,7 @@ void loadMgbUserDataFromSave(MGBUserInfo* UserInfo)
     UserInfo->unk1 = NULL;
     getMgbPasswordFromSave(UserInfo->Password);
     temp = sub_08057370() + 0xAE6;
-    UserInfo->PrefectureId[0] = *temp;
+    UserInfo->PrefectureId = *temp;
 
     getMgbRealNameFromSave(UserInfo->RealName);
     getMgbPhoneNumberFromSave(UserInfo->PhoneNumber);
@@ -275,13 +275,13 @@ void setMgbZipcode(MGBUserInfo* MGBUserInfo, char* buffer)
 // 08060e1c
 char* getMgbPrefectureIdFromMGBStruct(MGBUserInfo* MGBUserInfo)
 {
-    return MGBUserInfo->PrefectureId;
+    return &MGBUserInfo->PrefectureId;
 }
 
 // 08060e20
 bool checkMgbPrefectureIdIsValid(MGBUserInfo* MGBUserInfo)
 {
-    char toCheck = MGBUserInfo->PrefectureId[0];
+    char toCheck = MGBUserInfo->PrefectureId;
 
     return toCheck < MGB_PREFECTURE_LIST_SIZE;
 }
@@ -292,19 +292,19 @@ bool checkMgbPrefectureIdIsValid(MGBUserInfo* MGBUserInfo)
 // 08060e30
 void invalidateMgbPrefectureId(MGBUserInfo* MGBUserInfo)
 {
-    MGBUserInfo->PrefectureId[0] = MGB_PREFECTURE_LIST_SIZE;
+    MGBUserInfo->PrefectureId = MGB_PREFECTURE_LIST_SIZE;
 }
 
 // 08060e38
 bool copyMgbPrefectureIdToBuffer(MGBUserInfo* MGBUserInfo, char* buffer)
 {
-    *buffer = MGBUserInfo->PrefectureId[0];
+    *buffer = MGBUserInfo->PrefectureId;
 }
 
 // 08060e40
 bool setMgbPrefectureIdToBuffer(MGBUserInfo* MGBUserInfo, char* buffer)
 {
-    char* location = MGBUserInfo->PrefectureId;
+    char* location = &MGBUserInfo->PrefectureId;
     *location = *buffer;
 }
 

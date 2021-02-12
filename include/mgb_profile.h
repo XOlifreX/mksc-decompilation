@@ -11,7 +11,7 @@ typedef struct MGBUserInfo {
     char unk2[3];
     unsigned int unk1;
     char Password[MGB_PASSWORD_SIZE];
-    char PrefectureId[MGB_PREFECTUREID_SIZE];
+    char PrefectureId;
     char RealName[MGB_REALNAME_SIZE];
     char PhoneNumber[MGB_PHONENUMBER_SIZE];
     char Zipcode[MGB_ZIPCODE_SIZE];

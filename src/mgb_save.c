@@ -230,8 +230,10 @@ void setMgbZipcodeFromSave(char* buffer)
 // 08057af4
 bool getMgbPrefectureIdFromSave(char* buffer) 
 {
+    MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
     bool success;
-    *buffer = gUserInfoSaveData.PrefectureId[0];
+
+    *buffer = userInfoObject->PrefectureId;
     success = 0;
 
     if (*buffer < MGB_PREFECTURE_LIST_SIZE)
@@ -244,7 +246,7 @@ bool getMgbPrefectureIdFromSave(char* buffer)
 void setMgbPrefectureIdFromSave(char* buffer) 
 {
     MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
-    char* prefectureId = userInfoObject->PrefectureId;
+    char* prefectureId = &userInfoObject->PrefectureId;
 
     *prefectureId = *buffer;
 }

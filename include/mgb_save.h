@@ -38,7 +38,7 @@ typedef struct MGBUserInfoSaveData {
     // struct MGBSaveDatatruct1 unk14[107];
     char Password[4];
     char unk15[14];
-    char PrefectureId[MGB_PREFECTUREID_SIZE];
+    char PrefectureId;
     char unk16[13];
     char unk17;
     char Address[MGB_ADDRESS_SIZE];
