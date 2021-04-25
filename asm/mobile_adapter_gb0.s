@@ -3,28 +3,6 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08057d00
-sub_08057d00:
-	push	{ lr }
-	add		r2, r0, #0x0
-	lsl		r1, r1, #0x18
-	lsr		r1, r1, #0x18
-	ldr		r0, _08057d20
-	ldrb	r0, [r0, #0x0]
-	cmp		r0, #0x1
-	bne		_08057d1c
-	mov		r3, #0x80
-	lsl		r3, r3, #0x5
-	add		r0, r1, #0x0
-	mov		r1, #0x0
-	bl		sub_08071edc
-_08057d1c:
-	pop		{ r0 }
-	bx		r0
-
-_08057d20:	.4byte 0x030023C4
-	thumb_func_end sub_08057d00
-
 	thumb_func_start sub_08057d24
 sub_08057d24:
 	push	{ lr }
