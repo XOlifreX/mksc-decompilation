@@ -1,7 +1,6 @@
 #include "mgb_save.h"
 #include "gba/defines.h"
 
-
 EWRAM_DATA ALIGNED(4) struct MGBUserInfoSaveData gUserInfoSaveData = {0};
 
 // **********************************************************************
@@ -24,7 +23,7 @@ static inline bool copyChars(char* src, char* dest, int size)
 // **********************************************************************
 
 // 080578d8
-int sub_080578d8(char param_1) 
+int sub_080578d8(char param_1) // Possible fake match
 {
     char someString[32];
     int temp;

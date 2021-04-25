@@ -16,6 +16,16 @@ SECTIONS {
         . = 0x40000;
     }
 
+    . = 0x3000000;
+
+    iwram (NOLOAD) :
+    ALIGN(4)
+    {
+        INCLUDE "sym_bss.ld"
+
+        . = 0x8000;
+    }
+
     . = 0x8000000;
     .text :
     ALIGN(4)
@@ -29,6 +39,7 @@ SECTIONS {
         asm/game.o (.text);
 	    asm/mka3.o (.text);
         src/mgb_save.o (.text);
+        src/mgb_unk1.o (.text);
         asm/mobile_adapter_gb0.o (.text);
         src/mgb_profile.o (.text);
         asm/mobile_adapter_gb1.o (.text);

@@ -26,6 +26,9 @@ override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-
 
 CPPFLAGS := -I tools/agbcc -I tools/agbcc/include -iquote include -nostdinc
 
+# src files that require modern agbcc to match
+include agbcc_exceptions.mk
+
 ASFILE := $(wildcard asm/*.s)
 CFILE := $(wildcard src/*.c)
 ASOBJFILE := $(ASFILE:.s=.o)
@@ -39,6 +42,10 @@ EWRAM_FILENAME		:= sym_ewram
 EWRAM_SECTIONNAME	:= ewram_data
 EWRAM_LDSCRIPT		:= $(EWRAM_FILENAME).ld
 EWRAM_TXTSCRIPT		:= $(EWRAM_FILENAME).txt
+IWRAM_FILENAME		:= sym_bss
+IWRAM_SECTIONNAME	:= .bss
+IWRAM_LDSCRIPT		:= $(IWRAM_FILENAME).ld
+IWRAM_TXTSCRIPT		:= $(IWRAM_FILENAME).txt
 
 .PHONY: graphics rom
 
@@ -55,16 +62,20 @@ compare: $(ROM)
 
 # Clean
 clean:
-	@$(RM) $(ELF) $(ASOBJFILE) $(COBJFILE) $(EWRAM_LDSCRIPT)
+	@$(RM) $(ELF) $(ASOBJFILE) $(COBJFILE) $(EWRAM_LDSCRIPT) $(IWRAM_LDSCRIPT)
 
 # Build
 $(EWRAM_LDSCRIPT): $(EWRAM_TXTSCRIPT)
 	$(RAMSCRGEN) $(EWRAM_SECTIONNAME) $(EWRAM_TXTSCRIPT) ENGLISH >$(EWRAM_LDSCRIPT)
 
+$(IWRAM_LDSCRIPT): $(IWRAM_TXTSCRIPT)
+	$(RAMSCRGEN) $(IWRAM_SECTIONNAME) $(IWRAM_TXTSCRIPT) ENGLISH >$(IWRAM_LDSCRIPT)
+
+
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 
-$(ELF): %.elf: $(ASOBJFILE) $(COBJFILE) $(LDSCRIPT) $(EWRAM_LDSCRIPT)
+$(ELF): %.elf: $(ASOBJFILE) $(COBJFILE) $(LDSCRIPT) $(EWRAM_LDSCRIPT) $(IWRAM_LDSCRIPT)
 	$(LD) -T $(LDSCRIPT) -Map $*.map -o $@ $(ASOBJFILE) $(COBJFILE) -L tools/agbcc/lib -lgcc -lc
 
 $(COBJFILE): %.o: %.c

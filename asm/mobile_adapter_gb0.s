@@ -3,60 +3,6 @@
 	.include "macros.s"
 
 
-	thumb_func_start sub_08057ca4
-sub_08057ca4:
-	push	{ r4, r5, r6, r7, lr }
-	add		r5, r0, #0x0
-	lsl		r1, r1, #0x18
-	lsr		r2, r1, #0x18
-	mov		r0, #0xbf
-	lsl		r0, r0, #0x4
-	add		r4, r5, r0
-	ldrh	r1, [r4, #0x0]
-	mov		r7, #0x80
-	lsl		r7, r7, #0x8
-	add		r0, r7, #0x0
-	and		r0, r1
-	lsl		r0, r0, #0x10
-	lsr		r6, r0, #0x10
-	ldr		r0, _08057ce4
-	ldrb	r0, [r0, #0x0]
-	cmp		r0, #0x1
-	bne		_08057cd4
-	ldr		r3, _08057ce8
-	add		r0, r2, #0x0
-	mov		r1, #0x0
-	add		r2, r5, #0x0
-	bl		sub_08071edc
-_08057cd4:
-	mov		r0, #0x7
-	strh	r0, [r5, #0x8]
-	cmp		r6, #0x0
-	beq		_08057cec
-	ldrh	r1, [r4, #0x0]
-	add		r0, r7, #0x0
-	orr		r0, r1
-	b		_08057cf2
-
-_08057ce4:	.4byte 0x030023C4
-_08057ce8:	.4byte 0x00000BF4
-
-_08057cec:
-	ldrh	r1, [r4, #0x0]
-	ldr		r0, _08057cfc
-	and		r0, r1
-_08057cf2:
-	strh	r0, [r4, #0x0]
-	pop		{ r4, r5, r6, r7 }
-	pop		{ r0 }
-	bx		r0
-
-.align 2, 0
-.pool
-
-_08057cfc:	.4byte 0x00007FFF
-	thumb_func_end sub_08057ca4
-
 	thumb_func_start sub_08057d00
 sub_08057d00:
 	push	{ lr }

@@ -49,6 +49,4 @@ typedef struct MGBUserInfoSaveData {
     struct MGBSaveDatatruct1 unk19[3];
 } MGBUserInfoSaveData;
 
-extern struct MGBUserInfoSaveData gUserInfoSaveData;
-
 extern bool sub_08056030(char* someString, char param_1);
