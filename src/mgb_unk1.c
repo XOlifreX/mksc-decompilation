@@ -25,3 +25,9 @@ void sub_08057d00(struct MGBUnkStruct1* param_1, char param_2)
   if (gUserGhostSaveData.hasGhost == true) 
     sub_08071edc(param_2, false, param_1, 0x1000);
 }
+
+void sub_08057d24(struct MGBUnkStruct1* param_1, char param_2)
+{
+  if (gUserGhostSaveData.hasGhost == true) 
+    sub_08071edc(param_2, false, param_1, 0xB408);
+}

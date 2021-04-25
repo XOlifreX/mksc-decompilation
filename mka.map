@@ -1162,12 +1162,12 @@ iwram           0x0000000003000000     0x8000
                 0x0000000008057c3c                getMgbUnk1InUnk14FromSaveByOffset
                 0x0000000008057c78                setMgbUnk1InUnk14FromSaveByOffset
  src/mgb_unk1.o(.text)
- .text          0x0000000008057ca4       0x80 src/mgb_unk1.o
+ .text          0x0000000008057ca4       0xa8 src/mgb_unk1.o
                 0x0000000008057ca4                sub_08057ca4
                 0x0000000008057d00                sub_08057d00
- asm/mobile_adapter_gb0.o(.text)
- .text          0x0000000008057d24     0x8ed0 asm/mobile_adapter_gb0.o
                 0x0000000008057d24                sub_08057d24
+ asm/mobile_adapter_gb0.o(.text)
+ .text          0x0000000008057d4c     0x8ea8 asm/mobile_adapter_gb0.o
                 0x0000000008057d4c                sub_08057d4c
                 0x0000000008057d88                sub_08057d88
                 0x0000000008057dc4                sub_08057dc4
