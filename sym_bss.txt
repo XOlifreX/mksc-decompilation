@@ -2,3 +2,7 @@ gUnknown_03000000:
     .space 0x23C4
 
     .include "src/mgb_unk1.o"
+
+    .space 0x4A34
+
+    .include "src/mgb_unk2.o"

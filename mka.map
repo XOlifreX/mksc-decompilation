@@ -8,6 +8,10 @@ Discarded input sections
  .data          0x0000000000000000        0x0 src/mgb_unk1.o
  .ARM.attributes
                 0x0000000000000000       0x20 src/mgb_unk1.o
+ .text          0x0000000000000000        0x0 src/mgb_unk2.o
+ .data          0x0000000000000000        0x0 src/mgb_unk2.o
+ .ARM.attributes
+                0x0000000000000000       0x20 src/mgb_unk2.o
  .data          0x0000000000000000        0x0 asm/crt0.o
  .bss           0x0000000000000000        0x0 asm/crt0.o
  .ARM.attributes
@@ -125,8 +129,14 @@ iwram           0x0000000003000000     0x8000
  src/mgb_unk1.o(.bss)
  .bss           0x00000000030023c4        0xc src/mgb_unk1.o
                 0x00000000030023c4                gUserGhostSaveData
+                0x0000000003006e04                . = (. + 0x4a34)
+ *fill*         0x00000000030023d0     0x4a34 
+                0x0000000003006e04                . = ALIGN (0x4)
+ src/mgb_unk2.o(.bss)
+ .bss           0x0000000003006e04        0x4 src/mgb_unk2.o
+                0x0000000003006e04                gMgbUnk2
                 0x0000000000008000                . = 0x8000
- *fill*         0x00000000030023d0     0x5c30 
+ *fill*         0x0000000003006e08     0x11f8 
                 0x0000000008000000                . = 0x8000000
 
 .text           0x0000000008000000   0x400000
@@ -1162,13 +1172,13 @@ iwram           0x0000000003000000     0x8000
                 0x0000000008057c3c                getMgbUnk1InUnk14FromSaveByOffset
                 0x0000000008057c78                setMgbUnk1InUnk14FromSaveByOffset
  src/mgb_unk1.o(.text)
- .text          0x0000000008057ca4       0xa8 src/mgb_unk1.o
+ .text          0x0000000008057ca4       0xe4 src/mgb_unk1.o
                 0x0000000008057ca4                sub_08057ca4
                 0x0000000008057d00                sub_08057d00
                 0x0000000008057d24                sub_08057d24
- asm/mobile_adapter_gb0.o(.text)
- .text          0x0000000008057d4c     0x8ea8 asm/mobile_adapter_gb0.o
                 0x0000000008057d4c                sub_08057d4c
+ asm/mobile_adapter_gb0.o(.text)
+ .text          0x0000000008057d88     0x8e6c asm/mobile_adapter_gb0.o
                 0x0000000008057d88                sub_08057d88
                 0x0000000008057dc4                sub_08057dc4
                 0x0000000008057dec                sub_08057dec
@@ -2308,6 +2318,7 @@ LOAD asm/swi.o
 LOAD src/mgb_profile.o
 LOAD src/mgb_save.o
 LOAD src/mgb_unk1.o
+LOAD src/mgb_unk2.o
 LOAD tools/agbcc/lib\libgcc.a
 LOAD tools/agbcc/lib\libc.a
 OUTPUT(mka.elf elf32-littlearm)
