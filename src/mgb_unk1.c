@@ -46,3 +46,16 @@ bool sub_08057d4c(struct MGBUnkStruct1* param_1, char param_2)
   
   return false;
 }
+
+// 08057d88
+bool sub_08057d88(struct MGBUnkStruct1* param_1, char param_2)
+{
+  if (gUserGhostSaveData.hasGhost == true) {
+    sub_0807d7d8(param_2, param_1, gMgbUnk2.unk0);
+    
+    if (!sub_08071f9c(param_2, param_1))
+      return true;
+  }
+  
+  return false;
+}
