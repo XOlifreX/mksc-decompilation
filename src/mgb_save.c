@@ -22,6 +22,24 @@ static inline bool copyChars(char* src, char* dest, int size)
 }
 // **********************************************************************
 
+// 080578a0
+int sub_080578a0(char param_1, char* param_2) {
+  unk_struct0 unk0;
+  int result = false;
+
+  if (!sub_08056030(unk0.unk0, param_1)) {
+    char* tmp2 = unk0.unk1;
+    
+    int i;
+    for (i = 0; i < 5; i++)
+      *(param_2++) = *(tmp2++);
+
+    result = true;
+  }
+
+  return result;
+}
+
 // 080578d8
 int sub_080578d8(char param_1) // Possible fake match
 {
