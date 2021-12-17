@@ -13,7 +13,9 @@
 typedef struct unk_struct0 {
     char unk0[2];
     short unk1;
-    char unk2[28];
+    char unk2[MGB_NICKNAME_SIZE];
+    char unk3;
+    char unk4[20];
 } unk_struct0;
 
 typedef struct MGBSaveDatatruct1 {
@@ -55,4 +57,4 @@ typedef struct MGBUserInfoSaveData {
     struct MGBSaveDatatruct1 unk19[3];
 } MGBUserInfoSaveData;
 
-extern bool sub_08056030(char* someString, char param_1);
+extern bool sub_08056030(unk_struct0* param_0, char param_1);

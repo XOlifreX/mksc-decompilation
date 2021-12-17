@@ -77355,28 +77355,3 @@ _08057844:
 _0805784e:
 	bx		lr
 	thumb_func_end sub_08057828
-
-	thumb_func_start sub_08057850
-sub_08057850:
-	push	{ lr }
-	sub		sp, #0x20
-	add		r1, r0, #0x0
-	lsl		r1, r1, #0x18
-	lsr		r1, r1, #0x18
-	mov		r0, sp
-	bl		sub_08056030
-	cmp		r0, #0x0
-	bne		_0805786e
-	mov		r0, sp
-	ldrb	r0, [r0, #0x0]
-	lsl		r0, r0, #0x18
-	asr		r0, r0, #0x18
-	b		_08057872
-_0805786e:
-	mov		r0, #0x1
-	neg		r0, r0
-_08057872:
-	add		sp, #0x20
-	pop		{ r1 }
-	bx		r1
-	thumb_func_end sub_08057850

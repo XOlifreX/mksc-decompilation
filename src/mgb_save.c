@@ -22,13 +22,23 @@ static inline bool copyChars(char* src, char* dest, int size)
 }
 // **********************************************************************
 
+// 08057850
+int sub_08057850(char param_1)
+{
+    unk_struct0 unk0;
+    if (sub_08056030(&unk0, param_1))
+        return -1;
+
+    return unk0.unk0[0] << 0x18 >> 0x18;;
+}
+
 // 08057878
 short sub_08057878(char param_1)
 {
   int result;
   unk_struct0 unk0;
   
-  if (sub_08056030(unk0.unk0, param_1))
+  if (sub_08056030(&unk0, param_1))
     return -1;
 
   return unk0.unk1;
@@ -40,11 +50,11 @@ bool sub_080578a0(char param_1, char *param_2)
   bool result = 0;
   unk_struct0 unk0;
   
-  if (!sub_08056030(unk0.unk0, param_1)) {
-    char *unk2_ref = unk0.unk2;
+  if (!sub_08056030(&unk0, param_1)) {
+    char *unk4_ref = unk0.unk2;
     int i;
-    for(i = 0; i < 5; i++) {
-      *(param_2++) = *(unk2_ref++);
+    for(i = 0; i < MGB_NICKNAME_SIZE; i++) {
+      *(param_2++) = *(unk4_ref++);
     }
     result = true;
   }
@@ -55,13 +65,11 @@ bool sub_080578a0(char param_1, char *param_2)
 // 080578d8
 int sub_080578d8(char param_1) // Possible fake match
 {
-    char someString[32];
-    int temp;
-
-    if (sub_08056030(someString, param_1))
+    unk_struct0 unk0;
+    if (sub_08056030(&unk0, param_1))
         return -1;
     
-    return someString[9] << 0x18 >> 0x18;
+    return unk0.unk3 << 0x18 >> 0x18;
 }
 
 // 08057900
