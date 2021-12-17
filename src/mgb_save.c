@@ -22,7 +22,22 @@ static inline bool copyChars(char* src, char* dest, int size)
 }
 // **********************************************************************
 
-// https://cexplore.karathan.at/z/bHp5NA
+// 08057878
+short sub_08057878(char param_1)
+{
+  int result;
+  unk_struct0 unk0;
+  
+  if (!sub_08056030(unk0.unk0, param_1)) {
+    result = unk0.unk1;
+  }
+  else {
+    result = -1;
+  }
+
+  return result;
+}
+
 // 080578a0
 bool sub_080578a0(char param_1, char *param_2)
 {
@@ -30,10 +45,10 @@ bool sub_080578a0(char param_1, char *param_2)
   unk_struct0 unk0;
   
   if (!sub_08056030(unk0.unk0, param_1)) {
-    char *unk1_ref = unk0.unk1;
+    char *unk2_ref = unk0.unk2;
     int i;
     for(i = 0; i < 5; i++) {
-      *(param_2++) = *(unk1_ref++);
+      *(param_2++) = *(unk2_ref++);
     }
     result = true;
   }

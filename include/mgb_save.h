@@ -11,8 +11,9 @@
 #define MGB_PREFECTURE_LIST_SIZE 47
 
 typedef struct unk_struct0 {
-    char unk0[4];
-    char unk1[28];
+    char unk0[2];
+    short unk1;
+    char unk2[28];
 } unk_struct0;
 
 typedef struct MGBSaveDatatruct1 {
