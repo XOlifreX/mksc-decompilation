@@ -22,18 +22,19 @@ static inline bool copyChars(char* src, char* dest, int size)
 }
 // **********************************************************************
 
+// https://cexplore.karathan.at/z/bHp5NA
 // 080578a0
-int sub_080578a0(char param_1, char* param_2) {
+bool sub_080578a0(char param_1, char *param_2)
+{
+  bool result = 0;
   unk_struct0 unk0;
-  int result = false;
-
+  
   if (!sub_08056030(unk0.unk0, param_1)) {
-    char* tmp2 = unk0.unk1;
-    
+    char *unk1_ref = unk0.unk1;
     int i;
-    for (i = 0; i < 5; i++)
-      *(param_2++) = *(tmp2++);
-
+    for(i = 0; i < 5; i++) {
+      *(param_2++) = *(unk1_ref++);
+    }
     result = true;
   }
 

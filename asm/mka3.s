@@ -77407,7 +77407,7 @@ _08057898:
 .incbin "base.gba", 0x5789E, 0x2
 	thumb_func_end sub_08057878
 
-/*	thumb_func_start sub_080578a0
+/*  	thumb_func_start sub_080578a0
 sub_080578a0:
 	push	{ r4, r5, lr }
 	sub		sp, #0x20
