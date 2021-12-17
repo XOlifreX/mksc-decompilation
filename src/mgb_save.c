@@ -28,14 +28,10 @@ short sub_08057878(char param_1)
   int result;
   unk_struct0 unk0;
   
-  if (!sub_08056030(unk0.unk0, param_1)) {
-    result = unk0.unk1;
-  }
-  else {
-    result = -1;
-  }
+  if (sub_08056030(unk0.unk0, param_1))
+    return -1;
 
-  return result;
+  return unk0.unk1;
 }
 
 // 080578a0
