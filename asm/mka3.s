@@ -77327,31 +77327,3 @@ sub_080577f8:
 _08057820:	.4byte 0x02032B80
 _08057824:	.4byte 0x00000BEC
 	thumb_func_end sub_080577f8
-
-	thumb_func_start sub_08057828
-sub_08057828:
-	lsl		r0, r0, #0x18
-	lsr		r0, r0, #0x18
-	ldr		r1, _08057840
-	mov		r2, #0x0
-	add		r1, #0x28
-	add		r1, r0, r1
-_08057834:
-	mov		r0, #0x0
-	ldrsb	r0, [r1, r0]
-	cmp		r0, #0x0
-	beq		_08057844
-	mov		r0, #0x1
-	b		_0805784e
-
-_08057840:	.4byte 0x02032B80
-
-_08057844:
-	add		r1, #0x3
-	add		r2, #0x1
-	cmp		r2, #0x3
-	ble		_08057834
-	mov		r0, #0x0
-_0805784e:
-	bx		lr
-	thumb_func_end sub_08057828

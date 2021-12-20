@@ -22,6 +22,19 @@ static inline bool copyChars(char* src, char* dest, int size)
 }
 // **********************************************************************
 
+int sub_08057828(char offset)
+{
+  int i;
+  MGBUserInfoSaveData* userInfoObject = &gUserInfoSaveData;
+  
+  for (i = 0; i < 4; i++) {
+    if (userInfoObject->unk5_2[offset + i * 3])
+      return 1;
+  }
+
+  return 0;
+}
+
 // 08057850
 int sub_08057850(char param_1)
 {

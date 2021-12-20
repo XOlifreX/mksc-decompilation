@@ -11662,8 +11662,9 @@ _08066db0:	.4byte 0x0000F2C0
 _08066db4:	.4byte 0x0000F2C1
 	thumb_func_end sub_08066ac8
 
-	thumb_func_start sub_08066db8
-sub_08066db8:
+// _loadMGBGhostDownload
+	thumb_func_start _loadMGBGhostDownload
+_loadMGBGhostDownload:
 	push	{ r4, r5, r6, r7, lr }
 	mov		r7, r10
 	mov		r6, r9
@@ -12038,7 +12039,7 @@ _080670f8:	.4byte 0x080670fc
 _080670fc:	.4byte 0x08067110
 
 .incbin "base.gba", 0x67100, 0x10
-	thumb_func_end sub_08066db8
+	thumb_func_end _loadMGBGhostDownload
 
 
 .incbin "base.gba", 0x67110, 0x20

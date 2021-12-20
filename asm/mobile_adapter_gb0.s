@@ -6637,7 +6637,7 @@ _0805b074:	.4byte RunGameLogic_CallBack
 _0805b078:	.4byte 0x0805AF0D
 _0805b07c:	.4byte 0x0810f1fc
 _0805b080:	.4byte 0x0203ED50
-_0805b084:	.4byte sub_08066db8
+_0805b084:	.4byte _loadMGBGhostDownload
 
 _0805b088:
 	mov		r0, #0x1

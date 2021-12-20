@@ -31,7 +31,7 @@ typedef struct MGBUserInfoSaveData {
     char Nickname[MGB_NICKNAME_SIZE];
     char unk4[4];
     char unk5[3];
-    char unk5_2[5];
+    signed char unk5_2[5];
     char unk6[1];
     char unk7[11];
     char unk8;
