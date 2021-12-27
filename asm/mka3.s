@@ -77299,31 +77299,3 @@ _080576b0:	.4byte 0x02020400
 
 .incbin "base.gba", 0x576B4, 0x144
 	thumb_func_end sub_0805768c
-
-/*	thumb_func_start sub_080577f8
-sub_080577f8:
-	lsl		r0, r0, #0x18
-	lsr		r0, r0, #0x18
-	lsl		r1, r1, #0x18
-	lsr		r1, r1, #0x18
-	ldr		r3, _08057820
-	lsl		r2, r0, #0x1
-	add		r2, r2, r0
-	add		r1, r1, r2
-	lsl		r1, r1, #0x18
-	lsr		r1, r1, #0x18
-	mov		r0, #0x80
-	lsl		r0, r0, #0x9
-	lsl		r0, r1
-	lsr		r0, r0, #0x10
-	ldr		r1, _08057824
-	add		r3, r3, r1
-	ldrh	r1, [r3, #0x0]
-	and		r0, r1
-	bx		lr
-
-.incbin "base.gba", 0x5781E, 0x2
-
-_08057820:	.4byte 0x02032B80
-_08057824:	.4byte 0x00000BEC
-	thumb_func_end sub_080577f8*/
