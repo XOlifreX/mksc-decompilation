@@ -38,6 +38,7 @@ SECTIONS {
 	    asm/mka2.o (.text);
         asm/game.o (.text);
 	    asm/mka3.o (.text);
+        src/mgb_save_080577f8.o (.text);
         src/mgb_save.o (.text);
         src/mgb_unk1.o (.text);
         asm/mobile_adapter_gb0.o (.text);

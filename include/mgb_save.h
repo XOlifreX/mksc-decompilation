@@ -55,6 +55,8 @@ typedef struct MGBUserInfoSaveData {
     char PhoneNumber[MGB_PHONENUMBER_SIZE];
     char unk18[4];
     struct MGBSaveDatatruct1 unk19[3];
+    char unk20[4];
+    unsigned short unk21; // 0xBEC
 } MGBUserInfoSaveData;
 
 extern bool sub_08056030(unk_struct0* param_0, char param_1);

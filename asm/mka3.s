@@ -77300,7 +77300,7 @@ _080576b0:	.4byte 0x02020400
 .incbin "base.gba", 0x576B4, 0x144
 	thumb_func_end sub_0805768c
 
-	thumb_func_start sub_080577f8
+/*	thumb_func_start sub_080577f8
 sub_080577f8:
 	lsl		r0, r0, #0x18
 	lsr		r0, r0, #0x18
@@ -77326,4 +77326,4 @@ sub_080577f8:
 
 _08057820:	.4byte 0x02032B80
 _08057824:	.4byte 0x00000BEC
-	thumb_func_end sub_080577f8
+	thumb_func_end sub_080577f8*/
