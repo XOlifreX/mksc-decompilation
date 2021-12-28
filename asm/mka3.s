@@ -77296,6 +77296,201 @@ sub_0805768c:
 
 _080576ac:	.4byte 0x02032B80
 _080576b0:	.4byte 0x02020400
-
-.incbin "base.gba", 0x576B4, 0x144
 	thumb_func_end sub_0805768c
+
+	thumb_func_start sub_080576b4
+sub_080576b4:
+	ldr		r0, _080576c0                       @ 02032B80
+	ldr		r1, _080576c4                       @ 00000AE8
+	add		r0, r0, r1
+	mov		r1, #0x0
+	strh	r1, [r0, #0x0]
+	bx		lr
+
+_080576c0:	.4byte 0x02032B80
+_080576c4:	.4byte 0x00000AE8
+	thumb_func_end sub_080576b4
+
+	thumb_func_start sub_080576c8
+sub_080576c8:
+	push	{ r4, lr }
+	ldr		r1, _080576f4                       @ 02032B80
+	add		r2, r1, #0x0
+	add		r2, #0x1c
+	ldr		r0, _080576f8                       @ 00000AD4
+	add		r4, r1, r0
+	mov		r3, #0x0
+	mov		r0, #0x4
+_080576d8:
+	strb	r3, [r2, #0x0]
+	add		r2, #0x1
+	sub		r0, #0x1
+	cmp		r0, #0x0
+	bge		_080576d8
+	mov		r0, #0x0
+	strb	r0, [r4, #0x0]
+	ldr		r0, _080576fc                       @ 00000AE5
+	add		r1, r1, r0
+	mov		r0, #0x0
+	strb	r0, [r1, #0x0]
+	pop		{ r4 }
+	pop		{ r0 }
+	bx		r0
+
+_080576f4:	.4byte 0x02032B80
+_080576f8:	.4byte 0x00000AD4
+_080576fc:	.4byte 0x00000AE5
+	thumb_func_end sub_080576c8
+
+	thumb_func_start sub_08057700
+sub_08057700:
+	ldr		r0, _08057714                       @ 02032B80
+	add		r0, #0xc
+	mov		r2, #0x0
+	mov		r1, #0xf
+_08057708:
+	strb	r2, [r0, #0x0]
+	add		r0, #0x1
+	sub		r1, #0x1
+	cmp		r1, #0x0
+	bge		_08057708
+	bx		lr
+
+_08057714:	.4byte 0x02032B80
+	thumb_func_end sub_080576c8
+
+	thumb_func_start sub_08057718
+sub_08057718:
+	ldr		r0, _08057730                       @ 02032B80
+	add		r2, r0, #0x0
+	add		r2, #0xc
+	mov		r1, #0x0
+_08057720:
+	ldrb	r0, [r2, #0x0]
+	add		r0, r0, r1
+	strb	r0, [r2, #0x0]
+	add		r2, #0x1
+	add		r1, #0x1
+	cmp		r1, #0xf
+	ble		_08057720
+	bx		lr
+
+_08057730:	.4byte 0x02032B80
+	thumb_func_end sub_08057718
+
+	thumb_func_start sub_08057734
+sub_08057734:
+	ldr		r0, _08057740                       @ 02032B80
+	ldr		r1, _08057744                       @ 00000AE6
+	add		r0, r0, r1
+	mov		r1, #0x2f
+	strb	r1, [r0, #0x0]
+	bx		lr
+
+_08057740:	.4byte 0x02032B80
+_08057744:	.4byte 0x00000AE6
+	thumb_func_end sub_08057734
+
+	thumb_func_start sub_08057748
+sub_08057748:
+	push	{ r4, r5, r6, lr }
+	ldr		r6, _08057778                       @ 02032B80
+	mov		r3, #0x0
+	mov		r5, #0xb2
+	lsl		r5, r5, #0x3
+	mov		r4, #0x0
+_08057754:
+	lsl		r0, r3, #0x2
+	add		r0, r0, r3
+	lsl		r0, r0, #0x2
+	add		r0, r0, r5
+	add		r1, r6, r0
+	mov		r2, #0x0
+	add		r0, r3, #0x1
+_08057762:
+	strb	r4, [r1, #0x0]
+	add		r1, #0x1
+	add		r2, #0x1
+	cmp		r2, #0x13
+	bls		_08057762
+	add		r3, r0, #0x0
+	cmp		r3, #0x17
+	ble		_08057754
+	pop		{ r4, r5, r6 }
+	pop		{ r0 }
+	bx		r0
+
+_08057778:	.4byte 0x02032B80
+	thumb_func_end sub_08057748
+
+	thumb_func_start sub_0805777c
+sub_0805777c:
+	push	{ r4, r5, r6, lr }
+	mov		r2, #0x0
+	ldr		r6, _080577a4                       @ 02020400
+	mov		r5, #0x0
+	ldr		r3, _080577a8                       @ 02033770
+	mov		r4, #0x1
+_08057788:
+	lsl		r0, r2, #0x18
+	lsr		r0, r0, #0x18
+	strh		r5, [r6, #0x2]
+	add		r1, r4, #0x0
+	lsl		r1, r0
+	ldrh	r0, [r3, #0x0]
+	orr		r1, r0
+	strh	r1, [r3, #0x0]
+	add		r2, #0x1
+	cmp		r2, #0xc
+	ble		_08057788
+	pop		{ r4, r5, r6 }
+	pop		{ r0 }
+	bx		r0
+
+_080577a4:	.4byte 0x02020400
+_080577a8:	.4byte 0x02033770
+	thumb_func_end sub_0805777c
+
+	thumb_func_start sub_080577ab
+sub_080577ab:
+	push	{ r4, lr }
+	lsl		r0, r0, #0x18
+	lsr		r0, r0, #0x18
+	lsl		r1, r1, #0x18
+	lsr		r1, r1, #0x18
+	ldr		r4, _080577dc                       @ 02032B80
+	lsl		r3, r0, #0x1
+	add		r3, r3, r0
+	add		r1, r1, r3
+	lsl		r1, r1, #0x18
+	lsr		r1, r1, #0x18
+	mov		r0, #0x80
+	lsl		r0, r0, #0x9
+	lsl		r0, r1
+	lsr		r3, r0, #0x10
+	cmp		r2, #0x0
+	beq		_080577e4
+	ldr		r0, _080577e0                       @ 00000BEC
+	add		r2, r4, r0
+	ldrh	r1, [r2, #0x0]
+	add		r0, r3, #0x0
+	orr		r0, r1
+	strh	r0, [r2, #0x0]
+	b		_080577ee
+
+_080577dc:	.4byte 0x02032B80
+_080577e0:	.4byte 0x00000BEC
+
+_080577e4:
+	ldr		r0, _080577f4                       @ 00000BEC
+	add		r1, r4, r0
+	ldrh	r0, [r1, #0x0]
+	bic		r0, r3
+	strh	r0, [r1, #0x0]
+_080577ee:
+	pop		{ r4 }
+	pop		{ r0 }
+	bx		r0
+
+_080577f4:	.4byte 0x00000BEC
+	thumb_func_end sub_080577ab
